@@ -1,0 +1,34 @@
+<user>
+    <name>Josep</name>
+    <surName>Sans</surName>
+    <nickName>Panoramix</nickName>
+    <birthDate>03/10/1997</birthDate>
+    <password>qwerty</password>
+    <category>PADAWAN</category>
+    <savedGames>
+        <game>1</game>
+        <game>5</game>
+        <game>10</game>
+    </savedGames>
+    <experience>123.5</experience>
+    <maxScore>
+        <easy>12</easy>
+        <original>33</original>
+        <hard>90</hard>
+    </maxScore>
+    <playedGames>
+        <easy>12</easy>
+        <original>33</original>
+        <hard>90</hard>
+    </playedGames>
+    <winnedGames>
+        <easy>12</easy>
+        <original>33</original>
+        <hard>90</hard>
+    </winnedGames>
+    <winningSpree>
+        <easy>12</easy>
+        <original>33</original>
+        <hard>90</hard>
+    </winningSpree>
+</user>
