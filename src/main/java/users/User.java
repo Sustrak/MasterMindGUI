@@ -43,6 +43,8 @@ public class User {
         this.winningSpree = new GameTriple();
     }
 
+    public User(){}
+
     /* GETTERS */
     public String getName() {
         return this.name + " " + this.surname;
@@ -192,7 +194,60 @@ public class User {
     }
 
     public String toString(){
-        String s = new String();
+        String s = "";
         return s.concat(name + " "+ surname + " " + nickname);
+    }
+
+
+
+    //Getters and setters for serialization
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setCategory(CatEnum category) {
+        this.category = category;
+    }
+
+    public void setSavedGames(Vector<Integer> savedGames) {
+        this.savedGames = savedGames;
+    }
+
+    public void setExperience(double experience) {
+        this.experience = experience;
+    }
+
+    public void setMaxScore(GameTriple maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public void setPlayedGames(GameTriple playedGames) {
+        this.playedGames = playedGames;
+    }
+
+    public void setWinnedGames(GameTriple winnedGames) {
+        this.winnedGames = winnedGames;
+    }
+
+    public void setWinningSpree(GameTriple winningSpree) {
+        this.winningSpree = winningSpree;
     }
 }

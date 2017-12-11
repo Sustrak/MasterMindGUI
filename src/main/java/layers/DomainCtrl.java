@@ -4,6 +4,7 @@ import game.*;
 import rr.*;
 import users.*;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,12 +23,23 @@ public class DomainCtrl {
 
     public DomainCtrl(){
 
-        uSet = new UserSet();
+        try {
+            uSet = (UserSet) PersistenceCtrl.loadObject(PersistenceCtrl.USERS_FILE_PATH);
+        } catch (FileNotFoundException e) {
+            uSet = new UserSet();
+        }
         currentUser = null;
         currentGame = null;
-        ranking = new Ranking();
-        records = new Records();
-        loadUsers();
+        try {
+            ranking = (Ranking) PersistenceCtrl.loadObject(PersistenceCtrl.RANKINGS_FILE_PATH);
+        } catch (FileNotFoundException e) {
+            ranking = new Ranking();
+        }
+        try {
+            records = (Records) PersistenceCtrl.loadObject(PersistenceCtrl.RECORDS_FILE_PATH);
+        } catch (FileNotFoundException e) {
+            records = new Records();
+        }
     }
 
     // Initial Options
@@ -50,16 +62,9 @@ public class DomainCtrl {
         } catch (ParseException ex) {
             return 2;
         }
-
-        return uSet.newUser(name, surname, nickname, bD, password);
-    }
-
-    /**
-     *
-     */
-    private void loadUsers() {
-        //Cridara al controlador de dades perquè carregui tots els usuaris
-        createUser("Pere", "Rumbo", "p", "03/12/1992", "p");
+        int res = uSet.newUser(name, surname, nickname, bD, password);
+        if (res == 0) PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
+        return res;
     }
 
     /**
@@ -317,8 +322,9 @@ public class DomainCtrl {
         DiffEnum diff = currentGame.getDificulty();
         RREntry scoreEntry = new RREntry(nickname, score);
 
-        //Update ranking
+        //Update & Save ranking
         ranking.evalNewRR(scoreEntry, diff);
+        PersistenceCtrl.saveObject(ranking, PersistenceCtrl.RANKINGS_FILE_PATH);
 
         double exp = 0;
         switch (diff) {
@@ -335,14 +341,15 @@ public class DomainCtrl {
                 break;
         }
 
-        //Update user
+        //Update & Save user
         currentUser.addExperience(exp);
         currentUser.addToPlayedGames(diff);
         currentUser.addToWinnedGames(diff);
         currentUser.addToWinningSpree(diff);
         if (currentUser.getMaxScore().getScore(diff) < score) currentUser.setMaxScore(score, diff);
+        PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
 
-        //Update records
+        //Update & Save records
         RREntry maxExp = new RREntry(nickname, currentUser.getExperience());
         RREntry maxPlayedGames = new RREntry(nickname, currentUser.getPlayedGames().getScore(diff));
         RREntry maxWinnedGames = new RREntry(nickname, currentUser.getWinnedGames().getScore(diff));
@@ -352,6 +359,7 @@ public class DomainCtrl {
         records.evalmaxPlayedGames(maxPlayedGames);
         records.evalmaxWinnedGames(maxWinnedGames);
         records.evalMaxWinningSpree(maxWinningSpree);
+        PersistenceCtrl.saveObject(records, PersistenceCtrl.RECORDS_FILE_PATH);
     }
 
     public boolean usedNickname(String nickname) {

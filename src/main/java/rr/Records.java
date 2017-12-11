@@ -48,4 +48,22 @@ public class Records {
     public void evalmaxWinnedGames(RREntry rrEntry) {
         if (rrEntry.isBigger(this.maxWinnedGames)) this.maxWinnedGames = rrEntry;
     }
+
+    //For serialization
+
+    public void setMaxExp(RREntry maxExp) {
+        this.maxExp = maxExp;
+    }
+
+    public void setMaxWinningSpree(RREntry maxWinningSpree) {
+        this.maxWinningSpree = maxWinningSpree;
+    }
+
+    public void setMaxPlayedGames(RREntry maxPlayedGames) {
+        this.maxPlayedGames = maxPlayedGames;
+    }
+
+    public void setMaxWinnedGames(RREntry maxWinnedGames) {
+        this.maxWinnedGames = maxWinnedGames;
+    }
 }

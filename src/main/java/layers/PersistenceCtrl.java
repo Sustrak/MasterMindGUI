@@ -1,73 +1,54 @@
 package layers;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.sun.org.apache.regexp.internal.RE;
+import rr.Ranking;
+import rr.Records;
+import users.CatEnum;
+import users.GameTriple;
+import users.User;
+import users.UserSet;
+
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Vector;
 
 public class PersistenceCtrl {
-    private static final String USER_FILE_PATH = "src/main/resources/Data/users.xml";
-    private static final String RR_FILE_PATH = "src/main/resources/Data/rr.xml";
-    private static final String GAME_FILE_PATH = "src/main/resources/Data/game.xml";
+    public static final String USERS_FILE_PATH = "src/main/resources/Data/users.xml";
+    public static final String RANKINGS_FILE_PATH = "src/main/resources/Data/rankings.xml";
+    public static final String RECORDS_FILE_PATH = "src/main/resources/Data/records.xml";
+    public static final String GAMES_FILE_PATH = "src/main/resources/Data/games.xml";
 
-    public PersistenceCtrl() {
-    }
+    public PersistenceCtrl() {}
 
-    /**
-     * @return returns a map with all the user attributes if the users.xml file exists otherwise returns an empty HashMap
-     *         and creates the file
-     */
-    public HashMap<String, ArrayList<String>> getOrCreateUsers(){
-        HashMap<String, ArrayList<String>> users = new HashMap<>();
-        Document xml = null;
-        File file = new File(USER_FILE_PATH);
-        if (!file.isFile()) {
-            try {
-                file.createNewFile();
-                return users;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public static void saveObject(Object o, String path) {
+        XMLEncoder encoder =
+                null;
         try {
-            xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-        } catch (SAXException | IOException | ParserConfigurationException e) {
+            encoder = new XMLEncoder(
+                    new BufferedOutputStream(
+                            new FileOutputStream(path)));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        assert xml != null;
-        NodeList nodeList = xml.getElementsByTagName("user");
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            NodeList childs = nodeList.item(i).getChildNodes();
-            for (int j = 1; j < childs.getLength(); j += 2) {
-                ArrayList<String> data = new ArrayList<>();
-                Node n = childs.item(j);
-                //TODO: All nodes had childNodes so I had to do this shit may be there is a better way
-                if (n.getChildNodes().item(1) != null){
-                    NodeList subChilds = n.getChildNodes();
-                    for (int k = 1; k < subChilds.getLength(); k+=2) {
-                        Node nn = subChilds.item(k);
-                        data.add(nn.getTextContent());
-                    }
-                }
-                else data.add(n.getTextContent());
-                users.put(n.getNodeName(), data);
-            }
-        }
-        return users;
+        assert encoder != null;
+        encoder.writeObject(o);
+        encoder.close();
     }
 
-    public static void main(String[] args) {
-        PersistenceCtrl p = new PersistenceCtrl();
-        System.out.println(p.getOrCreateUsers());
+    public static Object loadObject(String path) throws FileNotFoundException {
+        XMLDecoder decoder =
+                new XMLDecoder(
+                        new BufferedInputStream(
+                                new FileInputStream(path)));
+        return decoder.readObject();
+    }
+
+    public static void main(String[] args) throws Exception {
+        Records rr = (Records) loadObject(RECORDS_FILE_PATH);
+        System.out.println(rr.getMaxExp());
     }
 }

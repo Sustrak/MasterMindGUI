@@ -16,7 +16,6 @@ public class Ranking {
         this.maxPuntuationOriginal = new RREntry[NUM_ENTRYS_RANKING];
         this.maxPuntuationHard = new RREntry[NUM_ENTRYS_RANKING];
 
-        // TODO: Load Rankings from DataBase
         for (int i = 0; i < maxPuntuationEasy.length; i++) {
             maxPuntuationEasy[i] = new RREntry("pepito", 10.0 * i);
             maxPuntuationOriginal[i] = new RREntry("pepito", 10.0 * i);
@@ -53,5 +52,19 @@ public class Ranking {
         }
 
         return false;
+    }
+
+    //For serialization
+
+    public void setMaxPuntuationEasy(RREntry[] maxPuntuationEasy) {
+        this.maxPuntuationEasy = maxPuntuationEasy;
+    }
+
+    public void setMaxPuntuationOriginal(RREntry[] maxPuntuationOriginal) {
+        this.maxPuntuationOriginal = maxPuntuationOriginal;
+    }
+
+    public void setMaxPuntuationHard(RREntry[] maxPuntuationHard) {
+        this.maxPuntuationHard = maxPuntuationHard;
     }
 }

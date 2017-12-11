@@ -13,7 +13,6 @@ public class UserSet {
      */
     public UserSet() {
         this.users = new HashMap<>();
-        // TODO: Dump all the saved users in the set
     }
 
     /**
@@ -25,11 +24,9 @@ public class UserSet {
      * @param password of the new user
      * @return 1 if the user already exists otherwise returns 0
      */
-    // TODO: Ha de retornar un usuari o es suficient si torna un bool quan s'ha afegit?
     public int newUser(String name, String surname, String nickname, Date birthDate, String password) {
 
         User u = new User(name, surname, nickname, birthDate, password);
-        // TODO: Exception or error code
         if(users.containsKey(nickname)) return 1;
         users.put(nickname, u);
         return 0;
@@ -69,15 +66,6 @@ public class UserSet {
         return users.size();
     }
 
-    /*
-    public String printUsers() {
-
-        String s = new String();
-        users.forEach((key, user) -> s.concat(user.toString() + System.lineSeparator()));
-        return s;
-    }
-    */
-
     public Map<String,String> getUserInfo(String nickname) throws UserNotFoundException {
         User u = users.get(nickname);
         if (u == null) throw new UserNotFoundException();
@@ -95,5 +83,15 @@ public class UserSet {
 
     public boolean existsUser(String nickname) {
         return users.containsKey(nickname);
+    }
+
+    //For Serialization
+
+    public Map<String, User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Map<String, User> users) {
+        this.users = users;
     }
 }

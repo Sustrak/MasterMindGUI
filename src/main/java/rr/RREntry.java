@@ -25,4 +25,29 @@ public class RREntry {
     public String toString() {
         return date.toString() + "    " + username + "        " + score;
     }
+
+    //For serialization
+
+    public RREntry() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
