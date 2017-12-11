@@ -37,7 +37,7 @@ public class Guess {
         Combination newComb = null;
 
         if(combSet.size() == 1296){
-            newComb = new Combination(new ArrayList<>(Arrays.asList(1,1,2,2)));
+            newComb = new Combination(new ArrayList<>(Arrays.asList(0,0,1,1)));
             lastComb = newComb;
         }
         else {
