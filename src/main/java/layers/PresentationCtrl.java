@@ -4,6 +4,7 @@ import game.DiffEnum;
 import users.UserNotFoundException;
 import view.StartingView;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Vector;
@@ -144,7 +145,6 @@ public class PresentationCtrl {
                 case 1:
                     // Introduce new combination
                     sView.showMessage("Introduce una nueva combinación:");
-                    System.out.print(dCtrl.getWinnerCombinationArray());
                     boolean repeatColor = true;
                     if(difficulty == DiffEnum.EASY)repeatColor = false;
                     ArrayList<Integer> newCombination = introduceNewCombination(repeatColor);
@@ -290,7 +290,11 @@ public class PresentationCtrl {
         if (ids.size() == 0) sView.showMessage("No tiene partidas guardadas");
         else {
             int id = sView.getGameId(ids);
-            dCtrl.loadGame(id);
+            try {
+                dCtrl.loadGame(id);
+            } catch (FileNotFoundException e) {
+                sView.showMessage("Error cargando la partida");
+            }
         }
     }
 

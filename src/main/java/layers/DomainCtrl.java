@@ -188,7 +188,7 @@ public class DomainCtrl {
         return uSet.getUserInfo(nickname);
     }
 
-    public void loadGame(int id) {
+    public void loadGame(int id) throws FileNotFoundException {
         currentGame = (CodeBreaker) PersistenceCtrl.loadGame(id, currentUser.getNickname());
     }
 
@@ -272,7 +272,12 @@ public class DomainCtrl {
      * @return an ArrayList which contains in this order: game.id, game.DiffEnum, game.isFirstClue, game.isSecondClue
      */
     ArrayList<String> getInfoGame(int gameId) {
-        CodeBreaker game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
+        CodeBreaker game = null;
+        try {
+            game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
+        } catch (FileNotFoundException ignored) {
+            //TODO: Error ignored maybe show some info about
+        }
         ArrayList<String> info = new ArrayList<>();
         assert game != null;
         info.add(String.valueOf(gameId));
