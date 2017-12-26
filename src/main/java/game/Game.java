@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public abstract class Game {
 
-    private static int lastId = 0;
-
-    private int id;
+    protected int id;
     protected Board currentBoard;
     protected ArrayList<Integer> colorsAvailable;
 
-    public Game(){
-        id = lastId++;
+    public Game(int id){
+        this.id = id;
     }
 
     public abstract int getElementsComb();
@@ -68,5 +66,31 @@ public abstract class Game {
 
     public boolean isGoodCorrection(int bP, int wP) {
         return currentBoard.isGoodCorrection(bP, wP);
+    }
+
+    //Methods for serialization
+
+
+    public Game() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Board getCurrentBoard() {
+        return currentBoard;
+    }
+
+    public void setCurrentBoard(Board currentBoard) {
+        this.currentBoard = currentBoard;
+    }
+
+    public void setColorsAvailable(ArrayList<Integer> colorsAvailable) {
+        this.colorsAvailable = colorsAvailable;
     }
 }

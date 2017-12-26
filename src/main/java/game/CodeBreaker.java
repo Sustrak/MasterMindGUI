@@ -22,8 +22,9 @@ public class CodeBreaker extends Game {
      *
      * @param difficulty
      */
-    public CodeBreaker(DiffEnum difficulty) {
+    public CodeBreaker(DiffEnum difficulty, int id) {
 
+        this.id = id;
         this.difficulty = difficulty;
         score = 0;
         firstClue = secondClue = false;
@@ -31,6 +32,7 @@ public class CodeBreaker extends Game {
         colorRemoved = (int) -1;
         elapsedTime = 0;
         initialTime = System.currentTimeMillis();
+
 
         if(difficulty == DiffEnum.EASY || difficulty == DiffEnum.ORIGINAL) {
             currentBoard = new Board(4, 12);
@@ -169,5 +171,74 @@ public class CodeBreaker extends Game {
     @Override
     public DiffEnum getDificulty() {
         return difficulty;
+    }
+
+    //Methods for serialize the class
+
+    public CodeBreaker() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public DiffEnum getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(DiffEnum difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public boolean isFirstClue() {
+        return firstClue;
+    }
+
+    public void setFirstClue(boolean firstClue) {
+        this.firstClue = firstClue;
+    }
+
+    public boolean isSecondClue() {
+        return secondClue;
+    }
+
+    public void setSecondClue(boolean secondClue) {
+        this.secondClue = secondClue;
+    }
+
+    public void setPositionClue(int positionClue) {
+        this.positionClue = positionClue;
+    }
+
+    public void setColorClue(int colorClue) {
+        this.colorClue = colorClue;
+    }
+
+    public void setColorRemoved(long colorRemoved) {
+        this.colorRemoved = colorRemoved;
+    }
+
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
+
+    public void setElapsedTime(long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
+    public long getInitialTime() {
+        return initialTime;
+    }
+
+    public void setInitialTime(long initialTime) {
+        this.initialTime = initialTime;
     }
 }
