@@ -1,26 +1,20 @@
 package layers;
 
-
-import com.sun.org.apache.regexp.internal.RE;
-import rr.Ranking;
+import game.CodeBreaker;
+import game.DiffEnum;
 import rr.Records;
-import users.CatEnum;
-import users.GameTriple;
-import users.User;
-import users.UserSet;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Vector;
+
 
 public class PersistenceCtrl {
     public static final String USERS_FILE_PATH = "src/main/resources/Data/users.xml";
     public static final String RANKINGS_FILE_PATH = "src/main/resources/Data/rankings.xml";
     public static final String RECORDS_FILE_PATH = "src/main/resources/Data/records.xml";
-    public static final String GAMES_FILE_PATH = "src/main/resources/Data/games.xml";
+    public static final String META_FILE_PATH = "src/main/resources/Data/meta.xml";
+    public static final String GAMES_DIR_PATH = "src/main/resources/Data/Games/";
 
     public PersistenceCtrl() {}
 
@@ -47,8 +41,21 @@ public class PersistenceCtrl {
         return decoder.readObject();
     }
 
+    public static void saveGame(Object o, int gameId, String nickname){
+        File userDir = new File(GAMES_DIR_PATH, nickname);
+        if (!userDir.isDirectory()) userDir.mkdirs();
+        String path = String.format("%s%s%s.xml", userDir.getPath(), File.separator, String.valueOf(gameId));
+        System.out.println(path);
+        System.out.println(userDir.isDirectory());
+        saveObject(o, path);
+    }
+
+    public static Object loadGame(int gameId, String nickname) {
+        return null;
+    }
+
     public static void main(String[] args) throws Exception {
-        Records rr = (Records) loadObject(RECORDS_FILE_PATH);
-        System.out.println(rr.getMaxExp());
+        CodeBreaker cb = new CodeBreaker(DiffEnum.EASY, 4);
+        saveGame(cb, 2, "Manolo");
     }
 }

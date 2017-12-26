@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,9 +21,9 @@ public class DomainCtrl {
     private Game currentGame;
     private Ranking ranking;
     private Records records;
+    private Meta meta;
 
     public DomainCtrl(){
-
         try {
             uSet = (UserSet) PersistenceCtrl.loadObject(PersistenceCtrl.USERS_FILE_PATH);
         } catch (FileNotFoundException e) {
@@ -39,6 +40,12 @@ public class DomainCtrl {
             records = (Records) PersistenceCtrl.loadObject(PersistenceCtrl.RECORDS_FILE_PATH);
         } catch (FileNotFoundException e) {
             records = new Records();
+        }
+        try {
+            meta = (Meta) PersistenceCtrl.loadObject(PersistenceCtrl.META_FILE_PATH);
+        } catch (FileNotFoundException e) {
+            //TODO: Informar a l'usuari que no s'ha trobat el meta i pertant podria haver-hi fallos al guardar una partida per problema del id
+            meta = new Meta();
         }
     }
 
@@ -129,7 +136,9 @@ public class DomainCtrl {
      */
     public void startNewCodeBreaker(DiffEnum difficulty) {
 
-        currentGame = new CodeBreaker(difficulty);
+        currentGame = new CodeBreaker(difficulty, meta.getIncLastId());
+        //Save meta because with have updated lastId
+        PersistenceCtrl.saveObject(meta, PersistenceCtrl.META_FILE_PATH);
     }
 
     public void startNewCodeMaker() {
@@ -179,8 +188,8 @@ public class DomainCtrl {
         return uSet.getUserInfo(nickname);
     }
 
-    public void loadGame(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void loadGame(int id) {
+        currentGame = (CodeBreaker) PersistenceCtrl.loadGame(id, currentUser.getNickname());
     }
 
     public ArrayList<Integer> getNewCodeMakerComb() {
@@ -196,7 +205,10 @@ public class DomainCtrl {
         ((CodeBreaker)currentGame).useSecondClue();
     }
 
-
+    public void saveGame() {
+        PersistenceCtrl.saveGame(currentGame, currentGame.getId(), currentUser.getNickname());
+        currentUser.addToSavedGames(currentGame.getId());
+    }
 
 
     // Getters
@@ -254,12 +266,24 @@ public class DomainCtrl {
         return currentGame.getColorsAvailable();
     }
 
-    String getInfoGame(String get) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    /**
+     * @param gameId
+     * @return an ArrayList which contains in this order: game.id, game.DiffEnum, game.isFirstClue, game.isSecondClue
+     */
+    ArrayList<String> getInfoGame(int gameId) {
+        CodeBreaker game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
+        ArrayList<String> info = new ArrayList<>();
+        assert game != null;
+        info.add(String.valueOf(gameId));
+        info.add(game.getDificulty().toString());
+        info.add(String.valueOf(game.isFirstClue()));
+        info.add(String.valueOf(game.isSecondClue()));
+        return info;
     }
 
-    ArrayList<String> getIdSavedGames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Vector<Integer> getIdSavedGames() {
+        return currentUser.getSavedGames();
     }
 
 

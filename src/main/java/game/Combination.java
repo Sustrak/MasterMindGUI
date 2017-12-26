@@ -65,4 +65,13 @@ public class Combination {
     public String toString(){
         return combination.toString();
     }
+
+    //Methods for serialization
+
+    public Combination() {
+    }
+
+    public void setCombination(ArrayList<Integer> combination) {
+        this.combination = combination;
+    }
 }

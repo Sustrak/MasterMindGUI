@@ -82,5 +82,49 @@ public class Board {
         return combinations.size() >= nComb;
     }
 
+    //Methods for serialization
+
+    public Board() {
+    }
+
+    public ArrayList<Combination> getCombinations() {
+        return combinations;
+    }
+
+    public void setCombinations(ArrayList<Combination> combinations) {
+        this.combinations = combinations;
+    }
+
+    public ArrayList<Correction> getCorrections() {
+        return corrections;
+    }
+
+    public void setCorrections(ArrayList<Correction> corrections) {
+        this.corrections = corrections;
+    }
+
+    public Combination getWinnerComb() {
+        return winnerComb;
+    }
+
+    public void setWinnerComb(Combination winnerComb) {
+        this.winnerComb = winnerComb;
+    }
+
+    public int getnComb() {
+        return nComb;
+    }
+
+    public void setnComb(int nComb) {
+        this.nComb = nComb;
+    }
+
+    public int getnPieces() {
+        return nPieces;
+    }
+
+    public void setnPieces(int nPieces) {
+        this.nPieces = nPieces;
+    }
 }
 
