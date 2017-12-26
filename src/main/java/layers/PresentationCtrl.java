@@ -6,7 +6,6 @@ import view.StartingView;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 public class PresentationCtrl {
@@ -48,7 +47,7 @@ public class PresentationCtrl {
 
             case 1: playCodeBreaker(); break;
             case 2: playCodeMaker(); break;
-            case 3: loadGame(); break;
+            case 3: System.out.println("Aún no implementado\n"); break;
             case 4: showRankings(); break;
             case 5: showRecords(); break;
             case 6: showPlayer(); break;
@@ -171,7 +170,7 @@ public class PresentationCtrl {
 
                 case 4:
                     // Guarda la partida y sale
-                    dCtrl.saveGame();
+                    dCtrl.updatePlayerOnFinishGame(false);
                     keepPlaying = false;
                     break;
 
@@ -281,17 +280,15 @@ public class PresentationCtrl {
     private void loadGame() {
 
         sView.showMessage("Cargar partida guardada.");
-        Vector ids = dCtrl.getIdSavedGames();
-        for (Object id1 : ids) {
-            int id = (int) id1;
-            ArrayList<String> infoGame = dCtrl.getInfoGame(id);
+        ArrayList<String> ids = dCtrl.getIdSavedGames();
+        for(int i = 0; i < ids.size(); ++i){
+            String infoGame = dCtrl.getInfoGame(ids.get(i));
             sView.showInfoGame(infoGame);
         }
-        if (ids.size() == 0) sView.showMessage("No tiene partidas guardadas");
-        else {
-            int id = sView.getGameId(ids);
-            dCtrl.loadGame(id);
-        }
+        String id = sView.getGameId();
+        dCtrl.loadGame(id);
+
+
     }
 
     private void logOut() {

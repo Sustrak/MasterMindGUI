@@ -13,7 +13,7 @@ public class LoginViewController {
     private DomainCtrl dCtrl = new DomainCtrl();
     private ViewController vCtrl = new ViewController();
 
-    public void setDctrl(DomainCtrl dCtrl) {
+    public void setDomainCtrl(DomainCtrl dCtrl) {
         this.dCtrl = dCtrl;
     }
 
@@ -23,8 +23,7 @@ public class LoginViewController {
         int result = dCtrl.logIn(username, password);
         if (result == 0) {
             System.out.print("LOGIN OK");
-            dCtrl.startNewCodeBreaker(DiffEnum.EASY);
-            vCtrl.boardView(dCtrl);
+            vCtrl.MainMenuView(dCtrl);
         }
         else {
             System.out.print("BAD LOGIN");

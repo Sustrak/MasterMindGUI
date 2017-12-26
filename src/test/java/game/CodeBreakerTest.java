@@ -10,7 +10,7 @@ public class CodeBreakerTest {
         Scanner s = new Scanner(System.in);
         int n = 14;
         boolean loop = true;
-        c = new CodeBreaker(DiffEnum.EASY, 1);
+        c = new CodeBreaker(DiffEnum.EASY);
 
         while(loop){
 
@@ -98,7 +98,7 @@ public class CodeBreakerTest {
 
 
     private static void testConstructor(DiffEnum diffEnum) {
-        c = new CodeBreaker(diffEnum, 1);
+        c = new CodeBreaker(diffEnum);
     }
 
     private static void testGetElementsComb() {

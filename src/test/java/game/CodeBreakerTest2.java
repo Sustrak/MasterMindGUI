@@ -10,14 +10,14 @@ import static org.junit.Assert.assertEquals;
 public class CodeBreakerTest2 {
     @Test
     public void getElementsComb() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.EASY, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.EASY);
         int res = c.getElementsComb();
         assertEquals(4, res);
     }
 
     @Test
     public void secondClueUsed() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.EASY, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.EASY);
         c.useSecondClue();
         boolean res = c.secondClueUsed();
         assertEquals(true, res);
@@ -25,7 +25,7 @@ public class CodeBreakerTest2 {
 
     @Test
     public void firstClueUsed() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.EASY, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.EASY);
         c.useFirstClue();
         boolean res = c.firstClueUsed();
         assertEquals(true, res);
@@ -74,14 +74,14 @@ public class CodeBreakerTest2 {
 
     @Test
     public void getDificulty() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL);
         DiffEnum res = c.getDificulty();
         assertEquals(res, DiffEnum.ORIGINAL);
     }
 
     @Test
     public void boardIsFull() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL);
         for (int i = 0; i < 12; i++) {
             c.setNewCombination(new ArrayList<>(Arrays.asList(0, 1, 2, 3)));
         }
@@ -97,7 +97,7 @@ public class CodeBreakerTest2 {
 
     @Test
     public void setNewCombination() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL);
         boolean res = c.setNewCombination(new ArrayList<>(Arrays.asList(0, 1, 2, 3)));
         assertEquals(false, res);
     }
@@ -109,14 +109,14 @@ public class CodeBreakerTest2 {
 
     @Test
     public void getNPieces() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.HARD, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.HARD);
         int res = c.getNPieces();
         assertEquals(6, res);
     }
 
     @Test
     public void getColorsAvailable() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.HARD, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.HARD);
         int res = c.getColorsAvailable().size();
         assertEquals(8, res);
         c.useFirstClue();
@@ -126,7 +126,7 @@ public class CodeBreakerTest2 {
 
     @Test
     public void getNCombinations() throws Exception {
-        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL, 1);
+        CodeBreaker c = new CodeBreaker(DiffEnum.ORIGINAL);
         for (int i = 0; i < 8; i++) {
             c.setNewCombination(new ArrayList<>(Arrays.asList(0, 1, 2, 3)));
         }

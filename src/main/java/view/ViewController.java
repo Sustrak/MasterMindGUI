@@ -1,5 +1,6 @@
 package view;
 
+import game.DiffEnum;
 import javafx.fxml.FXMLLoader;
 import layers.DomainCtrl;
 
@@ -7,13 +8,14 @@ import java.io.IOException;
 
 public class ViewController {
 
-    public void boardView(DomainCtrl dCtrl) {
+    public void boardView(DomainCtrl dCtrl, DiffEnum difficulty) {
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("../../resources/GUI/FXML/BoardView.fxml"));
         try {
             Loader.load();
             BoardViewController boardViewController = Loader.getController();
-            boardViewController.setDctrl(dCtrl);
+            boardViewController.setDifficulty(difficulty);
+            boardViewController.setDomainCtrl(dCtrl);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,7 +28,7 @@ public class ViewController {
         try {
             Loader.load();
             SignUpViewController signUpViewController = Loader.getController();
-            signUpViewController.setDctrl(dCtrl);
+            signUpViewController.setDomainCtrl(dCtrl);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,7 +41,7 @@ public class ViewController {
         try {
             Loader.load();
             LoginViewController loginViewController = Loader.getController();
-            loginViewController.setDctrl(dCtrl);
+            loginViewController.setDomainCtrl(dCtrl);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +54,20 @@ public class ViewController {
         try {
             Loader.load();
             ResetPasswordViewController resetPasswordViewController = Loader.getController();
-            resetPasswordViewController.setDctrl(dCtrl);
+            resetPasswordViewController.setDomainCtrl(dCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void MainMenuView(DomainCtrl dCtrl) {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(getClass().getResource("../../resources/GUI/FXML/MainMenuView.fxml"));
+        try {
+            Loader.load();
+            MainMenuViewController mainMenuViewController = Loader.getController();
+            mainMenuViewController.setDomainCtrl(dCtrl);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();

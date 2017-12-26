@@ -199,11 +199,11 @@
    </HBox>
    <VBox layoutX="637.0" layoutY="250.0" spacing="10.0">
       <children>
-         <Button fx:id="checkButton" mnemonicParsing="false" prefWidth="100.0" text="Check" />
-         <Button fx:id="clue1Button" mnemonicParsing="false" prefWidth="100.0" text="Clue 1" />
-         <Button fx:id="clue2Button" mnemonicParsing="false" prefWidth="100.0" text="Clue 2" />
-         <Button fx:id="saveGameButton" mnemonicParsing="false" prefWidth="100.0" text="Save Game" />
-         <Button fx:id="newGameButton" mnemonicParsing="false" prefWidth="100.0" text="New Game" />
+         <Button fx:id="checkButton" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" />
+         <Button fx:id="clue1Button" mnemonicParsing="false" onAction="#clue1ButtonAction" prefWidth="100.0" text="Clue 1" />
+         <Button fx:id="clue2Button" mnemonicParsing="false" onAction="#clue2ButtonAction" prefWidth="100.0" text="Clue 2" />
+         <Button fx:id="saveGameButton" mnemonicParsing="false" onAction="#saveGameButtonAction" prefWidth="100.0" text="Save Game" />
+         <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameButtonAction" prefWidth="100.0" text="New Game" />
          <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefWidth="100.0" text="Exit" />
       </children>
    </VBox>

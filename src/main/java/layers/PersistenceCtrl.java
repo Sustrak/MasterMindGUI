@@ -1,20 +1,11 @@
 package layers;
 
 
-import com.sun.org.apache.regexp.internal.RE;
-import rr.Ranking;
 import rr.Records;
-import users.CatEnum;
-import users.GameTriple;
-import users.User;
-import users.UserSet;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Vector;
 
 public class PersistenceCtrl {
     public static final String USERS_FILE_PATH = "src/main/resources/Data/users.xml";

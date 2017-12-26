@@ -2,7 +2,10 @@ package view;
 
 import game.DiffEnum;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
 
 public class StartingView {
 
@@ -287,21 +290,12 @@ public class StartingView {
         return n;
     }
 
-    public void showInfoGame(ArrayList<String> infoGame) {
-        System.out.println("Showing info of game: " + infoGame.get(0));
-        System.out.println(" -- Dificulty: " + infoGame.get(1));
-        System.out.println(" -- Is first clue used ? " + infoGame.get(2));
-        System.out.println(" -- Is second clue used ? " + infoGame.get(3));
+    public void showInfoGame(String infoGame) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int getGameId(Vector ids) {
-        System.out.println("Introduzca el id de la partida que quiere cargar");
-        int a = s.nextInt();
-        while (!ids.contains(a)) {
-            System.out.println("El id introducino no esta en su lista de partids guardadas");
-            a = s.nextInt();
-        }
-        return a;
+    public String getGameId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void showMessage(String message) {

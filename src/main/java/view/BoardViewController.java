@@ -24,15 +24,15 @@ import java.util.concurrent.TimeUnit;
 
 public class BoardViewController implements Initializable {
 
-    public int BLUE = 0;
-    public int PINK = 1;
-    public int ORANGE = 2;
-    public int YELLOW = 3;
-    public int GREEN = 4;
-    public int RED = 5;
+    private int BLUE = 0;
+    private int PINK = 1;
+    private int ORANGE = 2;
+    private int YELLOW = 3;
+    private int GREEN = 4;
+    private int RED = 5;
 
 
-    public Paint selectedColor;
+    private Paint selectedColor;
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
@@ -44,10 +44,12 @@ public class BoardViewController implements Initializable {
     public Label elapsedTimeLabel;
     public Label scoreLabel;
     public Label winLabel;
-    public int selectedRow = 10;
-    public DomainCtrl dCtrl;
+    private int selectedRow = 10;
+    private DomainCtrl dCtrl;
 
     private ViewController vCtrl = new ViewController();
+    private boolean allowRepeat;
+    private int size;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,15 +57,27 @@ public class BoardViewController implements Initializable {
        // blueCircle.setOnMouseDragged(circleOnMouseDraggedEventHandler);
         mainGridPane.setOnMouseClicked(mainGridPaneOnMouseClicked);
         colorSelectionVBox.setOnMouseClicked(colorSelectionVBoxOnMouseClicked);
-        checkButton.setOnAction(checkButtonAction);
-        clue1Button.setOnAction(clue1ButtonAction);
-        clue2Button.setOnAction(clue2ButtonAction);
-        saveGameButton.setOnAction(saveGameButtonAction);
-        newGameButton.setOnAction(newGameButtonAction);
     }
 
-    public void setDctrl(DomainCtrl dCtrl) {
+    public void setDomainCtrl(DomainCtrl dCtrl) {
         this.dCtrl = dCtrl;
+    }
+
+    public void setDifficulty(DiffEnum difficulty) {
+        switch (difficulty) {
+            case EASY:
+                size = 4;
+                allowRepeat = false;
+                break;
+            case ORIGINAL:
+                size = 4;
+                allowRepeat = true;
+                break;
+            case HARD:
+                size = 6;
+                allowRepeat = true;
+                break;
+        }
     }
 
     EventHandler<MouseEvent> mainGridPaneOnMouseClicked = new EventHandler<MouseEvent>() {
@@ -88,98 +102,86 @@ public class BoardViewController implements Initializable {
         }
     };
 
-    EventHandler<ActionEvent> checkButtonAction = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            ArrayList<Integer> newCombination = getCombination();
-            if (dCtrl.setNewCombination(newCombination)) {
-                winLabel.setText("WIN");
-                dCtrl.updatePlayerOnFinishGame(true);
-                finishCBgame();
-            }
-            System.out.print("WinnerCombo:" + dCtrl.getWinnerCombinationArray() + "\n");
-            System.out.print("WhitePegs: " + dCtrl.getWhitePegs(9 - selectedRow) + "\n");
-            System.out.print("BlackPegs: " + dCtrl.getBlackPegs(9 - selectedRow) + "\n");
-            paintCheckPegs();
-            if (selectedRow > 1) {
-                selectedRow--;
-            } else {
-                winLabel.setText("LOSE");
-                dCtrl.updatePlayerOnFinishGame(false);
-                finishCBgame();
-            }
+    public void checkButtonAction(ActionEvent actionEvent) {
+        ArrayList<Integer> newCombination = getCombination();
+        if (dCtrl.setNewCombination(newCombination)) {
+            winLabel.setText("WIN");
+            dCtrl.updatePlayerOnFinishGame(true);
+            finishCBgame();
         }
-    };
-
-    EventHandler<ActionEvent> clue1ButtonAction = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            int colorRemoved = dCtrl.useFirstClue();
-            Circle selectedCircle = (Circle)colorSelectionVBox.getChildren().get(colorRemoved);
-            selectedCircle.setDisable(true);
-            selectedCircle.setFill(Color.GRAY);
-            clue1Button.setDisable(true);
-        }
-    };
-
-    EventHandler<ActionEvent> clue2ButtonAction = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            dCtrl.useSecondClue();
-            int clue2Position = dCtrl.getPositionClue();
-            int clue2Color = dCtrl.getColorClue();
-            for (int i = 0; i <= 10; i++) {
-                Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i*4+clue2Position);
-                switch (clue2Color) {
-                    case 0:
-                        selectedCircle.setFill(Color.BLUE);
-                        break;
-                    case 1:
-                        selectedCircle.setFill(Color.HOTPINK);
-                        break;
-                    case 2:
-                        selectedCircle.setFill(Color.ORANGE);
-                        break;
-                    case 3:
-                        selectedCircle.setFill(Color.YELLOW);
-                        break;
-                    case 4:
-                        selectedCircle.setFill(Color.GREEN);
-                        break;
-                    case 5:
-                        selectedCircle.setFill(Color.RED);
-                        break;
-                }
-                selectedCircle.setDisable(true);
-            }
-            clue2Button.setDisable(true);
-        }
-    };
-
-    EventHandler<ActionEvent> saveGameButtonAction = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
+        System.out.print("WinnerCombo:" + dCtrl.getWinnerCombinationArray() + "\n");
+        System.out.print("WhitePegs: " + dCtrl.getWhitePegs(9 - selectedRow) + "\n");
+        System.out.print("BlackPegs: " + dCtrl.getBlackPegs(9 - selectedRow) + "\n");
+        paintCheckPegs();
+        if (selectedRow > 1) {
+            selectedRow--;
+        } else {
+            winLabel.setText("LOSE");
             dCtrl.updatePlayerOnFinishGame(false);
+            finishCBgame();
         }
-    };
+    }
 
-    EventHandler<ActionEvent> newGameButtonAction = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            dCtrl.startNewCodeBreaker(DiffEnum.EASY);
-            selectedRow = 10;
-            resetBoard();
-            checkButton.setDisable(false);
-            clue1Button.setDisable(false);
-            clue2Button.setDisable(false);
-            winLabel.setText("");
-            elapsedTimeLabel.setText("");
-            scoreLabel.setText("");
+    public void clue1ButtonAction(ActionEvent actionEvent) {
+        int colorRemoved = dCtrl.useFirstClue();
+        Circle selectedCircle = (Circle)colorSelectionVBox.getChildren().get(colorRemoved);
+        selectedCircle.setDisable(true);
+        selectedCircle.setFill(Color.GRAY);
+        clue1Button.setDisable(true);
+    }
 
-            System.out.print(dCtrl.getWinnerCombinationArray());
-
+    public void clue2ButtonAction(ActionEvent actionEvent) {
+        dCtrl.useSecondClue();
+        int clue2Position = dCtrl.getPositionClue();
+        int clue2Color = dCtrl.getColorClue();
+        for (int i = 0; i <= 10; i++) {
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i*4+clue2Position);
+            switch (clue2Color) {
+                case 0:
+                    selectedCircle.setFill(Color.BLUE);
+                    break;
+                case 1:
+                    selectedCircle.setFill(Color.HOTPINK);
+                    break;
+                case 2:
+                    selectedCircle.setFill(Color.ORANGE);
+                    break;
+                case 3:
+                    selectedCircle.setFill(Color.YELLOW);
+                    break;
+                case 4:
+                    selectedCircle.setFill(Color.GREEN);
+                    break;
+                case 5:
+                    selectedCircle.setFill(Color.RED);
+                    break;
+            }
+            selectedCircle.setDisable(true);
         }
-    };
+        clue2Button.setDisable(true);
+    }
+
+    public void saveGameButtonAction(ActionEvent actionEvent) {
+        dCtrl.updatePlayerOnFinishGame(false);
+    }
+
+    public void newGameButtonAction(ActionEvent actionEvent) {
+        dCtrl.startNewCodeBreaker(DiffEnum.EASY);
+        selectedRow = 10;
+        resetBoard();
+        checkButton.setDisable(false);
+        clue1Button.setDisable(false);
+        clue2Button.setDisable(false);
+        winLabel.setText("");
+        elapsedTimeLabel.setText("");
+        scoreLabel.setText("");
+
+        System.out.print(dCtrl.getWinnerCombinationArray());
+    }
+
+    public void exitButtonAction(ActionEvent actionEvent) {
+        vCtrl.loginView(dCtrl);
+    }
 
     private void finishCBgame() {
         checkButton.setDisable(true);
@@ -253,7 +255,7 @@ public class BoardViewController implements Initializable {
 
     private void paintWinnerCombination() {
         ArrayList<Integer> winnerCombination = dCtrl.getWinnerCombinationArray();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < size; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
             switch (winnerCombination.get(i)) {
                 case 0:
@@ -280,7 +282,7 @@ public class BoardViewController implements Initializable {
 
     private ArrayList<Integer> getCombination() {
         ArrayList<Integer> combination = new ArrayList<Integer>();
-        for (int i=0; i < 4; i++) {
+        for (int i=0; i < size; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow*4+i);
             if (selectedCircle.getFill().equals(Color.BLUE)) combination.add(BLUE);
             else if (selectedCircle.getFill().equals(Color.HOTPINK)) combination.add(PINK);
@@ -292,9 +294,6 @@ public class BoardViewController implements Initializable {
         return combination;
     }
 
-    public void exitButtonAction(ActionEvent actionEvent) {
-        vCtrl.loginView(dCtrl);
-    }
 
     /*public void selectBlueColor() {
         this.selectedColor = Color.BLUE;

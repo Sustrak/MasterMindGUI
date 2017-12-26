@@ -31,8 +31,8 @@ public class Main  extends Application{
     public static void main(String[] args) {
         // TODO code application logic here
 
-        /*PresentationCtrl pCtrl = new PresentationCtrl();
-        pCtrl.startMasterMind();*/
+        //PresentationCtrl pCtrl = new PresentationCtrl();
+        //pCtrl.startMasterMind();
 
         launch(args);
 

@@ -22,7 +22,7 @@ public class SignUpViewController {
     private ViewController vCtrl = new ViewController();
     private DomainCtrl dCtrl;
 
-    public void setDctrl(DomainCtrl dCtrl) {
+    public void setDomainCtrl(DomainCtrl dCtrl) {
         this.dCtrl = dCtrl;
     }
 
