@@ -24,32 +24,41 @@ import java.util.concurrent.TimeUnit;
 
 public class BoardViewController implements Initializable {
 
-    private int BLUE = 0;
-    private int PINK = 1;
-    private int ORANGE = 2;
-    private int YELLOW = 3;
-    private int GREEN = 4;
-    private int RED = 5;
+    private static int BLUE = 0;
+    private static int PINK = 1;
+    private static int ORANGE = 2;
+    private static int YELLOW = 3;
+    private static int GREEN = 4;
+    private static int RED = 5;
+    private static int VIOLET = 6;
+    private static int BROWN = 7;
 
 
-    private Paint selectedColor;
+    private Paint selectedColor = Color.WHITE;
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
+    public VBox buttonsVBox;
     public Button checkButton;
     public Button clue1Button;
     public Button clue2Button;
     public Button saveGameButton;
     public Button newGameButton;
+    public Button exitButton;
     public Label elapsedTimeLabel;
     public Label scoreLabel;
     public Label winLabel;
+
     private int selectedRow = 10;
     private DomainCtrl dCtrl;
 
     private ViewController vCtrl = new ViewController();
     private boolean allowRepeat;
-    private int size;
+    private int nColors;
+    private int nColumns;
+    private int nRows;
+    private int fullRow = 0;
+    private DiffEnum difficulty;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,44 +75,101 @@ public class BoardViewController implements Initializable {
     public void setDifficulty(DiffEnum difficulty) {
         switch (difficulty) {
             case EASY:
-                size = 4;
+                nColumns = 4;
+                nRows = 11;
+                nColors = 6;
                 allowRepeat = false;
                 break;
             case ORIGINAL:
-                size = 4;
+                nColumns = 4;
+                nRows = 11;
+                nColors = 6;
                 allowRepeat = true;
                 break;
             case HARD:
-                size = 6;
+                nColumns = 6;
+                nRows = 11;
+                nColors = 8;
                 allowRepeat = true;
                 break;
         }
+        this.difficulty = difficulty;
+        buildBoard();
     }
 
-    EventHandler<MouseEvent> mainGridPaneOnMouseClicked = new EventHandler<MouseEvent>() {
+    private Color getColor(int i) {
+        switch (i) {
+            case 0:
+                return Color.BLUE;
+            case 1:
+                return Color.HOTPINK;
+            case 2:
+                return Color.ORANGE;
+            case 3:
+                return Color.YELLOW;
+            case 4:
+                return Color.GREEN;
+            case 5:
+                return Color.RED;
+            case 6:
+                return Color.DARKVIOLET;
+            case 7:
+                return Color.BROWN;
+            default:
+                return Color.WHITE;
+        }
+    }
+
+    private void buildBoard() {
+        Circle circle;
+        for (int i = 0; i < nColors; ++i) {
+            circle = new Circle(16.0, getColor(i));
+            circle.setId("colorSelectionCircle" + i);
+            colorSelectionVBox.getChildren().add(i, circle);
+        }
+        for (int i = 0; i < nRows; i++) {
+            for (int j = 0; j < nColumns; j++) {
+                circle = new Circle(16.0, Color.WHITE);
+                circle.setStroke(Color.BLACK);
+                circle.setId("emptyCircle" + i + j);
+                mainGridPane.add(circle, j, i);
+            }
+        }
+        for (int i = 0; i < nRows -1; i++) {
+            for (int j = 0; j < nColumns; j++) {
+                circle = new Circle(8.0, Color.GRAY);
+                circle.setStroke(Color.BLACK);
+                circle.setId("checkPeg" + i + j);
+                checkGridPane.add(circle, j, i);
+            }
+        }
+    }
+
+    private EventHandler<MouseEvent> colorSelectionVBoxOnMouseClicked = event -> {
+        Object source = event.getTarget();
+        if (source instanceof Circle) {
+            selectedColor = ((Circle)source).getFill();
+        }
+    };
+
+    private EventHandler<MouseEvent> mainGridPaneOnMouseClicked = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
             Object source = event.getTarget();
             if (source instanceof Circle) {
                 if (GridPane.getRowIndex((Node)source) == selectedRow) {
                     ((Circle)source).setFill(selectedColor);
+                    if (fullRow < nColumns) {
+                        checkButton.setDisable(false);
+                    } else fullRow++;
                 }
-            }
-        }
-    };
-
-    EventHandler<MouseEvent> colorSelectionVBoxOnMouseClicked = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            Object source = event.getTarget();
-            if (source instanceof Circle) {
-                selectedColor = ((Circle)source).getFill();
             }
         }
     };
 
     public void checkButtonAction(ActionEvent actionEvent) {
         ArrayList<Integer> newCombination = getCombination();
+        System.out.print(newCombination);
         if (dCtrl.setNewCombination(newCombination)) {
             winLabel.setText("WIN");
             dCtrl.updatePlayerOnFinishGame(true);
@@ -120,6 +186,8 @@ public class BoardViewController implements Initializable {
             dCtrl.updatePlayerOnFinishGame(false);
             finishCBgame();
         }
+        checkButton.setDisable(true);
+        fullRow = 0;
     }
 
     public void clue1ButtonAction(ActionEvent actionEvent) {
@@ -135,27 +203,8 @@ public class BoardViewController implements Initializable {
         int clue2Position = dCtrl.getPositionClue();
         int clue2Color = dCtrl.getColorClue();
         for (int i = 0; i <= 10; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i*4+clue2Position);
-            switch (clue2Color) {
-                case 0:
-                    selectedCircle.setFill(Color.BLUE);
-                    break;
-                case 1:
-                    selectedCircle.setFill(Color.HOTPINK);
-                    break;
-                case 2:
-                    selectedCircle.setFill(Color.ORANGE);
-                    break;
-                case 3:
-                    selectedCircle.setFill(Color.YELLOW);
-                    break;
-                case 4:
-                    selectedCircle.setFill(Color.GREEN);
-                    break;
-                case 5:
-                    selectedCircle.setFill(Color.RED);
-                    break;
-            }
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i * nColumns + clue2Position);
+            selectedCircle.setFill(getColor(clue2Color));
             selectedCircle.setDisable(true);
         }
         clue2Button.setDisable(true);
@@ -166,17 +215,18 @@ public class BoardViewController implements Initializable {
     }
 
     public void newGameButtonAction(ActionEvent actionEvent) {
-        dCtrl.startNewCodeBreaker(DiffEnum.EASY);
+        dCtrl.startNewCodeBreaker(difficulty);
         selectedRow = 10;
-        resetBoard();
-        checkButton.setDisable(false);
+        mainGridPane.getChildren().clear();
+        checkGridPane.getChildren().clear();
+        colorSelectionVBox.getChildren().clear();
+        buildBoard();
+        checkButton.setDisable(true);
         clue1Button.setDisable(false);
         clue2Button.setDisable(false);
         winLabel.setText("");
         elapsedTimeLabel.setText("");
         scoreLabel.setText("");
-
-        System.out.print(dCtrl.getWinnerCombinationArray());
     }
 
     public void exitButtonAction(ActionEvent actionEvent) {
@@ -199,54 +249,18 @@ public class BoardViewController implements Initializable {
 
     }
 
-    private void resetBoard() {
-        for (int i = 0; i < 44; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
-            selectedCircle.setFill(Color.WHITE);
-            selectedCircle.setDisable(false);
-        }
-        for (int i = 0; i < 40; i++) {
-            Circle selectedCircle = (Circle)checkGridPane.getChildren().get(i);
-            selectedCircle.setFill(Color.GRAY);
-        }
-        for (int i = 0; i < 6; i++ ) {
-            Circle selectedCircle = (Circle)colorSelectionVBox.getChildren().get(i);
-            selectedCircle.setDisable(false);
-            switch (i) {
-                case 0:
-                    selectedCircle.setFill(Color.BLUE);
-                    break;
-                case 1:
-                    selectedCircle.setFill(Color.HOTPINK);
-                    break;
-                case 2:
-                    selectedCircle.setFill(Color.ORANGE);
-                    break;
-                case 3:
-                    selectedCircle.setFill(Color.YELLOW);
-                    break;
-                case 4:
-                    selectedCircle.setFill(Color.GREEN);
-                    break;
-                case 5:
-                    selectedCircle.setFill(Color.RED);
-                    break;
-            }
-        }
-    }
-
     private void paintCheckPegs() {
         int nWhitePegs = dCtrl.getWhitePegs(10 - selectedRow);
         int nBlackPegs = dCtrl.getBlackPegs(10 - selectedRow);
         int i = 0;
         while (nBlackPegs > 0) {
-            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)*4+i);
+            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)* nColumns +i);
             selectedCircle.setFill(Color.BLACK);
             nBlackPegs--;
             i++;
         }
         while (nWhitePegs > 0) {
-            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)*4+i);
+            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)* nColumns +i);
             selectedCircle.setFill(Color.WHITE);
             nWhitePegs--;
             i++;
@@ -255,41 +269,24 @@ public class BoardViewController implements Initializable {
 
     private void paintWinnerCombination() {
         ArrayList<Integer> winnerCombination = dCtrl.getWinnerCombinationArray();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < nColumns; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
-            switch (winnerCombination.get(i)) {
-                case 0:
-                    selectedCircle.setFill(Color.BLUE);
-                    break;
-                case 1:
-                    selectedCircle.setFill(Color.HOTPINK);
-                    break;
-                case 2:
-                    selectedCircle.setFill(Color.ORANGE);
-                    break;
-                case 3:
-                    selectedCircle.setFill(Color.YELLOW);
-                    break;
-                case 4:
-                    selectedCircle.setFill(Color.GREEN);
-                    break;
-                case 5:
-                    selectedCircle.setFill(Color.RED);
-                    break;
-            }
+            selectedCircle.setFill(getColor(winnerCombination.get(i)));
         }
     }
 
     private ArrayList<Integer> getCombination() {
-        ArrayList<Integer> combination = new ArrayList<Integer>();
-        for (int i=0; i < size; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow*4+i);
+        ArrayList<Integer> combination = new ArrayList<>();
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow* nColumns +i);
             if (selectedCircle.getFill().equals(Color.BLUE)) combination.add(BLUE);
             else if (selectedCircle.getFill().equals(Color.HOTPINK)) combination.add(PINK);
             else if (selectedCircle.getFill().equals(Color.ORANGE)) combination.add(ORANGE);
             else if (selectedCircle.getFill().equals(Color.YELLOW)) combination.add(YELLOW);
             else if (selectedCircle.getFill().equals(Color.GREEN)) combination.add(GREEN);
             else if (selectedCircle.getFill().equals(Color.RED)) combination.add(RED);
+            else if (selectedCircle.getFill().equals(Color.DARKVIOLET)) combination.add(VIOLET);
+            else if (selectedCircle.getFill().equals(Color.BROWN)) combination.add(BROWN);
         }
         return combination;
     }

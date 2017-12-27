@@ -9,81 +9,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
    <HBox alignment="CENTER" layoutX="263.0" layoutY="24.0" spacing="20.0">
-      <children>
-          
-          
-         <VBox fx:id="colorSelectionVBox" alignment="CENTER" spacing="10.0">
-            <children>
-      
-                <Circle fx:id="blueColorCircle" fill="blue" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="pinkColorCircle" fill="hotpink" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="orangeColorCircle" fill="orange" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="yellowColorCircle" fill="yellow" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="greenColorCircle" fill="green" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle fx:id="redColorCircle" fill="red" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-            </children>
-         </VBox>
-         <GridPane fx:id="mainGridPane" alignment="CENTER" hgap="10.0" vgap="10.0">
-            <children>
-                <Circle fx:id="emptyCircle00" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Circle fx:id="emptyCircle01" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Circle fx:id="emptyCircle02" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <Circle fx:id="emptyCircle03" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-      
-                <Circle fx:id="emptyCircle10" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Circle fx:id="emptyCircle11" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Circle fx:id="emptyCircle12" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Circle fx:id="emptyCircle13" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      
-                <Circle fx:id="emptyCircle20" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <Circle fx:id="emptyCircle21" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Circle fx:id="emptyCircle22" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <Circle fx:id="emptyCircle23" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      
-                <Circle fx:id="emptyCircle30" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <Circle fx:id="emptyCircle31" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Circle fx:id="emptyCircle32" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                <Circle fx:id="emptyCircle33" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      
-                <Circle fx:id="emptyCircle40" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                <Circle fx:id="emptyCircle41" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Circle fx:id="emptyCircle42" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                <Circle fx:id="emptyCircle43" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      
-                <Circle fx:id="emptyCircle50" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                <Circle fx:id="emptyCircle51" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <Circle fx:id="emptyCircle52" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                <Circle fx:id="emptyCircle53" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      
-                <Circle fx:id="emptyCircle60" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                <Circle fx:id="emptyCircle61" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <Circle fx:id="emptyCircle62" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                <Circle fx:id="emptyCircle63" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      
-                <Circle fx:id="emptyCircle70" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                <Circle fx:id="emptyCircle71" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                <Circle fx:id="emptyCircle72" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                <Circle fx:id="emptyCircle73" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-      
-                <Circle fx:id="emptyCircle80" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-                <Circle fx:id="emptyCircle81" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                <Circle fx:id="emptyCircle82" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                <Circle fx:id="emptyCircle83" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-      
-                <Circle fx:id="emptyCircle90" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-                <Circle fx:id="emptyCircle91" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                <Circle fx:id="emptyCircle92" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-                <Circle fx:id="emptyCircle93" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="9" />
 
-                <Circle fx:id="emptyCircle90" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="10" />
-                <Circle fx:id="emptyCircle91" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                <Circle fx:id="emptyCircle92" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                <Circle fx:id="emptyCircle93" fill="white" radius="16.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-            </children>
+
+         <VBox fx:id="colorSelectionVBox" alignment="CENTER" spacing="10.0" />
+         <GridPane fx:id="mainGridPane" alignment="CENTER" hgap="10.0" vgap="10.0">
+
             <columnConstraints>
                <ColumnConstraints />
                <ColumnConstraints />
@@ -110,64 +43,13 @@
             <padding>
                <Insets right="-30.0" />
             </padding>
-      
+
+
          </GridPane>
-      
-      
+
+
           <GridPane fx:id="checkGridPane" alignment="CENTER" hgap="10.0" vgap="26.0">
-              <children>
-      
-                  <Circle fx:id="checkCircle00" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                  <Circle fx:id="checkCircle01" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                  <Circle fx:id="checkCircle02" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                  <Circle fx:id="checkCircle03" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-      
-                  <Circle fx:id="checkCircle10" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <Circle fx:id="checkCircle11" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Circle fx:id="checkCircle12" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Circle fx:id="checkCircle13" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      
-                  <Circle fx:id="checkCircle20" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <Circle fx:id="checkCircle21" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Circle fx:id="checkCircle22" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Circle fx:id="checkCircle23" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      
-                  <Circle fx:id="checkCircle30" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                  <Circle fx:id="checkCircle31" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Circle fx:id="checkCircle32" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Circle fx:id="checkCircle33" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      
-                  <Circle fx:id="checkCircle40" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                  <Circle fx:id="checkCircle41" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Circle fx:id="checkCircle42" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Circle fx:id="checkCircle43" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      
-                  <Circle fx:id="checkCircle50" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                  <Circle fx:id="checkCircle51" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Circle fx:id="checkCircle52" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <Circle fx:id="checkCircle53" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      
-                  <Circle fx:id="checkCircle60" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                  <Circle fx:id="checkCircle61" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Circle fx:id="checkCircle62" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Circle fx:id="checkCircle63" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      
-                  <Circle fx:id="checkCircle70" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                  <Circle fx:id="checkCircle71" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Circle fx:id="checkCircle72" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Circle fx:id="checkCircle73" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-      
-                  <Circle fx:id="checkCircle80" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-                  <Circle fx:id="checkCircle81" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Circle fx:id="checkCircle82" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                  <Circle fx:id="checkCircle83" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-      
-                  <Circle fx:id="checkCircle90" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-                  <Circle fx:id="checkCircle91" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <Circle fx:id="checkCircle92" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-                  <Circle fx:id="checkCircle93" fill="gray" radius="8.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-      
-              </children>
+
               <columnConstraints>
                   <ColumnConstraints />
                   <ColumnConstraints />
@@ -193,26 +75,30 @@
             <padding>
                <Insets top="40.0" />
             </padding>
-      
-          </GridPane>
-      </children>
-   </HBox>
-   <VBox layoutX="637.0" layoutY="250.0" spacing="10.0">
-      <children>
-         <Button fx:id="checkButton" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" />
-         <Button fx:id="clue1Button" mnemonicParsing="false" onAction="#clue1ButtonAction" prefWidth="100.0" text="Clue 1" />
-         <Button fx:id="clue2Button" mnemonicParsing="false" onAction="#clue2ButtonAction" prefWidth="100.0" text="Clue 2" />
-         <Button fx:id="saveGameButton" mnemonicParsing="false" onAction="#saveGameButtonAction" prefWidth="100.0" text="Save Game" />
-         <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameButtonAction" prefWidth="100.0" text="New Game" />
-         <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefWidth="100.0" text="Exit" />
-      </children>
-   </VBox>
-   <VBox layoutX="87.0" layoutY="231.0" spacing="20.0">
-      <children>
-         <Label fx:id="winLabel" prefHeight="20.0" prefWidth="100.0" />
-         <Label fx:id="elapsedTimeLabel" prefHeight="20.0" prefWidth="100.0" />
-         <Label fx:id="scoreLabel" prefHeight="20.0" prefWidth="100.0" />
-      </children>
-   </VBox>
+
+
+
+
+              </GridPane>
+       <VBox fx:id="buttonsVBox" alignment="CENTER" spacing="10.0">
+           <Button fx:id="checkButton" disable="true" mnemonicParsing="false" onAction="#checkButtonAction"
+                   prefWidth="100.0" text="Check"/>
+           <Button fx:id="clue1Button" mnemonicParsing="false" onAction="#clue1ButtonAction" prefWidth="100.0"
+                   text="Clue 1"/>
+           <Button fx:id="clue2Button" mnemonicParsing="false" onAction="#clue2ButtonAction" prefWidth="100.0"
+                   text="Clue 2"/>
+           <Button fx:id="saveGameButton" mnemonicParsing="false" onAction="#saveGameButtonAction" prefWidth="100.0"
+                   text="Save Game"/>
+           <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameButtonAction" prefWidth="100.0"
+                   text="New Game"/>
+           <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefWidth="100.0"
+                   text="Exit"/>
+       </VBox>
+      </HBox>
+    <VBox layoutX="87.0" layoutY="231.0" spacing="20.0">
+        <Label fx:id="winLabel" prefHeight="20.0" prefWidth="100.0"/>
+        <Label fx:id="elapsedTimeLabel" prefHeight="20.0" prefWidth="100.0"/>
+        <Label fx:id="scoreLabel" prefHeight="20.0" prefWidth="100.0"/>
+    </VBox>
 
 </AnchorPane>
