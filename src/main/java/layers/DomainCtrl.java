@@ -1,5 +1,6 @@
 package layers;
 
+import com.sun.xml.internal.ws.db.DatabindingImpl;
 import game.*;
 import rr.*;
 import users.*;
@@ -169,6 +170,22 @@ public class DomainCtrl {
         return s;
     }
 
+    public RREntry[] getRankingRREntryes(DiffEnum diff) {
+        RREntry rrEntry[] = new RREntry[0];
+        switch (diff) {
+            case EASY:
+                rrEntry =  ranking.getMaxPuntuationEasy();
+                break;
+            case ORIGINAL:
+                rrEntry =  ranking.getMaxPuntuationOriginal();
+                break;
+            case HARD:
+                rrEntry =  ranking.getMaxPuntuationHard();
+                break;
+        }
+        return rrEntry;
+    }
+
     public String[] getRecords() {
         RREntry rrEntrys[] = new RREntry[Records.NUM_RECORDS];
         rrEntrys[0] = records.getMaxExp();
@@ -291,6 +308,9 @@ public class DomainCtrl {
         return currentUser.getSavedGames();
     }
 
+    public DiffEnum getDifficulty() {
+        return currentGame.getDificulty();
+    }
 
     // Setters
 

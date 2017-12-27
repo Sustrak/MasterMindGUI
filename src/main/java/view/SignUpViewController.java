@@ -4,11 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import layers.DomainCtrl;
 
-import javax.swing.text.View;
 import java.util.Optional;
 
 
 public class SignUpViewController {
+
+    private DomainCtrl domainCtrl;
 
     public Button signUpButton;
     public TextField nameTextField;
@@ -19,11 +20,8 @@ public class SignUpViewController {
     public TextField password2TextField;
     public Label errorLabel;
 
-    private ViewController vCtrl = new ViewController();
-    private DomainCtrl dCtrl;
-
     public void setDomainCtrl(DomainCtrl dCtrl) {
-        this.dCtrl = dCtrl;
+        this.domainCtrl = dCtrl;
     }
 
     public void signUpButtonAction(ActionEvent actionEvent) {
@@ -39,10 +37,10 @@ public class SignUpViewController {
         else if (birthDate.equals("")) errorLabel.setText("Debes introducir una fecha de nacimiento!");
         else if (password1.equals("")) errorLabel.setText("Debes introducir una contraseña!");
         else if (password2.equals("")) errorLabel.setText("Debes verificar la contraseña!");
-        else if (dCtrl.usedNickname(nickNameTextField.getText())) errorLabel.setText("El nickname introducido ya existe, elija otro.");
+        else if (domainCtrl.usedNickname(nickNameTextField.getText())) errorLabel.setText("El nickname introducido ya existe, elija otro.");
         else if (!password1.equals(password2)) errorLabel.setText("Las contraseñas introducidas no coinciden.");
         else {
-            switch (dCtrl.createUser(name, surname, nickname, birthDate, password1)) {
+            switch (domainCtrl.createUser(name, surname, nickname, birthDate, password1)) {
                 case 0:
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information");
@@ -52,7 +50,7 @@ public class SignUpViewController {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
                         System.out.print("OK");
-                        vCtrl.loginView(dCtrl);
+                        ViewController.loginView(domainCtrl);
                     }
                     break;
                 case 1:
@@ -69,6 +67,6 @@ public class SignUpViewController {
     }
 
     public void cancelButtonAction(ActionEvent actionEvent) {
-        vCtrl.loginView(dCtrl);
+        ViewController.loginView(domainCtrl);
     }
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Main  extends Application{
 
-    static Stage stage;
+    private static Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -22,7 +22,7 @@ public class Main  extends Application{
         stage.show();
     }
 
-    public static void changeScene(FXMLLoader Loader) throws IOException {
+    public static void changeScene(FXMLLoader Loader) {
         Parent root = Loader.getRoot();
         stage.setScene(new Scene(root, 911, 510));
     }
@@ -31,8 +31,8 @@ public class Main  extends Application{
     public static void main(String[] args) {
         // TODO code application logic here
 
-        /*PresentationCtrl pCtrl = new PresentationCtrl();
-        pCtrl.startMasterMind();*/
+        //PresentationCtrl pCtrl = new PresentationCtrl();
+        //pCtrl.startMasterMind();
 
         launch(args);
 

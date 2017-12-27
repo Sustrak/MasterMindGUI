@@ -11,21 +11,20 @@ import java.util.Optional;
 
 public class ResetPasswordViewController {
 
+    private DomainCtrl domainCtrl;
+
     public TextField nickNameTextField;
     public TextField birthDateTextField;
     public TextField password1TextField;
     public TextField password2TextField;
     public Label errorLabel;
 
-    private ViewController vCtrl =  new ViewController();
-    private DomainCtrl dCtrl;
-
     public void setDomainCtrl(DomainCtrl dCtrl) {
-        this.dCtrl = dCtrl;
+        this.domainCtrl = dCtrl;
     }
 
     public void cancelButonAction(ActionEvent actionEvent) {
-        vCtrl.loginView(dCtrl);
+        ViewController.loginView(domainCtrl);
     }
 
     public void resetPasswordButtonAction(ActionEvent actionEvent) {
@@ -39,7 +38,7 @@ public class ResetPasswordViewController {
         else if (password2.equals("")) errorLabel.setText("Debes verificar la contraseña!");
         else if (!password1.equals(password2)) errorLabel.setText("Las contraseñas introducidas no coinciden.");
         else {
-            int result = dCtrl.resetPassword(nickName, birthDate, password1);
+            int result = domainCtrl.resetPassword(nickName, birthDate, password1);
             switch (result) {
                 case 0:
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -48,7 +47,7 @@ public class ResetPasswordViewController {
                     alert.setContentText("Password reseteado correctamente.");
 
                     Optional<ButtonType> r = alert.showAndWait();
-                    if (r.get() == ButtonType.OK) vCtrl.loginView(dCtrl);
+                    if (r.get() == ButtonType.OK) ViewController.loginView(domainCtrl);
                     break;
 
                 case 1:
