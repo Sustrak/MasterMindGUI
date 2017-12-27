@@ -2,6 +2,12 @@
 
 <h4>Changelog:</h4>
 
+v1.4:
+
+    - Improved ViewController.java
+    - Improved *ViewController.java
+    - Enabled Ranking function.
+
 v1.3:
 
     - HARD mode enabled in GUI.
