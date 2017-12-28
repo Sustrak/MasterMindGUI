@@ -20,7 +20,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>Pere Rumbo Rumbo Rumbo</string>
+      <string>Pere Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo</string>
      </void>
      <void property="nickname">
       <string>p</string>
@@ -31,7 +31,116 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>2.0</double>
+        <double>3.0</double>
+       </void>
+      </object>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector">
+       <void method="add">
+        <int>78</int>
+       </void>
+      </object>
+     </void>
+     <void property="surname">
+      <string>Rumbo</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>1.0</double>
+       </void>
+      </object>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>1.0</double>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>oriol4</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>685490400000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object idref="CatEnum0"/>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="name">
+      <string>oriol mari mari mari mari mari mari mari mari</string>
+     </void>
+     <void property="nickname">
+      <string>oriol4</string>
+     </void>
+     <void property="password">
+      <string>12345</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector"/>
+     </void>
+     <void property="surname">
+      <string>mari</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple"/>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>oriol</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>685490400000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>users.CatEnum</class>
+       <string>MASTERJEDI</string>
+      </object>
+     </void>
+     <void property="experience">
+      <double>Infinity</double>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>Infinity</double>
+       </void>
+      </object>
+     </void>
+     <void property="name">
+      <string>oriol 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345</string>
+     </void>
+     <void property="nickname">
+      <string>oriol</string>
+     </void>
+     <void property="password">
+      <string>12345</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>16.0</double>
+       </void>
+       <void property="original">
+        <double>1.0</double>
        </void>
       </object>
      </void>
@@ -39,7 +148,61 @@
       <object class="java.util.Vector"/>
      </void>
      <void property="surname">
-      <string>Rumbo</string>
+      <string>12345</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>16.0</double>
+       </void>
+       <void property="original">
+        <double>1.0</double>
+       </void>
+      </object>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>1.0</double>
+       </void>
+       <void property="original">
+        <double>1.0</double>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>oriol6</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>685490400000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object idref="CatEnum0"/>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="name">
+      <string>oriol mari mari mari mari mari mari mari</string>
+     </void>
+     <void property="nickname">
+      <string>oriol6</string>
+     </void>
+     <void property="password">
+      <string>12345</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector"/>
+     </void>
+     <void property="surname">
+      <string>mari</string>
      </void>
      <void property="winnedGames">
       <object class="users.GameTriple">
@@ -85,7 +248,7 @@
       </object>
      </void>
      <void property="name">
-      <string>Josep Sans Sans Sans Sans</string>
+      <string>Josep Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans</string>
      </void>
      <void property="nickname">
       <string>Panoramix</string>
@@ -111,6 +274,86 @@
      </void>
      <void property="winningSpree">
       <object idref="GameTriple0"/>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>pepito</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>685490400000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object idref="CatEnum0"/>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="name">
+      <string>pepito pp pp pp pp pp pp</string>
+     </void>
+     <void property="nickname">
+      <string>pepito</string>
+     </void>
+     <void property="password">
+      <string>123456</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector"/>
+     </void>
+     <void property="surname">
+      <string>pp</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple"/>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>oriol2</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>685490400000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object idref="CatEnum0"/>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="name">
+      <string>oriol mari mari mari mari mari mari mari mari</string>
+     </void>
+     <void property="nickname">
+      <string>oriol2</string>
+     </void>
+     <void property="password">
+      <string>12345</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector"/>
+     </void>
+     <void property="surname">
+      <string>mari</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple"/>
      </void>
     </object>
    </void>
