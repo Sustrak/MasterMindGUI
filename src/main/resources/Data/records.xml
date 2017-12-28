@@ -4,8 +4,14 @@
   <void property="maxExp">
    <void property="date">
     <object class="java.util.Date">
-     <long>1514287379189</long>
+     <long>1514472304809</long>
     </object>
+   </void>
+   <void property="score">
+    <double>Infinity</double>
+   </void>
+   <void property="username">
+    <string>oriol</string>
    </void>
   </void>
   <void property="maxPlayedGames">

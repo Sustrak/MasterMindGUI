@@ -199,7 +199,7 @@ public class PresentationCtrl {
 
 
         sView.showMessage("Has elegido jugar como CodeMaker.");
-        dCtrl.startNewCodeMaker();
+        dCtrl.startNewCodeMaker(sView.getCMdifficulty());
         ArrayList<Integer> winnerComb = getWinnerCombination();
         dCtrl.setWinnerCombination(winnerComb);
 

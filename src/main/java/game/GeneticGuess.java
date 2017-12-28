@@ -40,11 +40,11 @@ public class GeneticGuess extends CodeMaker {
     
     public GeneticGuess(){
         
-        currentBoard = new Board(5, 10);
+        currentBoard = new Board(6, 10);
         colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7));
         
-        maxGen = 60;
-        maxSize = 150;
+        maxGen = 100;
+        maxSize = 200;
         a = 1;
         b = 2;
         crossProb = 0.5;
@@ -61,7 +61,7 @@ public class GeneticGuess extends CodeMaker {
     
     @Override
     public int getElementsComb() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class GeneticGuess extends CodeMaker {
         
         if(nGames == 1){
             nGames++;
-            return new ArrayList<>(Arrays.asList(1,1,2,3,4));
+            return new ArrayList<>(Arrays.asList(1,1,2,3,4,5));
         }
         
         eligible = new HashSet();
@@ -238,9 +238,8 @@ public class GeneticGuess extends CodeMaker {
     private ArrayList<Integer> pickGuess() {
         
         ArrayList<Combination> eC = new ArrayList<>(eligible);
-        System.out.println(" Elegibles " + eligible.size());
         if(!eC.isEmpty()) return eC.get(r.nextInt(eC.size())).getCombination();
-        return generateRandomComb(5).getCombination();
+        return generateRandomComb(getElementsComb()).getCombination();
     }
 
     private void evolvePop() {
@@ -258,8 +257,8 @@ public class GeneticGuess extends CodeMaker {
             c1 = permComb(c1); c2 = permComb(c2);
             c1 = invComb(c1); c2 = invComb(c2);
 
-            while(!population.add(c1)) c1 = generateRandomComb(5);
-            while(!population.add(c2)) c2 = generateRandomComb(5);
+            while(!population.add(c1)) c1 = generateRandomComb(getElementsComb());
+            while(!population.add(c2)) c2 = generateRandomComb(getElementsComb());
         }
     }
 }

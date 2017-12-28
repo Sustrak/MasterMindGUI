@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
+ <object class="game.CodeBreaker">
+  <void property="colorClue">
+   <int>-1</int>
+  </void>
+  <void property="colorsAvailable">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <int>0</int>
+    </void>
+    <void method="add">
+     <int>1</int>
+    </void>
+    <void method="add">
+     <int>2</int>
+    </void>
+    <void method="add">
+     <int>3</int>
+    </void>
+    <void method="add">
+     <int>4</int>
+    </void>
+    <void method="add">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+  <void property="difficulty">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>game.DiffEnum</class>
+    <string>EASY</string>
+   </object>
+  </void>
+  <void property="id">
+   <int>78</int>
+  </void>
+  <void property="initialTime">
+   <long>1514464849411</long>
+  </void>
+ </object>
+</java>

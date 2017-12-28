@@ -26,14 +26,14 @@ public class BoardViewController implements Initializable {
 
     private DomainCtrl domainCtrl;
 
-    private static int BLUE = 0;
-    private static int PINK = 1;
-    private static int ORANGE = 2;
-    private static int YELLOW = 3;
-    private static int GREEN = 4;
-    private static int RED = 5;
-    private static int VIOLET = 6;
-    private static int BROWN = 7;
+    private static final int BLUE = 0;
+    private static final int PINK = 1;
+    private static final int ORANGE = 2;
+    private static final int YELLOW = 3;
+    private static final int GREEN = 4;
+    private static final int RED = 5;
+    private static final int VIOLET = 6;
+    private static final int BROWN = 7;
 
 
     private Paint selectedColor = Color.WHITE;

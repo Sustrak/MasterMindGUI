@@ -142,9 +142,10 @@ public class DomainCtrl {
         PersistenceCtrl.saveObject(meta, PersistenceCtrl.META_FILE_PATH);
     }
 
-    public void startNewCodeMaker() {
+    public void startNewCodeMaker(DiffEnum difficulty) {
 
-        currentGame = new GeneticGuess();
+        if(difficulty == DiffEnum.ORIGINAL) currentGame = new FiveGuess();
+        else currentGame = new GeneticGuess();
     }
 
     public String[] getRanking(DiffEnum diff) {

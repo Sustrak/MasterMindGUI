@@ -171,6 +171,20 @@ public class StartingView {
         DiffEnum diff = DiffEnum.values()[option-1];
         return diff;
     }
+    
+    public DiffEnum getCMdifficulty() {
+
+        System.out.println("Elija la dificultat del juego:" + System.lineSeparator());
+        System.out.println("Opción 1: Original. 4 espacios. 6 colores. Con repetidos");
+        System.out.println("Opción 2: Dificil. 6 espacios. 8 colores. Con repetidos");
+        int option = getInt();
+        if(option < 1 || option > 2) {
+            System.out.println("La dificultat seleccionada no es válida, elija de nuevo");
+            return getCMdifficulty();
+        }
+        DiffEnum diff = DiffEnum.values()[option];
+        return diff;
+    }
 
     public int getCMOption() {
 
