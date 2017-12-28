@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_151" class="java.beans.XMLDecoder">
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
  <object class="layers.Meta">
   <void property="lastId">
-   <int>90</int>
+   <int>88</int>
   </void>
  </object>
 </java>
