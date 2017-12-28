@@ -36,9 +36,19 @@ public class MainMenuViewController {
     }
 
     public void recordsButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.recordsView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void playerButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.userView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void logoutButtonAction(ActionEvent actionEvent) {

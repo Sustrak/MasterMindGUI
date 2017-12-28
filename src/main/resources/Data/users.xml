@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_144" class="java.beans.XMLDecoder">
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
    <void method="put">
@@ -20,7 +20,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>Pere Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo</string>
+      <string>Pere Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo</string>
      </void>
      <void property="nickname">
       <string>p</string>
@@ -76,7 +76,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol4</string>
@@ -126,7 +126,7 @@
       </object>
      </void>
      <void property="name">
-      <string>oriol 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345</string>
+      <string>oriol 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345</string>
      </void>
      <void property="nickname">
       <string>oriol</string>
@@ -137,7 +137,7 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>16.0</double>
+        <double>17.0</double>
        </void>
        <void property="original">
         <double>1.0</double>
@@ -153,7 +153,7 @@
      <void property="winnedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>16.0</double>
+        <double>17.0</double>
        </void>
        <void property="original">
         <double>1.0</double>
@@ -163,7 +163,7 @@
      <void property="winningSpree">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>1.0</double>
+        <double>2.0</double>
        </void>
        <void property="original">
         <double>1.0</double>
@@ -187,7 +187,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol6</string>
@@ -248,7 +248,7 @@
       </object>
      </void>
      <void property="name">
-      <string>Josep Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans</string>
+      <string>Josep Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans</string>
      </void>
      <void property="nickname">
       <string>Panoramix</string>
@@ -292,7 +292,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>pepito pp pp pp pp pp pp</string>
+      <string>pepito pp pp pp pp pp pp pp</string>
      </void>
      <void property="nickname">
       <string>pepito</string>
@@ -332,7 +332,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol2</string>

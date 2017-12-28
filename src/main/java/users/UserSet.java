@@ -81,6 +81,7 @@ public class UserSet {
         return info;
     }
 
+
     public boolean existsUser(String nickname) {
         return users.containsKey(nickname);
     }

@@ -150,18 +150,7 @@ public class DomainCtrl {
 
     public String[] getRanking(DiffEnum diff) {
 
-        RREntry rrEntry[] = new RREntry[0];
-        switch (diff) {
-            case EASY:
-                rrEntry =  ranking.getMaxPuntuationEasy();
-                break;
-            case ORIGINAL:
-                rrEntry =  ranking.getMaxPuntuationOriginal();
-                break;
-            case HARD:
-                rrEntry =  ranking.getMaxPuntuationHard();
-                break;
-        }
+        RREntry rrEntry[] = getRankingRREntryes(diff);
 
         String s[] = new String[Ranking.NUM_ENTRYS_RANKING];
         for (int i = 0; i < s.length; i++) {
@@ -188,11 +177,7 @@ public class DomainCtrl {
     }
 
     public String[] getRecords() {
-        RREntry rrEntrys[] = new RREntry[Records.NUM_RECORDS];
-        rrEntrys[0] = records.getMaxExp();
-        rrEntrys[1] = records.getMaxWinningSpree();
-        rrEntrys[2] = records.getMaxPlayedGames();
-        rrEntrys[3] = records.getMaxWinnedGames();
+        RREntry rrEntrys[] = getRecordsRREntryes();
 
         String s[] = new String[Records.NUM_RECORDS];
         for (int i = 0; i < s.length; i++) {
@@ -200,6 +185,16 @@ public class DomainCtrl {
         }
 
         return s;
+    }
+
+    public RREntry[] getRecordsRREntryes() {
+        RREntry rrEntrys[] = new RREntry[Records.NUM_RECORDS];
+        rrEntrys[0] = records.getMaxExp();
+        rrEntrys[1] = records.getMaxWinningSpree();
+        rrEntrys[2] = records.getMaxPlayedGames();
+        rrEntrys[3] = records.getMaxWinnedGames();
+
+        return rrEntrys;
     }
 
     public Map<String,String> getPlayerInfo(String nickname) throws UserNotFoundException {

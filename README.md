@@ -2,6 +2,14 @@
 
 <h4>Changelog:</h4>
 
+v1.5:
+
+    - Enabled Record function.
+    
+    Know Issues:
+    
+    - Record and ranking functions are VIOLATING Alice'S rule, ONLY STANDARD TYPES BETWEEN LAYERS!!!!!
+
 v1.4:
 
     - Improved ViewController.java

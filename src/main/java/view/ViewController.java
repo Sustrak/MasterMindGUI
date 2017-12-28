@@ -110,4 +110,30 @@ public class ViewController {
         else if (result.get() == original) return DiffEnum.ORIGINAL;
         else return DiffEnum.HARD;
     }
+
+    public static void recordsView(DomainCtrl domainCtrl) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/RecordView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            RecordViewController recordViewController = Loader.getController();
+            recordViewController.setDomainCtrl(domainCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void userView(DomainCtrl domainCtrl) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/UserView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            UserViewController userViewController = Loader.getController();
+            userViewController.setDomainCtrl(domainCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

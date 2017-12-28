@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_144" class="java.beans.XMLDecoder">
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
  <object class="rr.Ranking" id="Ranking0">
   <void id="RREntryArray0" property="maxPuntuationEasy">
    <void index="0">

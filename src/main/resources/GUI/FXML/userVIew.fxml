@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UserViewController">
+    <children>
+        <VBox fx:id="mainVBox" alignment="CENTER" prefHeight="500.0" prefWidth="900.0" spacing="20.0">
+         <VBox alignment="CENTER" spacing="10.0">
+            <children>
+               <HBox alignment="CENTER" spacing="20.0">
+                  <children>
+                     <Label text="Nickname:" />
+                     <TextField fx:id="nickNameTextField" />
+                     <Button fx:id="checkButton" mnemonicParsing="false" onAction="#checkButtonAction" text="Check" />
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+         <Label fx:id="userNotFoundLabel" text="User not found" textFill="RED" visible="false" />
+         <GridPane fx:id="userInfoGridPane" alignment="CENTER" prefHeight="90.0" prefWidth="233.0">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="82.0" prefWidth="82.0" />
+             <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="135.0" prefWidth="218.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+               <Label text="Name:" />
+               <Label text="Category:" GridPane.rowIndex="1" />
+               <Label text="Experience:" GridPane.rowIndex="2" />
+               <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" />
+               <Label fx:id="categoryLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <Label fx:id="experienceLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+            <VBox.margin>
+               <Insets left="300.0" right="300.0" />
+            </VBox.margin>
+         </GridPane>
+         <GridPane fx:id="userStaticsGridPane" alignment="CENTER" hgap="5.0" vgap="5.0">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" />
+               <ColumnConstraints hgrow="SOMETIMES" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+               <Label alignment="CENTER" text="EASY" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               <Label text="ORIGINAL" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               <Label text="HARD" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               <Label text="Max Score:" GridPane.rowIndex="1" />
+               <Label text="Played Games:" GridPane.rowIndex="2" />
+               <Label text="Winning Spree:" GridPane.rowIndex="4" />
+               <Label text="Winned Games:" GridPane.rowIndex="3" />
+               <Label fx:id="easyMaxScoreLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="originalMaxScoreLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               <Label fx:id="easyPlayedGamesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="originalPlayedGamesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="easyWinnedGamesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="originalWinnedGamesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="hardWinnedGamesLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="easyWinningSpreeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="hardWinningSpreeLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="hardMaxScoreLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="hardPlayedGamesLabel" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+               <Label fx:id="originalWinningSpreeLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+            </children>
+            <VBox.margin>
+               <Insets left="250.0" right="250.0" />
+            </VBox.margin>
+         </GridPane>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Exit" />
+        </VBox>
+    </children>
+</HBox>
