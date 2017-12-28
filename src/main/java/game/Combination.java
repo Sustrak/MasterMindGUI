@@ -15,7 +15,8 @@ public class Combination {
 
     public ArrayList<Integer> getCombination(){
 
-        return new ArrayList<>(combination);
+        //return new ArrayList<>(combination);
+        return combination;
     }
 
     public int getNElements() {
@@ -66,8 +67,17 @@ public class Combination {
         return true;
     }
 
-    @Override
-    public String toString(){
+    //Not override toString because breaks the serializer
+    public String _toString(){
         return combination.toString();
+    }
+
+    //Methods for serialization
+
+    public Combination() {
+    }
+
+    public void setCombination(ArrayList<Integer> combination) {
+        this.combination = combination;
     }
 }

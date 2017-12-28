@@ -100,4 +100,9 @@ public class Correction {
 
         return "Fichas negras: " + blackPegs + " Fichas blancas: " + whitePegs;
     }
+
+    //Methods for serialization
+
+    public Correction() {
+    }
 }

@@ -59,6 +59,6 @@ public class PersistenceCtrl {
 
     public static void main(String[] args) throws Exception {
         CodeBreaker cb = new CodeBreaker(DiffEnum.EASY, 4);
-        saveGame(cb, 7, "Manolo");
+        saveGame(cb, 10, "Manolo");
     }
 }

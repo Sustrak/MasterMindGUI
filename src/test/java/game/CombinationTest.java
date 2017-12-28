@@ -78,7 +78,7 @@ public class CombinationTest {
         ArrayList<Integer> newComb = new ArrayList<>(4);
         for(int i = 0; i < 4; ++i) newComb.add(s.nextInt());
         c = new Combination(newComb);
-        System.out.println("Has creado la combinación: " + c.toString());  
+        System.out.println("Has creado la combinación: " + c._toString());
         
     }
     private static void testgetCombination(){
@@ -106,7 +106,7 @@ public class CombinationTest {
     
         System.out.println("Test hashCode.");
         
-        System.out.print("La combinación " + c.toString() + " tiene hashCode: ");
+        System.out.print("La combinación " + c._toString() + " tiene hashCode: ");
         System.out.println(c.hashCode());
     }
     private static void testequals(){

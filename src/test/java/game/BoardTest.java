@@ -109,7 +109,7 @@ public class BoardTest {
     private static void testgetWinnerCombination() {
         
         Combination c = b.getWinnerCombination();
-        System.out.println("La combinación ganadora es: " + c.toString());
+        System.out.println("La combinación ganadora es: " + c._toString());
     }
     
     private static void testgetCombination() {
@@ -161,7 +161,7 @@ public class BoardTest {
         }
         Board b1 = new Board(4,12);
         b1.setWinnerCombination(newComb);
-        System.out.println("La combinación ganadora es: " + b1.getWinnerCombination().toString());
+        System.out.println("La combinación ganadora es: " + b1.getWinnerCombination()._toString());
     }
 
     private static void testsetNewCombination() {
