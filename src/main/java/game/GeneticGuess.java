@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package game;
 
 import static java.lang.Math.abs;
@@ -37,7 +33,8 @@ public class GeneticGuess extends CodeMaker {
     private HashSet<Combination> population;
     private ArrayList<Pair<Integer, Combination> > combScores;
     private int maxScore;
-    private Comparator comp1, comp2;
+
+    private final Comparator comp1;
     private Random r;
     
     public GeneticGuess(){
@@ -67,12 +64,11 @@ public class GeneticGuess extends CodeMaker {
             }
         };
     }
-    
-    @Override
-    public int getElementsComb() {
-        return 6;
-    }
 
+    /**
+     *
+     * @return Returns a guess computed with genetic algorithms
+     */
     @Override
     public ArrayList<Integer> getNewCombination() {
         
@@ -97,6 +93,8 @@ public class GeneticGuess extends CodeMaker {
         return pickGuess();
     }
 
+    //Methods used to get a new Combination
+    
     private void initializePopulation() {
         
         population = new HashSet<>();
@@ -105,14 +103,26 @@ public class GeneticGuess extends CodeMaker {
             population.add(generateRandomComb(nPieces));
     }
     
-    private Combination generateRandomComb(int nPieces){
+    private void evolvePop() {
         
-        ArrayList<Integer> newComb = new ArrayList<>();
-        for(int j = 0; j < nPieces; ++j)
-            newComb.add(r.nextInt(8));
-        return new Combination(newComb);
-    }
+        population = new HashSet<>();
+        for(int i = 0; i < combScores.size()-1; i += 2){
 
+            Combination c1 = combScores.get(i).getValue();
+            Combination c2 = combScores.get(i+1).getValue();
+
+            Pair<Combination, Combination> auxC = crossComb(c1,c2);
+            c1 = auxC.getKey();
+            c2 = auxC.getValue();
+            c1 = mutComb(c1); c2 = mutComb(c2);
+            c1 = permComb(c1); c2 = permComb(c2);
+            c1 = invComb(c1); c2 = invComb(c2);
+
+            while(!population.add(c1)) c1 = generateRandomComb(getElementsComb());
+            while(!population.add(c2)) c2 = generateRandomComb(getElementsComb());
+        }
+    }
+    
     private void getScores() {
         
         int nComb = super.currentBoard.getNCombinations();
@@ -148,6 +158,40 @@ public class GeneticGuess extends CodeMaker {
         combScores.sort(comp1);
     }
 
+    private void addEligible() {
+        
+        for(int i = 0; i < combScores.size(); ++i) 
+            if(combScores.get(i).getKey() == 0) 
+                eligible.add(combScores.get(i).getValue());
+    }
+
+    private ArrayList<Integer> pickGuess() {
+        
+        ArrayList<Combination> eC = new ArrayList<>(eligible);
+        ArrayList<Integer> sP = new ArrayList<>(eC.size());
+        
+        for(int i = 0; i < eC.size(); ++i){
+            int s = 0;
+            for(int j = 0; j < eC.size(); ++j){
+                if(i != j){
+                    Correction c = new Correction(eC.get(j), eC.get(i));
+                    s += c.getBlackPegs();
+                    s += c.getWhitePegs();
+                }
+            }
+            sP.add(s);
+        }
+        
+        int ind = -1;
+        if(!sP.isEmpty()) ind = sP.indexOf(max(sP));
+        
+        if(ind != -1) return eC.get(ind).getCombination();
+        return generateRandomComb(getElementsComb()).getCombination();
+    }
+
+    
+    //Methods to evolve a population of guesses
+    
     private Pair<Combination, Combination> crossComb(Combination c1, Combination c2) {
         
         if(crossProb >= r.nextDouble()){
@@ -217,54 +261,18 @@ public class GeneticGuess extends CodeMaker {
         return c;
     }
 
-    private void addEligible() {
+    //Auxiliary
+    
+    private Combination generateRandomComb(int nPieces){
         
-        for(int i = 0; i < combScores.size(); ++i) 
-            if(combScores.get(i).getKey() == 0) 
-                eligible.add(combScores.get(i).getValue());
+        ArrayList<Integer> newComb = new ArrayList<>();
+        for(int j = 0; j < nPieces; ++j)
+            newComb.add(r.nextInt(8));
+        return new Combination(newComb);
     }
-
-    private ArrayList<Integer> pickGuess() {
-        
-        ArrayList<Combination> eC = new ArrayList<>(eligible);
-        ArrayList<Integer> sP = new ArrayList<>(eC.size());
-        
-        for(int i = 0; i < eC.size(); ++i){
-            int s = 0;
-            for(int j = 0; j < eC.size(); ++j){
-                if(i != j){
-                    Correction c = new Correction(eC.get(j), eC.get(i));
-                    s += c.getBlackPegs();
-                    s += c.getWhitePegs();
-                }
-            }
-            sP.add(s);
-        }
-        
-        int ind = -1;
-        if(!sP.isEmpty()) ind = sP.indexOf(max(sP));
-        
-        if(ind != -1) return eC.get(ind).getCombination();
-        return generateRandomComb(getElementsComb()).getCombination();
-    }
-
-    private void evolvePop() {
-        
-        population = new HashSet<>();
-        for(int i = 0; i < combScores.size()-1; i += 2){
-
-            Combination c1 = combScores.get(i).getValue();
-            Combination c2 = combScores.get(i+1).getValue();
-
-            Pair<Combination, Combination> auxC = crossComb(c1,c2);
-            c1 = auxC.getKey();
-            c2 = auxC.getValue();
-            c1 = mutComb(c1); c2 = mutComb(c2);
-            c1 = permComb(c1); c2 = permComb(c2);
-            c1 = invComb(c1); c2 = invComb(c2);
-
-            while(!population.add(c1)) c1 = generateRandomComb(getElementsComb());
-            while(!population.add(c2)) c2 = generateRandomComb(getElementsComb());
-        }
+    
+    @Override
+    public int getElementsComb() {
+        return 6;
     }
 }

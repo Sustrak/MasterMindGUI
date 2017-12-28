@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javafx.application.Platform;
 
 public class Main  extends Application{
 
@@ -48,7 +49,7 @@ public class Main  extends Application{
         //pCtrl.startMasterMind();
 
         launch(args);
-
+        Platform.exit();
     }
 
 }
