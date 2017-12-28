@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import layers.DomainCtrl;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -239,7 +240,11 @@ public class BoardViewController implements Initializable {
     }
 
     public void exitButtonAction(ActionEvent actionEvent) {
-        ViewController.loginView(domainCtrl);
+        try {
+            ViewController.loginView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void finishCBgame() {

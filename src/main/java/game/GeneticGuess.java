@@ -8,6 +8,8 @@ package game;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import static java.util.Collections.max;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
@@ -35,7 +37,7 @@ public class GeneticGuess extends CodeMaker {
     private HashSet<Combination> population;
     private ArrayList<Pair<Integer, Combination> > combScores;
     private int maxScore;
-    
+    private Comparator comp1, comp2;
     private Random r;
     
     public GeneticGuess(){
@@ -43,7 +45,7 @@ public class GeneticGuess extends CodeMaker {
         currentBoard = new Board(6, 10);
         colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7));
         
-        maxGen = 100;
+        maxGen = 150;
         maxSize = 200;
         a = 1;
         b = 2;
@@ -56,7 +58,14 @@ public class GeneticGuess extends CodeMaker {
         h = 1;
         
         r = new Random();
-        eligible = new HashSet();
+        comp1 = (Comparator<Pair<Integer, Integer>>) new Comparator<Pair<Integer, Integer>>() {
+            @Override
+            public int compare(final Pair<Integer, Integer> o1, final Pair<Integer, Integer> o2) {
+                if(o1.getKey() < o2.getKey()) return -1;
+                else if(Objects.equals(o1.getKey(), o2.getKey())) return 0;
+                else return 1;
+            }
+        };
     }
     
     @Override
@@ -134,16 +143,9 @@ public class GeneticGuess extends CodeMaker {
             if(score > maxScore) maxScore = score;
         }
         
-        Comparator comp = (Comparator<Pair<Integer, Integer>>) new Comparator<Pair<Integer, Integer>>() {
-            @Override
-            public int compare(final Pair<Integer, Integer> o1, final Pair<Integer, Integer> o2) {
-                if(o1.getKey() < o2.getKey()) return -1;
-                else if(Objects.equals(o1.getKey(), o2.getKey())) return 0;
-                else return 1;
-            }
-        };
         
-        combScores.sort(comp);
+        
+        combScores.sort(comp1);
     }
 
     private Pair<Combination, Combination> crossComb(Combination c1, Combination c2) {
@@ -215,19 +217,6 @@ public class GeneticGuess extends CodeMaker {
         return c;
     }
 
-    private void selectComb() {
-        
-        //Probability of a code to be a parent proportional to its fitness function
-        population = new HashSet<>();
-        for(int i = 0; i < combScores.size(); ++i){
-            int score = combScores.get(i).getKey();
-            if(score/maxScore > r.nextDouble()){
-                boolean added = population.add(combScores.get(i).getValue());
-                while(!added) added = population.add(generateRandomComb(super.currentBoard.getNPieces()));
-            }
-        }
-    }
-
     private void addEligible() {
         
         for(int i = 0; i < combScores.size(); ++i) 
@@ -238,7 +227,24 @@ public class GeneticGuess extends CodeMaker {
     private ArrayList<Integer> pickGuess() {
         
         ArrayList<Combination> eC = new ArrayList<>(eligible);
-        if(!eC.isEmpty()) return eC.get(r.nextInt(eC.size())).getCombination();
+        ArrayList<Integer> sP = new ArrayList<>(eC.size());
+        
+        for(int i = 0; i < eC.size(); ++i){
+            int s = 0;
+            for(int j = 0; j < eC.size(); ++j){
+                if(i != j){
+                    Correction c = new Correction(eC.get(j), eC.get(i));
+                    s += c.getBlackPegs();
+                    s += c.getWhitePegs();
+                }
+            }
+            sP.add(s);
+        }
+        
+        int ind = -1;
+        if(!sP.isEmpty()) ind = sP.indexOf(max(sP));
+        
+        if(ind != -1) return eC.get(ind).getCombination();
         return generateRandomComb(getElementsComb()).getCombination();
     }
 
