@@ -4,10 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import layers.PresentationCtrl;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main  extends Application{
 
@@ -17,9 +21,16 @@ public class Main  extends Application{
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../../resources/GUI/FXML/LoginView.fxml"));
         stage = primaryStage;
-        stage.setTitle("Hello World");
+        stage.setTitle("Master Mind");
         stage.setScene(new Scene(root, 911, 510));
+        // MUSIC
+        Media media = new Media(Paths.get("src/main/resources/GUI/Music/MM_music.mp4").toUri().toString());
+        MediaPlayer player = new MediaPlayer(media);
+        player.setVolume(.05);
+        player.play();
+        // MUSIC
         stage.show();
+
     }
 
     public static void changeScene(FXMLLoader Loader) {
