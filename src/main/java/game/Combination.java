@@ -33,6 +33,11 @@ public class Combination {
 
         return combination.get(i);
     }
+    
+    public void setColor(int p, int c){
+        
+        combination.set(p, c);
+    }
 
     @Override
     public int hashCode(){

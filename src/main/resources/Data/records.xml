@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
+ <object class="rr.Records" id="Records0">
+  <void property="maxExp">
+   <void property="date">
+    <object class="java.util.Date">
+     <long>1514287379189</long>
+    </object>
+   </void>
+  </void>
+  <void property="maxPlayedGames">
+   <void property="date">
+    <object class="java.util.Date">
+     <long>1514287379189</long>
+    </object>
+   </void>
+  </void>
+  <void property="maxWinnedGames">
+   <void property="date">
+    <object class="java.util.Date">
+     <long>1514287379189</long>
+    </object>
+   </void>
+  </void>
+  <void property="maxWinningSpree">
+   <void property="date">
+    <object class="java.util.Date">
+     <long>1514287379189</long>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

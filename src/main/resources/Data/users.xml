@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_111" class="java.beans.XMLDecoder">
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
    <void method="put">
@@ -20,7 +20,7 @@
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>Pere Rumbo</string>
+      <string>Pere Rumbo Rumbo Rumbo</string>
      </void>
      <void property="nickname">
       <string>p</string>
@@ -29,7 +29,11 @@
       <string>p</string>
      </void>
      <void property="playedGames">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>2.0</double>
+       </void>
+      </object>
      </void>
      <void property="savedGames">
       <object class="java.util.Vector"/>
@@ -38,10 +42,18 @@
       <string>Rumbo</string>
      </void>
      <void property="winnedGames">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>2.0</double>
+       </void>
+      </object>
      </void>
      <void property="winningSpree">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>1.0</double>
+       </void>
+      </object>
      </void>
     </object>
    </void>
@@ -73,7 +85,7 @@
       </object>
      </void>
      <void property="name">
-      <string>Josep Sans Sans</string>
+      <string>Josep Sans Sans Sans Sans</string>
      </void>
      <void property="nickname">
       <string>Panoramix</string>

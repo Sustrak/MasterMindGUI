@@ -134,7 +134,7 @@ public class DomainCtrl {
 
     public void startNewCodeMaker() {
 
-        currentGame = new CodeMaker();
+        currentGame = new GeneticGuess();
     }
 
     public String[] getRanking(DiffEnum diff) {

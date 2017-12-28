@@ -2,18 +2,18 @@ package game;
 
 import java.util.*;
 
-public class Guess {
+public class FiveGuess extends CodeMaker {
 
-    private CodeMaker cM;
     private static Set<Combination> combSet;
     private static ArrayList<Combination> nonUsedComb;
     private static HashMap<Correction, Integer > corrections;
     private Combination lastComb;
 
-    public Guess(CodeMaker game){
-
-        cM = game;
-
+    public FiveGuess(){
+        
+        currentBoard = new Board(4, 10);
+        colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5));
+       
         combSet = new HashSet<>();
         for(int i = 0; i <= 5; ++i)
             for(int j = 0; j <= 5; ++j)
@@ -32,6 +32,7 @@ public class Guess {
 
     }
 
+    @Override
     public ArrayList<Integer> getNewCombination() {
 
         Combination newComb = null;
@@ -52,7 +53,7 @@ public class Guess {
     private void removeCombFromS() {
 
         Iterator<Combination> it = combSet.iterator();
-        Correction currentCorrection = new Correction(cM.getWinnerCombination(), lastComb);
+        Correction currentCorrection = new Correction(super.getWinnerCombination(), lastComb);
         while(it.hasNext()){
             Correction c = new Correction(it.next(), lastComb);
             if(!c.equals(currentCorrection))it.remove();
@@ -115,5 +116,10 @@ public class Guess {
             }
         }
         if(!assigned) lastComb = nonUsedComb.get(0);
+    }
+    
+    @Override
+    public int getElementsComb() {
+        return 4;
     }
 }

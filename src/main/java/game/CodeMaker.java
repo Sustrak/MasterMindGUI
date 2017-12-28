@@ -3,21 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CodeMaker extends Game {
-
-    private Guess guess;
-
-    public CodeMaker() {
-
-        currentBoard = new Board(4, 12);
-        colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5));
-        guess = new Guess(CodeMaker.this);
-    }
-
-    @Override
-    public int getElementsComb() {
-        return 4;
-    }
+public abstract class CodeMaker extends Game {
 
     @Override
     public double calculateScore() {
@@ -34,9 +20,6 @@ public class CodeMaker extends Game {
         return null;
     }
 
-    public ArrayList<Integer> getNewCombination() {
-
-        return guess.getNewCombination();
-    }
+    public abstract ArrayList<Integer> getNewCombination();
 
 }

@@ -87,6 +87,7 @@ public class CodeBreaker extends Game {
 
     @Override
     public int getElementsComb(){
+        
         if(difficulty == DiffEnum.EASY || difficulty == DiffEnum.ORIGINAL) return 4;
         else return 6;
     }
