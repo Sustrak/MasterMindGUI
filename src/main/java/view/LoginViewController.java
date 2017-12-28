@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import layers.DomainCtrl;
 
+import java.net.MalformedURLException;
+
 public class LoginViewController {
 
     public TextField usernameTextField;
@@ -21,7 +23,11 @@ public class LoginViewController {
         int result = domainCtrl.logIn(username, password);
         if (result == 0) {
             System.out.print("LOGIN OK");
-            ViewController.mainMenuView(domainCtrl);
+            try {
+                ViewController.mainMenuView(domainCtrl);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         else {
             System.out.print("BAD LOGIN");
@@ -29,10 +35,18 @@ public class LoginViewController {
     }
 
     public void registerButton(ActionEvent actionEvent) {
-        ViewController.signUpView(domainCtrl);
+        try {
+            ViewController.signUpView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void resetPasswordButtonAction(ActionEvent actionEvent) {
-        ViewController.resetPasswordView(domainCtrl);
+        try {
+            ViewController.resetPasswordView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 }

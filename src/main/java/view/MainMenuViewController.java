@@ -3,6 +3,8 @@ package view;
 import javafx.event.ActionEvent;
 import layers.DomainCtrl;
 
+import java.net.MalformedURLException;
+
 public class MainMenuViewController {
 
     private DomainCtrl domainCtrl;
@@ -12,7 +14,11 @@ public class MainMenuViewController {
     }
 
     public void codeBreakerButtonAction(ActionEvent actionEvent) {
-        ViewController.boardView(domainCtrl);
+        try {
+            ViewController.boardView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void codeMakerButtonAction(ActionEvent actionEvent) {
@@ -22,7 +28,11 @@ public class MainMenuViewController {
     }
 
     public void rankButtonAction(ActionEvent actionEvent) {
-      ViewController.rankingsView(domainCtrl);
+        try {
+            ViewController.rankingsView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void recordsButtonAction(ActionEvent actionEvent) {

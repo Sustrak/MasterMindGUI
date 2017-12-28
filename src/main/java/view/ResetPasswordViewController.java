@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import layers.DomainCtrl;
 
+import java.net.MalformedURLException;
 import java.util.Optional;
 
 public class ResetPasswordViewController {
@@ -24,7 +25,11 @@ public class ResetPasswordViewController {
     }
 
     public void cancelButonAction(ActionEvent actionEvent) {
-        ViewController.loginView(domainCtrl);
+        try {
+            ViewController.loginView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void resetPasswordButtonAction(ActionEvent actionEvent) {
@@ -47,7 +52,13 @@ public class ResetPasswordViewController {
                     alert.setContentText("Password reseteado correctamente.");
 
                     Optional<ButtonType> r = alert.showAndWait();
-                    if (r.get() == ButtonType.OK) ViewController.loginView(domainCtrl);
+                    if (r.get() == ButtonType.OK) {
+                        try {
+                            ViewController.loginView(domainCtrl);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     break;
 
                 case 1:

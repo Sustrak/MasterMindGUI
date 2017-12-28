@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import layers.DomainCtrl;
 import rr.RREntry;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
 
@@ -62,6 +63,10 @@ public class RankingViewController {
     }
 
     public void exitButtonAction(ActionEvent actionEvent) {
-        ViewController.mainMenuView(domainCtrl);
+        try {
+            ViewController.mainMenuView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 }
