@@ -24,9 +24,10 @@ public class Main  extends Application{
         stage.setTitle("Master Mind");
         stage.setScene(new Scene(root, 911, 510));
         // MUSIC
-        Media media = new Media(Paths.get("src/main/resources/GUI/Music/MM_music.mp4").toUri().toString());
+        Media media = new Media(Paths.get("src/main/resources/GUI/Music/MM_music.mp3").toUri().toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setVolume(.05);
+        player.setCycleCount(9999);
         player.play();
         // MUSIC
         stage.show();
