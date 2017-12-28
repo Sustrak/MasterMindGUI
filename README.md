@@ -13,7 +13,7 @@ v1.5:
 v1.4:
 
     - Improved ViewController.java
-    - Improved *ViewController.java
+    - Improved *ViewController.java classes.
     - Enabled Ranking function.
 
 v1.3:
