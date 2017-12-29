@@ -83,13 +83,13 @@ public class UserViewController implements Initializable{
             userNotFoundLabel.setVisible(false);
             fillGridPanes(nickName, info);
             userInfoGridPane.setVisible(true);
-            userInfoGridPane.setVisible(true);
+            userStaticsGridPane.setVisible(true);
             //mainVBox.getChildren().add(1, userGridPane);
 
         } catch (UserNotFoundException e) {
             e.printStackTrace();
             userInfoGridPane.setVisible(false);
-            userInfoGridPane.setVisible(false);
+            userStaticsGridPane.setVisible(false);
             userNotFoundLabel.setVisible(true);
         }
 
