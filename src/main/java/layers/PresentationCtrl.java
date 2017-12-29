@@ -269,7 +269,7 @@ public class PresentationCtrl {
     private void showPlayer() {
         sView.showMessage("Player Info");
         String nickname = sView.getNickname();
-        Map<String, String> info;
+        Map<String, ArrayList<String>> info;
         try {
             info = dCtrl.getPlayerInfo(nickname);
             sView.showUser(nickname, info);

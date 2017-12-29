@@ -56,8 +56,6 @@ public class GameTriple {
 
     //Getters and setters for serialization
 
-
-
     public double getEasy() {
         return easy;
     }

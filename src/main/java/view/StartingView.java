@@ -269,18 +269,18 @@ public class StartingView {
 
 
 
-    public void showUser(String nickname, Map<String, String> info) {
+    public void showUser(String nickname, Map<String, ArrayList<String>> info) {
         System.out.println(System.lineSeparator() + nickname + System.lineSeparator());
-        System.out.println("Name:          " + info.get("name"));
-        System.out.println("Category:      " + info.get("category"));
-        System.out.println("Experience:    " + info.get("experience"));
+        System.out.println("Name:          " + info.get("name").get(0));
+        System.out.println("Category:      " + info.get("category").get(0));
+        System.out.println("Experience:    " + info.get("experience").get(0));
 
         System.out.println("               EASY   ORIGINAL    HARD");
 
-        System.out.println("Max Score:     " + info.get("maxScore"));
-        System.out.println("Played Games:  " + info.get("playedGames"));
-        System.out.println("Winned Games:  " + info.get("winnedGames"));
-        System.out.println("Winning Spree: " + info.get("winningSpree"));
+        System.out.println("Max Score:     " + info.get("maxScore").get(0) + "    " + info.get("maxScore").get(1) + "         " + info.get("maxScore").get(2));
+        System.out.println("Played Games:  " + info.get("playedGames").get(0) + "    " + info.get("playedGames").get(1) + "         " + info.get("playedGames").get(2));
+        System.out.println("Winned Games:  " + info.get("winnedGames").get(0) + "    " + info.get("winnedGames").get(1) + "         " + info.get("winnedGames").get(2));
+        System.out.println("Winning Spree: " + info.get("winningSpree").get(0) + "    " + info.get("winningSpree").get(1) + "         " + info.get("winningSpree").get(2));
     }
 
     public String getYesNo() {

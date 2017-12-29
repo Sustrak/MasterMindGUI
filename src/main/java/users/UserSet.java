@@ -1,8 +1,6 @@
 package users;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UserSet {
 
@@ -66,17 +64,48 @@ public class UserSet {
         return users.size();
     }
 
-    public Map<String,String> getUserInfo(String nickname) throws UserNotFoundException {
+    /**
+     * @param nickname of the player to retrieve the info
+     * @return Map<String, ArrayList<String>> where if there's more than one value the info is organized like this:
+     *         Vector[0] -> Easy
+     *         Vector[1] -> Original
+     *         Vector[2] -> Hard
+     *         otherwise Vector[0] contains the info
+     * @throws UserNotFoundException
+     */
+    public Map<String, ArrayList<String>> getUserInfo(String nickname) throws UserNotFoundException {
         User u = users.get(nickname);
         if (u == null) throw new UserNotFoundException();
-        Map<String, String> info = new HashMap<>();
-        info.put("name", u.getName());
-        info.put("category", u.getCategory().toString());
-        info.put("experience", String.valueOf(u.getExperience()));
-        info.put("maxScore", u.getMaxScore().toString());
-        info.put("playedGames", u.getPlayedGames().toString());
-        info.put("winnedGames", u.getWinnedGames().toString());
-        info.put("winningSpree", u.getWinningSpree().toString());
+        Map<String, ArrayList<String>> info = new HashMap<>();
+        ArrayList<String> a = new ArrayList<>(1);
+        a.add(0, u.getName());
+        info.put("name", a);
+        ArrayList<String> b = new ArrayList<>(1);
+        b.add(0, u.getCategory().toString());
+        info.put("category", b);
+        ArrayList<String> c = new ArrayList<>(1);
+        c.add(0, String.valueOf(u.getExperience()));
+        info.put("experience", c);
+        ArrayList<String> d = new ArrayList<>(1);
+        d.add(0, String.valueOf(u.getMaxScore().getEasy()));
+        d.add(1, String.valueOf(u.getMaxScore().getOriginal()));
+        d.add(2, String.valueOf(u.getMaxScore().getHard()));
+        info.put("maxScore", d);
+        ArrayList<String> e = new ArrayList<>(1);
+        e.add(0, String.valueOf(u.getPlayedGames().getEasy()));
+        e.add(1, String.valueOf(u.getPlayedGames().getOriginal()));
+        e.add(2, String.valueOf(u.getPlayedGames().getHard()));
+        info.put("playedGames", e);
+        ArrayList<String> f = new ArrayList<>(1);
+        f.add(0, String.valueOf(u.getWinnedGames().getEasy()));
+        f.add(1, String.valueOf(u.getWinnedGames().getOriginal()));
+        f.add(2, String.valueOf(u.getWinnedGames().getHard()));
+        info.put("winnedGames", f);
+        ArrayList<String> g = new ArrayList<>(1);
+        g.add(0, String.valueOf(u.getWinningSpree().getEasy()));
+        g.add(1, String.valueOf(u.getWinningSpree().getOriginal()));
+        g.add(2, String.valueOf(u.getWinningSpree().getHard()));
+        info.put("winningSpree", g);
 
         return info;
     }

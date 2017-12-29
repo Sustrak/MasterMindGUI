@@ -1,6 +1,5 @@
 package layers;
 
-import com.sun.xml.internal.ws.db.DatabindingImpl;
 import game.*;
 import rr.*;
 import users.*;
@@ -197,7 +196,7 @@ public class DomainCtrl {
         return rrEntrys;
     }
 
-    public Map<String,String> getPlayerInfo(String nickname) throws UserNotFoundException {
+    public Map<String, ArrayList<String>> getPlayerInfo(String nickname) throws UserNotFoundException {
         return uSet.getUserInfo(nickname);
     }
 

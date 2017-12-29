@@ -11,6 +11,7 @@ import users.UserNotFoundException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -51,15 +52,31 @@ public class UserViewController implements Initializable{
         this.domainCtrl = domainCtrl;
     }
 
-    private void fillGridPanes(String nickName, Map<String, String> info) {
-        nameLabel.setText(info.get("name"));
-        categoryLabel.setText(info.get("category"));
-        experienceLabel.setText(info.get("experience"));
+    private void fillGridPanes(String nickName, Map<String, ArrayList<String>> info) {
+        nameLabel.setText(info.get("name").get(0));
+        categoryLabel.setText(info.get("category").get(0));
+        experienceLabel.setText(info.get("experience").get(0));
+        // Max Score
+        easyMaxScoreLabel.setText(info.get("maxScore").get(0));
+        originalMaxScoreLabel.setText(info.get("maxScore").get(1));
+        hardMaxScoreLabel.setText(info.get("maxScore").get(2));
+        // Played Games
+        easyPlayedGamesLabel.setText(info.get("playedGames").get(0));
+        originalPlayedGamesLabel.setText(info.get("playedGames").get(1));
+        hardPlayedGamesLabel.setText(info.get("playedGames").get(2));
+        // Winned Games
+        easyWinnedGamesLabel.setText(info.get("winnedGames").get(0));
+        originalWinnedGamesLabel.setText(info.get("winnedGames").get(1));
+        hardWinnedGamesLabel.setText(info.get("winnedGames").get(2));
+        // Winning Spree
+        easyWinningSpreeLabel.setText(info.get("winningSpree").get(0));
+        originalWinningSpreeLabel.setText(info.get("winningSpree").get(1));
+        hardWinningSpreeLabel.setText(info.get("winningSpree").get(2));
 
     }
 
     public void checkButtonAction(ActionEvent actionEvent) {
-        Map<String, String> info;
+        Map<String, ArrayList<String>> info;
         String nickName = nickNameTextField.getText();
         try {
             info = domainCtrl.getPlayerInfo(nickName);
