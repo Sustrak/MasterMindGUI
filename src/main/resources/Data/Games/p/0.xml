@@ -41,7 +41,24 @@
      <int>4</int>
     </void>
     <void property="winnerComb">
-     <object class="game.Combination"/>
+     <object class="game.Combination">
+      <void property="combination">
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <int>5</int>
+        </void>
+        <void method="add">
+         <int>1</int>
+        </void>
+        <void method="add">
+         <int>4</int>
+        </void>
+        <void method="add">
+         <int>2</int>
+        </void>
+       </object>
+      </void>
+     </object>
     </void>
    </object>
   </void>
@@ -52,7 +69,7 @@
    </object>
   </void>
   <void property="initialTime">
-   <long>1514315286783</long>
+   <long>1514582577982</long>
   </void>
  </object>
 </java>

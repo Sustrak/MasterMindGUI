@@ -51,6 +51,14 @@ public class MainMenuViewController {
         }
     }
 
+    public void settingsButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.settingsView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void logoutButtonAction(ActionEvent actionEvent) {
     }
 }

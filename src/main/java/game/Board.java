@@ -111,11 +111,11 @@ public class Board {
         this.winnerComb = winnerComb;
     }
 
-    public int getnComb() {
+    public int getNComb() {
         return nComb;
     }
 
-    public void setnComb(int nComb) {
+    public void setNComb(int nComb) {
         this.nComb = nComb;
     }
 
@@ -123,7 +123,7 @@ public class Board {
         return nPieces;
     }
 
-    public void setnPieces(int nPieces) {
+    public void setNPieces(int nPieces) {
         this.nPieces = nPieces;
     }
 }

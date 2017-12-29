@@ -24,6 +24,8 @@ public class LoginViewController {
         if (result == 0) {
             System.out.print("LOGIN OK");
             try {
+                //Starts the music
+                domainCtrl.playBackgroundMusic();
                 ViewController.mainMenuView(domainCtrl);
             } catch (MalformedURLException e) {
                 e.printStackTrace();

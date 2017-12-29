@@ -5,6 +5,7 @@ package layers;
  */
 public class Meta {
     private int lastId;
+    private double backgroundMusicVolume;
 
     public Meta() {
 
@@ -20,5 +21,13 @@ public class Meta {
 
     public int getIncLastId() {
         return lastId++;
+    }
+
+    public double getBackgroundMusicVolume() {
+        return backgroundMusicVolume;
+    }
+
+    public void setBackgroundMusicVolume(double backgroundMusicVolume) {
+        this.backgroundMusicVolume = backgroundMusicVolume;
     }
 }

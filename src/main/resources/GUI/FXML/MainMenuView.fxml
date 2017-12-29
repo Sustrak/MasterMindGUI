@@ -15,6 +15,7 @@
             <Button fx:id="rankButton" mnemonicParsing="false" onAction="#rankButtonAction" prefWidth="200.0" text="Consultar rankings" />
             <Button fx:id="recordsButton" mnemonicParsing="false" onAction="#recordsButtonAction" prefWidth="200.0" text="Consultar Records" />
             <Button fx:id="playerButton" mnemonicParsing="false" onAction="#playerButtonAction" prefWidth="200.0" text="Consultar jugador" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsButtonAction" prefWidth="200.0" text="Ajustes" />
             <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" prefWidth="200.0" text="Logout" />
          </children>
       </VBox>

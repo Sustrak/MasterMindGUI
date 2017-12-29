@@ -136,4 +136,17 @@ public class ViewController {
             e.printStackTrace();
         }
     }
+
+    public static void settingsView(DomainCtrl domainCtrl) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/SettingsView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            SettingsViewController settingsViewController = Loader.getController();
+            settingsViewController.setDomainCtrl(domainCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

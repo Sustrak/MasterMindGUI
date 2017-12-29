@@ -1,10 +1,13 @@
 package layers;
 
 import game.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import rr.*;
 import users.*;
 
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +25,8 @@ public class DomainCtrl {
     private Ranking ranking;
     private Records records;
     private Meta meta;
+    // Music
+    private MediaPlayer backgroundMusic;
 
     public DomainCtrl(){
         try {
@@ -46,7 +51,14 @@ public class DomainCtrl {
         } catch (FileNotFoundException e) {
             //TODO: Informar a l'usuari que no s'ha trobat el meta i pertant podria haver-hi fallos al guardar una partida per problema del id
             meta = new Meta();
+            meta.setLastId(0);
+            meta.setBackgroundMusicVolume(0.25);
         }
+        //Load Music
+        Media media = new Media (Paths.get("src/main/resources/GUI/Music/MM_music.mp4").toUri().toString());
+        backgroundMusic = new MediaPlayer(media);
+        backgroundMusic.setCycleCount(99999);
+        backgroundMusic.setVolume(meta.getBackgroundMusicVolume());
     }
 
     // Initial Options
@@ -137,7 +149,7 @@ public class DomainCtrl {
     public void startNewCodeBreaker(DiffEnum difficulty) {
 
         currentGame = new CodeBreaker(difficulty, meta.getIncLastId());
-        //Save meta because with have updated lastId
+        //Save meta because we have updated lastId
         PersistenceCtrl.saveObject(meta, PersistenceCtrl.META_FILE_PATH);
     }
 
@@ -220,6 +232,7 @@ public class DomainCtrl {
     public void saveGame() {
         PersistenceCtrl.saveGame(currentGame, currentGame.getId(), currentUser.getNickname());
         currentUser.addToSavedGames(currentGame.getId());
+        PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
     }
 
 
@@ -410,4 +423,24 @@ public class DomainCtrl {
         return uSet.existsUser(nickname);
     }
 
+    public void saveMeta() {
+        PersistenceCtrl.saveObject(meta, PersistenceCtrl.META_FILE_PATH);
+    }
+    //Music options
+    public void playBackgroundMusic() {
+        backgroundMusic.play();
+    }
+
+    public void setVolumeBackgroundMusic(double newVol) {
+        backgroundMusic.setVolume(newVol);
+        meta.setBackgroundMusicVolume(newVol);
+    }
+
+    public double getVolumeBackgrounMusic() {
+        return meta.getBackgroundMusicVolume();
+    }
+
+    public void muteBackgroundMusic(Boolean b) {
+        backgroundMusic.setMute(b);
+    }
 }
