@@ -241,7 +241,7 @@ public class BoardViewController implements Initializable {
 
     public void exitButtonAction(ActionEvent actionEvent) {
         try {
-            ViewController.loginView(domainCtrl);
+            ViewController.mainMenuView(domainCtrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

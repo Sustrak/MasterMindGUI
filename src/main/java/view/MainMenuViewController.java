@@ -60,5 +60,11 @@ public class MainMenuViewController {
     }
 
     public void logoutButtonAction(ActionEvent actionEvent) {
+        domainCtrl.logOut();
+        try {
+            ViewController.loginView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 }
