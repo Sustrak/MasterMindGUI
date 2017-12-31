@@ -22,6 +22,11 @@ public class PersistenceCtrl {
 
     public PersistenceCtrl() {}
 
+    /**
+     * Method to serialize and save all the MasterMind data in XML
+     * @param o object to save
+     * @param path path to save the object
+     */
     public static void saveObject(Object o, String path) {
         XMLEncoder encoder =
                 null;
@@ -37,6 +42,12 @@ public class PersistenceCtrl {
         encoder.close();
     }
 
+    /**
+     * Method to load the MasterMind data. The object needs to be casted to its correct Object (Records, UaerSet, ...)
+     * @param path of the object to load
+     * @return returns the Object
+     * @throws FileNotFoundException
+     */
     public static Object loadObject(String path) throws FileNotFoundException {
         XMLDecoder decoder =
                 new XMLDecoder(
@@ -55,6 +66,12 @@ public class PersistenceCtrl {
     public static Object loadGame(int gameId, String nickname) throws FileNotFoundException {
         String path = String.format("%s%s%s.xml", GAMES_DIR_PATH + nickname, File.separator, String.valueOf(gameId));
         return loadObject(path);
+    }
+
+    public static boolean removeGame(int gameId, String nickname) {
+        String path = String.format("%s%s%s.xml", GAMES_DIR_PATH + nickname, File.separator, String.valueOf(gameId));
+        File f = new File(path);
+        return f.delete();
     }
 
     public static void main(String[] args) throws Exception {

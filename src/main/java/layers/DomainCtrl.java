@@ -294,15 +294,13 @@ public class DomainCtrl {
 
     /**
      * @param gameId
-     * @return an ArrayList which contains in this order: game.id, game.DiffEnum, game.isFirstClue, game.isSecondClue
+     * @return an ArrayList which contains the info of a game in this order:
+     *         game.id, game.DiffEnum, game.isFirstClue, game.isSecondClue
      */
-    ArrayList<String> getInfoGame(int gameId) {
+    ArrayList<String> getInfoGame(int gameId) throws FileNotFoundException {
         CodeBreaker game = null;
-        try {
-            game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
-        } catch (FileNotFoundException ignored) {
-            //TODO: Error ignored maybe show some info about
-        }
+        game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
+
         ArrayList<String> info = new ArrayList<>();
         assert game != null;
         info.add(String.valueOf(gameId));
@@ -371,8 +369,16 @@ public class DomainCtrl {
      */
     //TODO: Return info if a record or ranking has been updated
     public void updatePlayerOnFinishGame(boolean winnedGame) {
+        if (currentUser.removeFromSavedGames(currentGame.getId()))
+            PersistenceCtrl.removeGame(currentGame.getId(), currentUser.getNickname());
         if (!winnedGame){
             currentUser.resetWinningSpree(currentGame.getDificulty());
+            currentUser.addToPlayedGames(currentGame.getDificulty());
+            PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
+            RREntry maxPlayedGames = new RREntry(currentUser.getNickname(), currentUser.getPlayedGames().getScore(currentGame.getDificulty()));
+            records.evalmaxPlayedGames(maxPlayedGames);
+            PersistenceCtrl.saveObject(records, PersistenceCtrl.RECORDS_FILE_PATH);
+            return;
         }
         double score = currentGame.getScore();
         String nickname = currentUser.getNickname();

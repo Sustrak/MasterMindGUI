@@ -97,11 +97,13 @@ public class User {
     }
 
     public boolean addToSavedGames(int id){
+        if (this.savedGames.contains(id)) return false;
         return this.savedGames.add(id);
     }
 
     public boolean removeFromSavedGames(int id){
         Integer i = id;
+        if (!this.savedGames.contains(id)) return false;
         return this.savedGames.remove(i);
     }
 

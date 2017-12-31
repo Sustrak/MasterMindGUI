@@ -132,8 +132,12 @@ public class PresentationCtrl {
         DiffEnum difficulty = sView.getCBdifficulty();
         dCtrl.startNewCodeBreaker(difficulty);
 
-        boolean keepPlaying = true;
+        playGame();
+    }
 
+    void playGame() {
+        boolean keepPlaying = true;
+        DiffEnum difficulty = dCtrl.getDifficulty();
         while(keepPlaying){
 
             boolean fClue = dCtrl.firstClueUsed();
@@ -192,7 +196,6 @@ public class PresentationCtrl {
             }
             keepPlaying &= !dCtrl.boardIsFull();
         }
-
     }
 
     private void playCodeMaker() {
@@ -284,7 +287,14 @@ public class PresentationCtrl {
         Vector ids = dCtrl.getIdSavedGames();
         for (Object id1 : ids) {
             int id = (int) id1;
-            ArrayList<String> infoGame = dCtrl.getInfoGame(id);
+            ArrayList<String> infoGame = null;
+            try {
+                infoGame = dCtrl.getInfoGame(id);
+            } catch (FileNotFoundException e) {
+                String s = "No se pudo cargar la partida con id: " + id + " comprueve que el archivo exista";
+                sView.showMessage(s);
+                continue;
+            }
             sView.showInfoGame(infoGame);
         }
         if (ids.size() == 0) sView.showMessage("No tiene partidas guardadas");
@@ -292,6 +302,8 @@ public class PresentationCtrl {
             int id = sView.getGameId(ids);
             try {
                 dCtrl.loadGame(id);
+                showGame();
+                playGame();
             } catch (FileNotFoundException e) {
                 sView.showMessage("Error cargando la partida");
             }

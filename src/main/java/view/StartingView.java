@@ -304,8 +304,8 @@ public class StartingView {
     public void showInfoGame(ArrayList<String> infoGame) {
         System.out.println("Showing info of game: " + infoGame.get(0));
         System.out.println(" -- Dificulty: " + infoGame.get(1));
-        System.out.println(" -- Is first clue used ? " + infoGame.get(2));
-        System.out.println(" -- Is second clue used ? " + infoGame.get(3));
+        System.out.println(" -- Is first clue used : " + infoGame.get(2));
+        System.out.println(" -- Is second clue used : " + infoGame.get(3));
     }
 
     public int getGameId(Vector ids) {

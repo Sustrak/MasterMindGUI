@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_111" class="java.beans.XMLDecoder">
+<java version="1.8.0_112" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
    <void method="put">
@@ -13,14 +13,21 @@
      <void property="category">
       <object class="java.lang.Enum" id="CatEnum0" method="valueOf">
        <class>users.CatEnum</class>
-       <string>PADAWAN</string>
+       <string>MASTERJEDI</string>
       </object>
      </void>
+     <void property="experience">
+      <double>Infinity</double>
+     </void>
      <void property="maxScore">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>Infinity</double>
+       </void>
+      </object>
      </void>
      <void property="name">
-      <string>Pere Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo</string>
+      <string>Pere Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo Rumbo</string>
      </void>
      <void property="nickname">
       <string>p</string>
@@ -31,20 +38,14 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>3.0</double>
+        <double>15.0</double>
        </void>
       </object>
      </void>
      <void property="savedGames">
       <object class="java.util.Vector">
        <void method="add">
-        <int>78</int>
-       </void>
-       <void method="add">
-        <int>2</int>
-       </void>
-       <void method="add">
-        <int>3</int>
+        <int>15</int>
        </void>
       </object>
      </void>
@@ -54,7 +55,7 @@
      <void property="winnedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>1.0</double>
+        <double>6.0</double>
        </void>
       </object>
      </void>
@@ -76,13 +77,16 @@
       </object>
      </void>
      <void property="category">
-      <object idref="CatEnum0"/>
+      <object class="java.lang.Enum" id="CatEnum1" method="valueOf">
+       <class>users.CatEnum</class>
+       <string>PADAWAN</string>
+      </object>
      </void>
      <void property="maxScore">
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol4</string>
@@ -116,10 +120,7 @@
       </object>
      </void>
      <void property="category">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>users.CatEnum</class>
-       <string>MASTERJEDI</string>
-      </object>
+      <object idref="CatEnum0"/>
      </void>
      <void property="experience">
       <double>Infinity</double>
@@ -132,7 +133,7 @@
       </object>
      </void>
      <void property="name">
-      <string>oriol 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345</string>
+      <string>oriol 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345 12345</string>
      </void>
      <void property="nickname">
       <string>oriol</string>
@@ -187,13 +188,13 @@
       </object>
      </void>
      <void property="category">
-      <object idref="CatEnum0"/>
+      <object idref="CatEnum1"/>
      </void>
      <void property="maxScore">
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol6</string>
@@ -235,7 +236,7 @@
       </object>
      </void>
      <void property="category">
-      <object idref="CatEnum0"/>
+      <object idref="CatEnum1"/>
      </void>
      <void property="experience">
       <double>12.5</double>
@@ -254,7 +255,7 @@
       </object>
      </void>
      <void property="name">
-      <string>Josep Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans</string>
+      <string>Josep Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans Sans</string>
      </void>
      <void property="nickname">
       <string>Panoramix</string>
@@ -292,13 +293,13 @@
       </object>
      </void>
      <void property="category">
-      <object idref="CatEnum0"/>
+      <object idref="CatEnum1"/>
      </void>
      <void property="maxScore">
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>pepito pp pp pp pp pp pp pp pp pp</string>
+      <string>pepito pp pp pp pp pp pp pp pp pp pp pp pp pp pp pp pp pp pp pp</string>
      </void>
      <void property="nickname">
       <string>pepito</string>
@@ -332,13 +333,13 @@
       </object>
      </void>
      <void property="category">
-      <object idref="CatEnum0"/>
+      <object idref="CatEnum1"/>
      </void>
      <void property="maxScore">
       <object class="users.GameTriple"/>
      </void>
      <void property="name">
-      <string>oriol mari mari mari mari mari mari mari mari mari mari mari</string>
+      <string>oriol mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari mari</string>
      </void>
      <void property="nickname">
       <string>oriol2</string>
