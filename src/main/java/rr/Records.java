@@ -14,7 +14,6 @@ public class Records {
         this.maxPlayedGames = new RREntry("Pepito", 1000);
         this.maxWinnedGames = new RREntry("Pepito", 50);
 
-        // TODO: Load Records from DataBase
     }
 
     public RREntry getMaxExp() {

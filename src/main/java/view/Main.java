@@ -1,19 +1,15 @@
 package view;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import layers.PresentationCtrl;
 
-import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import javafx.application.Platform;
 
 public class Main  extends Application{
 
@@ -35,13 +31,47 @@ public class Main  extends Application{
 
 
     public static void main(String[] args) {
-        // TODO code application logic here
 
-        PresentationCtrl pCtrl = new PresentationCtrl();
-        pCtrl.startMasterMind();
+        boolean guiMode = true;
 
-        //launch(args);
-        //Platform.exit();
+        for (String s : args) {
+            switch (s) {
+                case "-h":
+                    showHelp();
+                    return;
+                case "--help":
+                    showHelp();
+                    return;
+                case "-cli":
+                    guiMode = false;
+                    break;
+                default:
+                    showHelpMin();
+                    return;
+            }
+        }
+
+        if (guiMode) {
+            launch(args);
+            Platform.exit();
+        }
+        else {
+            PresentationCtrl pCtrl = new PresentationCtrl();
+            pCtrl.startMasterMind();
+        }
     }
 
+    private static void showHelpMin() {
+        System.out.println("Argumentos invalidos, utilize -h o --help para mostrar las opciones disponibles");
+    }
+
+    private static void showHelp() {
+        System.out.println("Bienvenido a MasterMind");
+        System.out.println("Opciones disponibles:");
+        System.out.println("         -h: muestra esta ayuda\n" +
+                           "         --help: muestra esta ayuda\n" +
+                           "         -cli: el juego se lanzará en la terminal\n");
+        System.out.println("Gracias por jugar");
+        System.out.println("Pere, Oriol, Josep");
+    }
 }
