@@ -15,15 +15,17 @@ import javafx.scene.shape.Circle;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import javafx.util.Pair;
 import layers.DomainCtrl;
 
+import javax.swing.text.View;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class BoardViewController implements Initializable {
+public class CodeMakerViewController implements Initializable {
 
     private DomainCtrl domainCtrl;
 
@@ -41,31 +43,25 @@ public class BoardViewController implements Initializable {
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
-    public VBox buttonsVBox;
-    public Button checkButton;
-    public Button clue1Button;
-    public Button clue2Button;
-    public Button saveGameButton;
+    public Button solveButton;
     public Button newGameButton;
     public Button exitButton;
-    public Label elapsedTimeLabel;
-    public Label scoreLabel;
-    public Label winLabel;
 
-    private boolean allowRepeat;
     private int nColors;
     private int nColumns;
     private int nRows;
     private int fullRow = 0;
-    private int selectedRow = 10;
+    private int selectedRow;
+    private int nAttemps;
+    private Boolean first;
+    private Boolean solved;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // blueCircle.setOnMousePressed(circleOnMousePressedEventHandler);
-       // blueCircle.setOnMouseDragged(circleOnMouseDraggedEventHandler);
         mainGridPane.setOnMouseClicked(mainGridPaneOnMouseClicked);
         colorSelectionVBox.setOnMouseClicked(colorSelectionVBoxOnMouseClicked);
+        checkGridPane.setOnMouseClicked(checkGridPaneOnMouseClicked);
     }
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
@@ -74,35 +70,24 @@ public class BoardViewController implements Initializable {
     }
 
     public void newGame() {
-        switch (ViewController.askCodeBreakerDifficulty()) {
-            case EASY:
-                domainCtrl.startNewCodeBreaker(DiffEnum.EASY);
-                nColumns = 4;
-                nRows = 11;
-                nColors = 6;
-                allowRepeat = false;
-                break;
+        switch (ViewController.askCodeMakerDifficulty()) {
             case ORIGINAL:
-                domainCtrl.startNewCodeBreaker(DiffEnum.ORIGINAL);
+                domainCtrl.startNewCodeMaker(DiffEnum.ORIGINAL);
                 nColumns = 4;
                 nRows = 11;
                 nColors = 6;
-                allowRepeat = true;
                 break;
             case HARD:
-                domainCtrl.startNewCodeBreaker(DiffEnum.HARD);
                 nColumns = 6;
                 nRows = 11;
                 nColors = 8;
+                domainCtrl.startNewCodeMaker(DiffEnum.HARD);
                 break;
         }
-        selectedRow = 10;
-        checkButton.setDisable(true);
-        clue1Button.setDisable(false);
-        clue2Button.setDisable(false);
-        winLabel.setText("");
-        elapsedTimeLabel.setText("");
-        scoreLabel.setText("");
+        selectedRow = 0;
+        nAttemps = 0;
+        first = true;
+        solved = false;
         buildBoard();
     }
 
@@ -167,19 +152,38 @@ public class BoardViewController implements Initializable {
     private EventHandler<MouseEvent> mainGridPaneOnMouseClicked = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-            Object source = event.getTarget();
-            if (source instanceof Circle) {
-                if (GridPane.getRowIndex((Node)source) == selectedRow) {
-                    ((Circle)source).setFill(selectedColor);
-                    if (fullRow < nColumns) {
-                        checkButton.setDisable(false);
-                    } else fullRow++;
+            if (first) {
+                Object source = event.getTarget();
+                if (source instanceof Circle) {
+                    if (GridPane.getRowIndex((Node) source) == 0) {
+                        ((Circle) source).setFill(selectedColor);
+                        if (fullRow < nColumns) {
+                            solveButton.setDisable(false);
+                        } else fullRow++;
+                    }
                 }
             }
         }
     };
 
-    public void checkButtonAction(ActionEvent actionEvent) {
+    private EventHandler<MouseEvent> checkGridPaneOnMouseClicked = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (!first) {
+                Object source = event.getTarget();
+                if (source instanceof Circle) {
+                    if (GridPane.getRowIndex((Node) source) == selectedRow) {
+                        ((Circle) source).setFill(selectedColor);
+                        if (fullRow < nColumns) {
+                            solveButton.setDisable(false);
+                        } else fullRow++;
+                    }
+                }
+            }
+        }
+    };
+
+    /*public void checkButtonAction(ActionEvent actionEvent) {
         ArrayList<Integer> newCombination = getCombination();
         System.out.print(newCombination);
         if (domainCtrl.setNewCombination(newCombination)) {
@@ -198,33 +202,9 @@ public class BoardViewController implements Initializable {
             domainCtrl.updatePlayerOnFinishGame(false);
             finishCBgame();
         }
-        checkButton.setDisable(true);
+        solveButton.setDisable(true);
         fullRow = 0;
-    }
-
-    public void clue1ButtonAction(ActionEvent actionEvent) {
-        int colorRemoved = domainCtrl.useFirstClue();
-        Circle selectedCircle = (Circle)colorSelectionVBox.getChildren().get(colorRemoved);
-        selectedCircle.setDisable(true);
-        selectedCircle.setFill(Color.GRAY);
-        clue1Button.setDisable(true);
-    }
-
-    public void clue2ButtonAction(ActionEvent actionEvent) {
-        domainCtrl.useSecondClue();
-        int clue2Position = domainCtrl.getPositionClue();
-        int clue2Color = domainCtrl.getColorClue();
-        for (int i = 0; i <= 10; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i * nColumns + clue2Position);
-            selectedCircle.setFill(getColor(clue2Color));
-            selectedCircle.setDisable(true);
-        }
-        clue2Button.setDisable(true);
-    }
-
-    public void saveGameButtonAction(ActionEvent actionEvent) {
-        domainCtrl.saveGame();
-    }
+    }*/
 
     public void newGameButtonAction(ActionEvent actionEvent) {
         newGame();
@@ -238,8 +218,8 @@ public class BoardViewController implements Initializable {
         }
     }
 
-    private void finishCBgame() {
-        checkButton.setDisable(true);
+    /*private void finishCBgame() {
+        solveButton.setDisable(true);
         paintWinnerCombination();
 
         long time = domainCtrl.setTimeElapsed();
@@ -252,9 +232,9 @@ public class BoardViewController implements Initializable {
         elapsedTimeLabel.setText(minutes + ":" + seconds);
         scoreLabel.setText(String.valueOf((int)score));
 
-    }
+    }*/
 
-    private void paintCheckPegs() {
+    /*private void paintCheckPegs() {
         int nWhitePegs = domainCtrl.getWhitePegs(10 - selectedRow);
         int nBlackPegs = domainCtrl.getBlackPegs(10 - selectedRow);
         int i = 0;
@@ -270,17 +250,58 @@ public class BoardViewController implements Initializable {
             nWhitePegs--;
             i++;
         }
-    }
+    }*/
 
-    private void paintWinnerCombination() {
-        ArrayList<Integer> winnerCombination = domainCtrl.getWinnerCombinationArray();
+    private void paintNewCombination() {
+        ArrayList<Integer> newComb = domainCtrl.getNewCodeMakerComb();
+        domainCtrl.setNewCombination(newComb);
         for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
-            selectedCircle.setFill(getColor(winnerCombination.get(i)));
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow * nColumns + i);
+            selectedCircle.setFill(getColor(newComb.get(i)));
         }
     }
 
-    private ArrayList<Integer> getCombination() {
+    private Boolean checkCorrectionCombination() {
+        int blackPegs = 0;
+        int whitePegs = 0;
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow) * nColumns + i);
+            if (selectedCircle.getFill().equals(Color.BLACK)) blackPegs++;
+            else if (selectedCircle.getFill().equals(Color.WHITE)) whitePegs++;
+        }
+        if (domainCtrl.isGoodCorrection(blackPegs, whitePegs)) {
+            System.out.print("black: " + blackPegs + "\n");
+            System.out.print("white:" + whitePegs + "\n");
+            if (blackPegs == domainCtrl.getNPieces()) solved = true;
+            return true;
+        } else {
+            ViewController.showErrorMessage("La corrección introducida no es correcta.");
+            return false;
+        }
+    }
+
+    public void solveButtonAction(ActionEvent actionEvent) {
+        if (first) {
+            first = false;
+            setWinnerCombination();
+            selectedRow = 10;
+            changeColors();
+            paintNewCombination();
+            selectedRow--;
+        } else if (checkCorrectionCombination()) {
+            if (solved) endGame();
+            else paintNewCombination();
+            selectedRow--;
+            nAttemps++;
+        } else checkCorrectionCombination();
+    }
+
+    private void endGame() {
+        solveButton.setDisable(true);
+        ViewController.showInformationMessage("Breaked in " + nAttemps + "!!!.");
+    }
+
+    private void setWinnerCombination() {
         ArrayList<Integer> combination = new ArrayList<>();
         for (int i = 0; i < nColumns; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow* nColumns +i);
@@ -293,9 +314,22 @@ public class BoardViewController implements Initializable {
             else if (selectedCircle.getFill().equals(Color.DARKVIOLET)) combination.add(VIOLET);
             else if (selectedCircle.getFill().equals(Color.BROWN)) combination.add(BROWN);
         }
-        return combination;
+        domainCtrl.setWinnerCombination(combination);
     }
 
+    private void changeColors() {
+        colorSelectionVBox.getChildren().clear();
+        Circle circle;
+        circle = new Circle(16.0, Color.BLACK);
+        circle.setId("colorSelectionBlackCircle");
+        colorSelectionVBox.getChildren().add(0, circle);
+        circle = new Circle(16.0, Color.WHITE);
+        circle.setId("colorSelectionWhiteCircle");
+        colorSelectionVBox.getChildren().add(1, circle);
+        circle = new Circle(16.0, Color.GRAY);
+        circle.setId("colorSelectionWhiteCircle");
+        colorSelectionVBox.getChildren().add(2, circle);
+    }
 
     /*public void selectBlueColor() {
         this.selectedColor = Color.BLUE;

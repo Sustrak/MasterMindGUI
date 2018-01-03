@@ -51,6 +51,8 @@ public class Main  extends Application{
             }
         }
 
+        guiMode = true;
+
         if (guiMode) {
             launch(args);
             Platform.exit();
