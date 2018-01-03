@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_112" class="java.beans.XMLDecoder">
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
  <object class="rr.Ranking" id="Ranking0">
   <void id="RREntryArray0" property="maxPuntuationEasy">
    <void index="0">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514741391643</long>
+      <long>1515014329976</long>
      </object>
     </void>
     <void property="score">
      <double>Infinity</double>
     </void>
     <void property="username">
-     <string>p</string>
+     <string>1/1</string>
     </void>
    </void>
    <void index="1">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -28,7 +28,7 @@
    <void index="2">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -38,7 +38,7 @@
    <void index="3">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -48,7 +48,7 @@
    <void index="4">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -58,7 +58,7 @@
    <void index="5">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -68,7 +68,7 @@
    <void index="6">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -78,7 +78,7 @@
    <void index="7">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -88,7 +88,7 @@
    <void index="8">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -98,7 +98,7 @@
    <void index="9">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
     <void property="score">
@@ -110,70 +110,70 @@
    <void index="0">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="1">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="2">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="3">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="4">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="5">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="6">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="7">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="8">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="9">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
@@ -182,70 +182,70 @@
    <void index="0">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="1">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="2">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="3">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="4">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="5">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="6">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="7">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="8">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
    <void index="9">
     <void property="date">
      <object class="java.util.Date">
-      <long>1514287379113</long>
+      <long>1515014011765</long>
      </object>
     </void>
    </void>
