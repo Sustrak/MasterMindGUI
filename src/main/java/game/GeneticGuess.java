@@ -74,7 +74,7 @@ public class GeneticGuess extends CodeMaker {
         
         if(nGames == 1){
             nGames++;
-            return new ArrayList<>(Arrays.asList(1,1,2,3,4,5));
+            return new ArrayList<>(Arrays.asList(0,0,1,2,3,4));
         }
         
         eligible = new HashSet();

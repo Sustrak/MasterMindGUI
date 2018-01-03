@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_111" class="java.beans.XMLDecoder">
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
+   <void method="put">
+    <string>p</string>
+    <object class="users.User">
+     <void property="birthDate">
+      <object class="java.util.Date">
+       <long>723337200000</long>
+      </object>
+     </void>
+     <void property="category">
+      <object class="java.lang.Enum" id="CatEnum0" method="valueOf">
+       <class>users.CatEnum</class>
+       <string>PADAWAN</string>
+      </object>
+     </void>
+     <void property="maxScore">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="name">
+      <string>p</string>
+     </void>
+     <void property="nickname">
+      <string>p</string>
+     </void>
+     <void property="password">
+      <string>p</string>
+     </void>
+     <void property="playedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="savedGames">
+      <object class="java.util.Vector"/>
+     </void>
+     <void property="surname">
+      <string>p</string>
+     </void>
+     <void property="winnedGames">
+      <object class="users.GameTriple"/>
+     </void>
+     <void property="winningSpree">
+      <object class="users.GameTriple"/>
+     </void>
+    </object>
+   </void>
    <void method="put">
     <string>1/1</string>
     <object class="users.User">
@@ -77,10 +120,7 @@
       </object>
      </void>
      <void property="category">
-      <object class="java.lang.Enum" method="valueOf">
-       <class>users.CatEnum</class>
-       <string>PADAWAN</string>
-      </object>
+      <object idref="CatEnum0"/>
      </void>
      <void property="maxScore">
       <object class="users.GameTriple"/>
