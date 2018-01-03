@@ -47,7 +47,7 @@ public class User {
 
     /* GETTERS */
     public String getName() {
-        return this.name + " " + this.surname;
+        return this.name;
     }
 
     public String getNickname() {
