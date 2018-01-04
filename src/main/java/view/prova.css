@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04-ene-2018, 0:34:25
+    Author     : pererumbo
+*/
+
+AnchorPane {
+    
+    /*-fx-background-insets: 0 0 -50 -50, 2 0 0 0;*/
+    -fx-stroke: #044C1F;
+    -fx-stroke-width: 20;
+    -fx-background-color: black, linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    
+}
+
+.button {
+    
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 2;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+
+}
+
+
+.button:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+
+#check {
+    -fx-background-radius: 5em;
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-max-height: 80px;
+}
+
+#cont {
+    -fx-background-color: rgba(255,255,255,0.4);
+}
+
+#colorSelectionCircle0 {
+    -fx-fill:linear-gradient(to bottom right, #CBDBD7, #308094);
+}
+
+#colorSelectionCircle1 {
+    -fx-fill:linear-gradient(to bottom right, #eeabad, #ee4457);
+}
+
+/*Taronja*/
+#colorSelectionCircle2 {
+    -fx-fill:linear-gradient(to bottom right, #D8CEA3, #EF551F);
+}
+/*Groc*/
+#colorSelectionCircle3 {
+    -fx-fill:linear-gradient(to bottom right, #FFECAB, #FFCB2E);
+}
+
+/*Verd*/
+#colorSelectionCircle4 {
+    -fx-fill:linear-gradient(to bottom right, #45BF56, #044C1F);
+}
+
+/*Vermell*/
+#colorSelectionCircle5 {
+    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+}
+
+#emptyCircle{
+    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+}

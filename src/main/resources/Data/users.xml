@@ -29,7 +29,14 @@
       <string>p</string>
      </void>
      <void property="playedGames">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="easy">
+        <double>1.0</double>
+       </void>
+       <void property="original">
+        <double>4.0</double>
+       </void>
+      </object>
      </void>
      <void property="savedGames">
       <object class="java.util.Vector"/>
@@ -38,7 +45,11 @@
       <string>p</string>
      </void>
      <void property="winnedGames">
-      <object class="users.GameTriple"/>
+      <object class="users.GameTriple">
+       <void property="original">
+        <double>1.0</double>
+       </void>
+      </object>
      </void>
      <void property="winningSpree">
       <object class="users.GameTriple"/>

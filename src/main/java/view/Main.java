@@ -10,6 +10,7 @@ import layers.PresentationCtrl;
 
 import java.net.URL;
 import java.nio.file.Paths;
+import javafx.stage.StageStyle;
 
 public class Main  extends Application{
 
@@ -19,14 +20,16 @@ public class Main  extends Application{
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(new URL(Paths.get("src/main/resources/GUI/FXML/LoginView.fxml").toUri().toString()));
         stage = primaryStage;
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Master Mind");
-        stage.setScene(new Scene(root, 911, 510));
+        stage.setScene(new Scene(root, 911, 600));
+        stage.setResizable(false);
         stage.show();
     }
 
     public static void changeScene(FXMLLoader Loader) {
         Parent root = Loader.getRoot();
-        stage.setScene(new Scene(root, 911, 510));
+        stage.setScene(new Scene(root, 911, 600));
     }
 
 
@@ -52,13 +55,13 @@ public class Main  extends Application{
         }
 
         if (guiMode) {
-            launch(args);
-            Platform.exit();
+            launch(args);            
         }
         else {
             PresentationCtrl pCtrl = new PresentationCtrl();
             pCtrl.startMasterMind();
         }
+        Platform.exit();
     }
 
     private static void showHelpMin() {
