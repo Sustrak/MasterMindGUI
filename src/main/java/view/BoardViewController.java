@@ -183,14 +183,14 @@ public class BoardViewController implements Initializable {
             if (source instanceof Circle) {
                 if (GridPane.getRowIndex((Node)source) == selectedRow) {
                     ((Circle)source).setFill(selectedColor);
-                    if (fullRow < nColumns) {
-                        checkButton.setDisable(false);
-                    } else fullRow++;
+                    if (fullRow < nColumns) fullRow++;
+                    if (fullRow == nColumns) checkButton.setDisable(false);
+                    System.out.println(fullRow);
                 }
             }
         }
     };
-
+ 
     public void checkButtonAction(ActionEvent actionEvent) {
         ArrayList<Integer> newCombination = getCombination();
         System.out.print(newCombination);

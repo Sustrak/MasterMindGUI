@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
@@ -17,8 +19,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/prova.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
    <children>
+      <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" />
       <HBox alignment="CENTER" layoutX="263.0" layoutY="24.0" spacing="20.0">
          <children>
       

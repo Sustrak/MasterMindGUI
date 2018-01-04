@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import layers.DomainCtrl;
 
 import java.net.MalformedURLException;
+import javafx.application.Platform;
 
 public class LoginViewController {
 
@@ -16,7 +17,11 @@ public class LoginViewController {
     public void setDomainCtrl(DomainCtrl dCtrl) {
         this.domainCtrl = dCtrl;
     }
-
+    
+    public void closeButton(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+    
     public void loginButton(ActionEvent actionEvent) {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();

@@ -1,0 +1,150 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04-ene-2018, 0:34:25
+    Author     : pererumbo
+*/
+
+AnchorPane {
+    
+    /*-fx-back  ground-insets: 0 0 -50 -50, 2 0 0 0;*/
+    -fx-stroke: #044C1F;
+    -fx-stroke-width: 20;
+    -fx-background-color:
+        linear-gradient(to bottom, #fda085 0%, #FEFEFE 50%),
+        linear-gradient(to top, #f6d365 0%, #fda085 50%);
+}
+
+#back {
+    -fx-opacity: 0.05;
+    -fx-background-image:url("marble.jpg");
+}
+
+.button {
+    
+-fx-text-fill: white;
+-fx-font-family: arial, sans-serif;
+-fx-base: #706e6a;
+-fx-wrap-text: true;
+-fx-padding: 10;
+-fx-backgroundRadius: 10;
+-fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0,1);
+
+}
+
+
+.button:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+
+#check {
+    -fx-background-radius: 5em;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-width: 100px;
+    -fx-max-height: 100px;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.2em;
+}
+
+#cont {
+    -fx-background-color: rgba(255,255,255,0.4);
+}
+
+#colorSelectionCircle0 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #CBDBD7, #308094);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle0:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle1 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #eeabad, #ee4457);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle1:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+/*Taronja*/
+#colorSelectionCircle2 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #D8CEA3, #EF551F);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle2:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+/*Groc*/
+#colorSelectionCircle3 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #FFECAB, #FFCB2E);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle3:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+/*Verd*/
+#colorSelectionCircle4 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #45BF56, #044C1F);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle4:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+/*Vermell*/
+#colorSelectionCircle5 {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle5:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#emptyCircle{
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+
+#emptyCircle:hover {
+    -fx-stroke: #888888;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}

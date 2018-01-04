@@ -20,16 +20,18 @@ public class Main  extends Application{
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(new URL(Paths.get("src/main/resources/GUI/FXML/LoginView.fxml").toUri().toString()));
         stage = primaryStage;
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Master Mind");
-        stage.setScene(new Scene(root, 911, 600));
+        stage.setScene(new Scene(root, 911, 510));
         stage.setResizable(false);
         stage.show();
     }
 
     public static void changeScene(FXMLLoader Loader) {
         Parent root = Loader.getRoot();
-        stage.setScene(new Scene(root, 911, 600));
+        System.out.println(Loader.getController().toString());
+        if(Loader.getController().toString().contains("Login"))
+            stage.setScene(new Scene(root, 911, 510));
+        else stage.setScene(new Scene(root, 911, 600)); 
     }
 
 
