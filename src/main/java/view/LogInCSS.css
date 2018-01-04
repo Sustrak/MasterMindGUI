@@ -18,17 +18,14 @@ AnchorPane {
     
 }
 .button {
-    -fx-font-family: Arial, sans-serif;
-    -fx-background-color: 
-        linear-gradient(#f2f2f2, #eeeeee),
-        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #222222 100%),
-        linear-gradient(#cccccc 0%, #FFFFFF 70%);
-    -fx-background-radius: 5,4,3;
-    -fx-padding: 10;
-    -fx-background-insets: 0,1,1.5;
-    -fx-text-fill: #333333;
-    -fx-font-weight: bold;
-    -fx-font-size:1em ;
+-fx-text-fill: white;
+-fx-font-family: arial, sans-serif;
+-fx-font-weight: bold;
+-fx-base: #706e6a;
+-fx-wrap-text: true;
+-fx-padding: 10;
+-fx-backgroundRadius: 10;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
 }
 
 .button:hover {
