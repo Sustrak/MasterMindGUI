@@ -31,7 +31,7 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>6.0</double>
+        <double>10.0</double>
        </void>
        <void property="original">
         <double>4.0</double>

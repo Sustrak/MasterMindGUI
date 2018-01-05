@@ -23,6 +23,7 @@ public class Main  extends Application{
         stage.setTitle("Master Mind");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root, 911, 510));
+        stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }
