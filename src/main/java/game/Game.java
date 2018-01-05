@@ -8,6 +8,7 @@ public abstract class Game {
     protected Board currentBoard;
     protected ArrayList<Integer> colorsAvailable;
 
+
     public Game(int id){
         this.id = id;
     }
