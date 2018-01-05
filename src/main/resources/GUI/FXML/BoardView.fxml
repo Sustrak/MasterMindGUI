@@ -26,7 +26,7 @@
          <children>
              <VBox alignment="CENTER" prefHeight="480.0" prefWidth="193.0" spacing="20.0">
                 <children>
-                  <Button id="check" fx:id="checkButton" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" textAlignment="CENTER" />
+                  <Button id="checkButton" fx:id="checkButton" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" textAlignment="CENTER" />
                     <Label fx:id="winLabel" prefHeight="20.0" prefWidth="100.0" />
                     <Label fx:id="elapsedTimeLabel" prefHeight="20.0" prefWidth="100.0" />
                     <Label fx:id="scoreLabel" prefHeight="20.0" prefWidth="100.0" />

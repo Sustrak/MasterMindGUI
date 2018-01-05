@@ -51,7 +51,7 @@ AnchorPane {
         radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
 }
 
-#check {
+#checkButton {
     -fx-background-radius: 5em;
     -fx-min-width: 100px;
     -fx-min-height: 100px;
@@ -66,104 +66,152 @@ AnchorPane {
     -fx-background-color: rgba(255,255,255,0.4);
 }
 
-#colorSelectionCircle0 {
+#whiteCircle {
+ -fx-stroke: #ffffff;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #ffffff, #ffffff);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#blueCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #CBDBD7, #308094);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle0:hover {
+#blueCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle1 {
+#pinkCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #eeabad, #ee4457);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle1:hover {
+#pinkCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Taronja*/
-#colorSelectionCircle2 {
+#orangeCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #D8CEA3, #EF551F);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle2:hover {
+#orangeCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Groc*/
-#colorSelectionCircle3 {
+#yellowCircle{
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #FFECAB, #FFCB2E);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle3:hover {
+#yellowCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Verd*/
-#colorSelectionCircle4 {
+#greenCircle{
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #ABFFB5, #13B042);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle4:hover {
+#greenCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Vermell*/
-#colorSelectionCircle5 {
+#redCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #EA9F98, #DB0D12);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle5:hover {
+#redCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Lila*/
-#colorSelectionCircle6 {
+#violetCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #CA95C3, #92408D);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle6:hover {
+#violetCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
 /*Marrón*/
-#colorSelectionCircle7 {
+#brownCircle {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #FFA475, #732716);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
-#colorSelectionCircle7:hover {
+#brownCircle:hover {
 
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#grayCircle {
+    -fx-stroke: #808080;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #808080, #808080);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#grayCircle:hover {
+
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#blackCheckPeg {
+    -fx-stroke: #000000;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #000000, #000000);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#blackCheckPeg:hover {
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#grayCheckPeg {
+    -fx-stroke: #808080;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #808080, #808080);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#grayCheckPeg:hover {
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+#whiteCheckPeg {
+ -fx-stroke: #ffffff;
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #ffffff, #ffffff);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
