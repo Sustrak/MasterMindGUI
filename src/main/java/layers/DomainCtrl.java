@@ -230,6 +230,9 @@ public class DomainCtrl {
     }
 
     public void saveGame() {
+        CodeBreaker game = (CodeBreaker) currentGame;
+        game.setLSDNow();
+        currentGame = game;
         PersistenceCtrl.saveGame(currentGame, currentGame.getId(), currentUser.getNickname());
         currentUser.addToSavedGames(currentGame.getId());
         PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
@@ -295,7 +298,7 @@ public class DomainCtrl {
     /**
      * @param gameId
      * @return an ArrayList which contains the info of a game in this order:
-     *         game.id, game.DiffEnum, game.isFirstClue, game.isSecondClue
+     *         game.id, game.DiffEnum, game.lastSavedDate
      */
     ArrayList<String> getInfoGame(int gameId) throws FileNotFoundException {
         CodeBreaker game = null;
@@ -305,8 +308,7 @@ public class DomainCtrl {
         assert game != null;
         info.add(String.valueOf(gameId));
         info.add(game.getDificulty().toString());
-        info.add(String.valueOf(game.isFirstClue()));
-        info.add(String.valueOf(game.isSecondClue()));
+        info.add(game.getLastSaveDate().toString());
         return info;
     }
 

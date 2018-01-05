@@ -22,7 +22,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
    <children>
       <Label fx:id="code" layoutX="688.0" layoutY="10.0" maxHeight="40.0" maxWidth="195.0" text="CodeBreaker" textAlignment="CENTER" />
-      <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" visible="false" />
+      <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" />
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="911.0">
          <children>
              <VBox alignment="BOTTOM_CENTER" minWidth="150.0" prefHeight="480.0" prefWidth="150.0" spacing="20.0">

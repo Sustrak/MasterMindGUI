@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_144" class="java.beans.XMLDecoder">
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
  <object class="rr.Records" id="Records0">
   <void property="maxExp">
    <void property="date">

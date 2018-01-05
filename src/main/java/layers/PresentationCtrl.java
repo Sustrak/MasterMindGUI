@@ -285,6 +285,7 @@ public class PresentationCtrl {
 
         sView.showMessage("Cargar partida guardada.");
         Vector ids = dCtrl.getIdSavedGames();
+        int errorLoading = 0;
         for (Object id1 : ids) {
             int id = (int) id1;
             ArrayList<String> infoGame = null;
@@ -293,11 +294,12 @@ public class PresentationCtrl {
             } catch (FileNotFoundException e) {
                 String s = "No se pudo cargar la partida con id: " + id + " comprueve que el archivo exista";
                 sView.showMessage(s);
+                ++errorLoading;
                 continue;
             }
             sView.showInfoGame(infoGame);
         }
-        if (ids.size() == 0) sView.showMessage("No tiene partidas guardadas");
+        if (ids.size() - errorLoading == 0) sView.showMessage("No tiene partidas guardadas");
         else {
             int id = sView.getGameId(ids);
             try {

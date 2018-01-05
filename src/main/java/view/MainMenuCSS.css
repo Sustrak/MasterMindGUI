@@ -62,8 +62,9 @@ AnchorPane, #recordBox, #rankingPane {
 }
 
 #back {
-    -fx-opacity: 0.1;
-    -fx-background-image:url("marble.jpg");
+    -fx-opacity: 0.2;
+    -fx-background-image:url("white.jpg");
+    -fx-background-size: 2000 2000;
 }
 
 .button {

@@ -38,7 +38,7 @@ public class BoardViewController implements Initializable {
     private static final int BROWN = 7;
 
 
-    private String selectedColor;
+    private String selectedColor = "";
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
@@ -57,14 +57,11 @@ public class BoardViewController implements Initializable {
     private int nColors;
     private int nColumns;
     private int nRows;
-    private int fullRow = 0;
     private int selectedRow = 10;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // blueCircle.setOnMousePressed(circleOnMousePressedEventHandler);
-       // blueCircle.setOnMouseDragged(circleOnMouseDraggedEventHandler);
         mainGridPane.setOnMouseClicked(mainGridPaneOnMouseClicked);
         colorSelectionVBox.setOnMouseClicked(colorSelectionVBoxOnMouseClicked);
     }
@@ -97,8 +94,10 @@ public class BoardViewController implements Initializable {
                 nColors = 8;
                 break;
         }
+        selectedColor = "";
         selectedRow = 10;
         checkButton.setDisable(true);
+        saveGameButton.setDisable(false);
         clue1Button.setDisable(false);
         clue2Button.setDisable(false);
         winLabel.setText("");
@@ -147,7 +146,7 @@ public class BoardViewController implements Initializable {
                 mainGridPane.add(circle, j, i);
             }
         }
-        for (int i = 0; i < nRows -1; i++) {
+        for (int i = 0; i < nRows - 1; i++) {
             for (int j = 0; j < nColumns; j++) {
                 circle = new Circle(10.0);
                 circle.setId("grayCheckPeg");
@@ -159,7 +158,7 @@ public class BoardViewController implements Initializable {
     private EventHandler<MouseEvent> colorSelectionVBoxOnMouseClicked = event -> {
         Object source = event.getTarget();
         if (source instanceof Circle) {
-            selectedColor = ((Circle)source).getId();
+            selectedColor = ((Circle) source).getId();
         }
     };
 
@@ -168,16 +167,14 @@ public class BoardViewController implements Initializable {
         public void handle(MouseEvent event) {
             Object source = event.getTarget();
             if (source instanceof Circle) {
-                if (GridPane.getRowIndex((Node)source) == selectedRow) {
-                    ((Circle)source).setId(selectedColor);
-                    if (fullRow < nColumns) fullRow++;
-                    if (fullRow == nColumns) checkButton.setDisable(false);
-                    System.out.println(fullRow);
+                if (GridPane.getRowIndex((Node) source) == selectedRow && !selectedColor.isEmpty()) {
+                    ((Circle) source).setId(selectedColor);
+                    if (checkFullRow()) checkButton.setDisable(false);
                 }
             }
         }
     };
- 
+
     public void checkButtonAction(ActionEvent actionEvent) {
         ArrayList<Integer> newCombination = getCombination();
         System.out.print(newCombination);
@@ -199,12 +196,11 @@ public class BoardViewController implements Initializable {
             finishCBgame();
         }
         checkButton.setDisable(true);
-        fullRow = 0;
     }
 
     public void clue1ButtonAction(ActionEvent actionEvent) {
         int colorRemoved = domainCtrl.useFirstClue();
-        Circle selectedCircle = (Circle)colorSelectionVBox.getChildren().get(colorRemoved);
+        Circle selectedCircle = (Circle) colorSelectionVBox.getChildren().get(colorRemoved);
         selectedCircle.setDisable(true);
         selectedCircle.setId("grayCircle");
         clue1Button.setDisable(true);
@@ -215,7 +211,7 @@ public class BoardViewController implements Initializable {
         int clue2Position = domainCtrl.getPositionClue();
         int clue2Color = domainCtrl.getColorClue();
         for (int i = 0; i <= 10; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i * nColumns + clue2Position);
+            Circle selectedCircle = (Circle) mainGridPane.getChildren().get(i * nColumns + clue2Position);
             selectedCircle.setId(getColorId(clue2Color) + "Circle");
             selectedCircle.setDisable(true);
         }
@@ -240,6 +236,9 @@ public class BoardViewController implements Initializable {
 
     private void finishCBgame() {
         checkButton.setDisable(true);
+        clue2Button.setDisable(true);
+        clue1Button.setDisable(true);
+        saveGameButton.setDisable(true);
         paintWinnerCombination();
 
         long time = domainCtrl.setTimeElapsed();
@@ -250,8 +249,16 @@ public class BoardViewController implements Initializable {
         double score = domainCtrl.calculateScore();
 
         elapsedTimeLabel.setText(minutes + ":" + seconds);
-        scoreLabel.setText(String.valueOf((int)score));
+        scoreLabel.setText(String.valueOf((int) score));
 
+    }
+
+    private boolean checkFullRow() {
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle) mainGridPane.getChildren().get(selectedRow * nColumns + i);
+            if (selectedCircle.getId().equals("whiteCircle")) return false;
+        }
+        return true;
     }
 
     private void paintCheckPegs() {
@@ -259,13 +266,13 @@ public class BoardViewController implements Initializable {
         int nBlackPegs = domainCtrl.getBlackPegs(10 - selectedRow);
         int i = 0;
         while (nBlackPegs > 0) {
-            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)* nColumns +i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow - 1) * nColumns + i);
             selectedCircle.setId("blackCheckPeg");
             nBlackPegs--;
             i++;
         }
         while (nWhitePegs > 0) {
-            Circle selectedCircle = (Circle)checkGridPane.getChildren().get((selectedRow-1)* nColumns +i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow - 1) * nColumns + i);
             selectedCircle.setId("whiteCheckPeg");
             nWhitePegs--;
             i++;
@@ -275,7 +282,7 @@ public class BoardViewController implements Initializable {
     private void paintWinnerCombination() {
         ArrayList<Integer> winnerCombination = domainCtrl.getWinnerCombinationArray();
         for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
+            Circle selectedCircle = (Circle) mainGridPane.getChildren().get(i);
             selectedCircle.setId(getColorId(winnerCombination.get(i)) + "Circle");
         }
     }
@@ -283,7 +290,7 @@ public class BoardViewController implements Initializable {
     private ArrayList<Integer> getCombination() {
         ArrayList<Integer> combination = new ArrayList<>();
         for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow* nColumns +i);
+            Circle selectedCircle = (Circle) mainGridPane.getChildren().get(selectedRow * nColumns + i);
             if (selectedCircle.getId().equals("blueCircle")) combination.add(BLUE);
             else if (selectedCircle.getId().equals("pinkCircle")) combination.add(PINK);
             else if (selectedCircle.getId().equals("orangeCircle")) combination.add(ORANGE);
@@ -297,35 +304,4 @@ public class BoardViewController implements Initializable {
     }
 
 
-    /*public void selectBlueColor() {
-        this.selectedColor = Color.BLUE;
-        System.out.print(this.selectedColor);
-    }*/
-
-    /*EventHandler<MouseEvent> circleOnMousePressedEventHandler =
-            new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    orgSceneX = t.getSceneX();
-                    orgSceneY = t.getSceneY();
-                    orgTranslateX = ((Circle)(t.getSource())).getTranslateX();
-                    orgTranslateY = ((Circle)(t.getSource())).getTranslateY();
-                }
-            };
-
-    EventHandler<MouseEvent> circleOnMouseDraggedEventHandler =
-            new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    double offsetX = t.getSceneX() - orgSceneX;
-                    double offsetY = t.getSceneY() - orgSceneY;
-                    double newTranslateX = orgTranslateX + offsetX;
-                    double newTranslateY = orgTranslateY + offsetY;
-
-                    ((Circle)(t.getSource())).setTranslateX(newTranslateX);
-                    ((Circle)(t.getSource())).setTranslateY(newTranslateY);
-                }
-            };*/
 }

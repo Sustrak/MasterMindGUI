@@ -39,7 +39,7 @@ public class CodeMakerViewController implements Initializable {
     private static final int BROWN = 7;
 
 
-    private String selectedColor;
+    private String selectedColor = "";
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
@@ -50,7 +50,6 @@ public class CodeMakerViewController implements Initializable {
     private int nColors;
     private int nColumns;
     private int nRows;
-    private int fullRow = 0;
     private int selectedRow;
     private int nAttemps;
     private Boolean first;
@@ -84,11 +83,21 @@ public class CodeMakerViewController implements Initializable {
                 domainCtrl.startNewCodeMaker(DiffEnum.HARD);
                 break;
         }
+        selectedColor = "";
+        solveButton.setDisable(true);
         selectedRow = 0;
-        nAttemps = 0;
+        nAttemps = 1;
         first = true;
         solved = false;
         buildBoard();
+    }
+
+    private boolean checkFullRow(GridPane gridPane) {
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle) gridPane.getChildren().get(selectedRow * nColumns + i);
+            if (selectedCircle.getId().equals("whiteCircle")) return false;
+        }
+        return true;
     }
 
     private String getColorId(int i) {
@@ -153,11 +162,9 @@ public class CodeMakerViewController implements Initializable {
             if (first) {
                 Object source = event.getTarget();
                 if (source instanceof Circle) {
-                    if (GridPane.getRowIndex((Node) source) == 0) {
+                    if (GridPane.getRowIndex((Node) source) == 0 && !selectedColor.isEmpty()) {
                         ((Circle) source).setId(selectedColor);
-                        if (fullRow < nColumns) {
-                            solveButton.setDisable(false);
-                        } else fullRow++;
+                        if (checkFullRow(mainGridPane)) solveButton.setDisable(false);
                     }
                 }
             }
@@ -170,11 +177,8 @@ public class CodeMakerViewController implements Initializable {
             if (!first) {
                 Object source = event.getTarget();
                 if (source instanceof Circle) {
-                    if (GridPane.getRowIndex((Node) source) == selectedRow) {
+                    if (GridPane.getRowIndex((Node) source) == selectedRow && !selectedColor.isEmpty()) {
                         ((Circle) source).setId(selectedColor);
-                        if (fullRow < nColumns) {
-                            solveButton.setDisable(false);
-                        } else fullRow++;
                     }
                 }
             }
@@ -234,7 +238,7 @@ public class CodeMakerViewController implements Initializable {
             else paintNewCombination();
             selectedRow--;
             nAttemps++;
-        } else checkCorrectionCombination();
+        }
     }
 
     private void endGame() {
@@ -261,14 +265,15 @@ public class CodeMakerViewController implements Initializable {
     private void changeColors() {
         colorSelectionVBox.getChildren().clear();
         Circle circle;
-        circle = new Circle(16.0, Color.BLACK);
+        circle = new Circle(16.0);
         circle.setId("blackCheckPeg");
         colorSelectionVBox.getChildren().add(0, circle);
-        circle = new Circle(16.0, Color.WHITE);
+        circle = new Circle(16.0);
         circle.setId("whiteCheckPeg");
         colorSelectionVBox.getChildren().add(1, circle);
-        circle = new Circle(16.0, Color.GRAY);
+        circle = new Circle(16.0);
         circle.setId("grayCheckPeg");
         colorSelectionVBox.getChildren().add(2, circle);
+        selectedColor = "";
     }
 }
