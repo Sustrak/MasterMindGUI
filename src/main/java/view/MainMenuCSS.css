@@ -4,19 +4,26 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 04-ene-2018, 18:37:32
+    Created on : 05-ene-2018, 0:55:36
     Author     : pererumbo
 */
 
 AnchorPane {
     
-    -fx-background-image: url("LogIn.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-position: center center;
-    -fx-background-size: 911 510;
-    
-    
+    /*-fx-back  ground-insets: 0 0 -50 -50, 2 0 0 0;*/
+    -fx-stroke: #044C1F;
+    -fx-stroke-width: 20;
+    -fx-background-color:
+        linear-gradient(to bottom, #fda085 0%, #FEFEFE 50%),
+        linear-gradient(to top, #f6d365 0%, #fda085 50%);
 }
+
+#back {
+    -fx-opacity: 0.05;
+    -fx-background-image:url("marble.jpg");
+}
+
+
 .button {
 -fx-text-fill: white;
 -fx-font-family: arial, sans-serif;
@@ -34,15 +41,4 @@ AnchorPane {
         #9d4024,
         #d86e3a,
         radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
-}
-
-#close {
-    -fx-opacity:0;
-    -fx-background-radius: 5em;
-}
-
-#close:hover {
-    -fx-opacity:0.2;
-    -fx-stroke: #555555;
-    -fx-stroke-width:3;
 }

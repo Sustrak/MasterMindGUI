@@ -153,8 +153,7 @@ public class BoardViewController implements Initializable {
                 circle = new Circle(20.0, Color.WHITE);
                 circle.setStroke(Color.GRAY);
                 circle.setId("emptyCircle" + i + j);
-                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #F9F9F9, #C2BEB6);"
-                        + "-fx-border-style: dashed;");
+                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #F9F9F9, #C2BEB6);");
                 mainGridPane.add(circle, j, i);
             }
         }

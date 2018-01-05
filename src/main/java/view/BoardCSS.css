@@ -143,7 +143,7 @@ AnchorPane {
 
 #emptyCircle:hover {
     -fx-stroke: #888888;
-    -fx-stroke-width: 1;
+    -fx-stroke-width: 3;
     -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }

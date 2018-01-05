@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_144" class="java.beans.XMLDecoder">
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
    <void method="put">
@@ -31,7 +31,7 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>1.0</double>
+        <double>6.0</double>
        </void>
        <void property="original">
         <double>4.0</double>

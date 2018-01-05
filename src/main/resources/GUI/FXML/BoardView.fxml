@@ -27,7 +27,7 @@
       
                   
                            <VBox fx:id="colorSelectionVBox" alignment="CENTER" spacing="10.0" />
-               <GridPane fx:id="mainGridPane" alignment="CENTER" hgap="10.0" vgap="10.0">
+               <GridPane fx:id="mainGridPane" alignment="CENTER" gridLinesVisible="true" hgap="12.0" vgap="10.0">
       
                               <columnConstraints>
                      <ColumnConstraints />
@@ -60,7 +60,7 @@
                            </GridPane>
       
                   
-                            <GridPane fx:id="checkGridPane" alignment="CENTER" hgap="10.0" vgap="26.0">
+                            <GridPane fx:id="checkGridPane" alignment="CENTER" gridLinesVisible="true" hgap="10.0" vgap="30.0">
       
                                 <columnConstraints>
                         <ColumnConstraints />
@@ -85,7 +85,7 @@
                         <RowConstraints />
                     </rowConstraints>
                   <padding>
-                     <Insets top="40.0" />
+                     <Insets top="53.0" />
                   </padding>
       
                   
