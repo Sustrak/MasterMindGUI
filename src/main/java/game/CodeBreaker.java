@@ -161,7 +161,7 @@ public class CodeBreaker extends Game {
         }
 
         double seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
-        score = score * (1./seconds) * 1000;
+        score = score * (1./seconds) * 10;
 
         return score;
     }

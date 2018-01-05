@@ -198,11 +198,14 @@
    <void index="1">
     <void property="date">
      <object class="java.util.Date">
-      <long>1515014011765</long>
+      <long>1515181297164</long>
      </object>
     </void>
     <void property="score">
-     <double>90.0</double>
+     <double>Infinity</double>
+    </void>
+    <void property="username">
+     <string>j</string>
     </void>
    </void>
    <void index="2">
@@ -212,7 +215,7 @@
      </object>
     </void>
     <void property="score">
-     <double>80.0</double>
+     <double>90.0</double>
     </void>
    </void>
    <void index="3">
@@ -222,7 +225,7 @@
      </object>
     </void>
     <void property="score">
-     <double>70.0</double>
+     <double>80.0</double>
     </void>
    </void>
    <void index="4">
@@ -232,7 +235,7 @@
      </object>
     </void>
     <void property="score">
-     <double>60.0</double>
+     <double>70.0</double>
     </void>
    </void>
    <void index="5">
@@ -242,7 +245,7 @@
      </object>
     </void>
     <void property="score">
-     <double>50.0</double>
+     <double>60.0</double>
     </void>
    </void>
    <void index="6">
@@ -252,7 +255,7 @@
      </object>
     </void>
     <void property="score">
-     <double>40.0</double>
+     <double>50.0</double>
     </void>
    </void>
    <void index="7">
@@ -262,7 +265,7 @@
      </object>
     </void>
     <void property="score">
-     <double>30.0</double>
+     <double>40.0</double>
     </void>
    </void>
    <void index="8">
@@ -272,7 +275,7 @@
      </object>
     </void>
     <void property="score">
-     <double>20.0</double>
+     <double>30.0</double>
     </void>
    </void>
    <void index="9">
@@ -282,7 +285,7 @@
      </object>
     </void>
     <void property="score">
-     <double>10.0</double>
+     <double>20.0</double>
     </void>
    </void>
   </void>
