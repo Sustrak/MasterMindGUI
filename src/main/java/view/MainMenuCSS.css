@@ -19,20 +19,21 @@ AnchorPane {
 }
 
 #back {
-    -fx-opacity: 0.05;
+    -fx-opacity: 0.1;
     -fx-background-image:url("marble.jpg");
 }
 
 
 .button {
--fx-text-fill: white;
--fx-font-family: arial, sans-serif;
--fx-font-weight: bold;
--fx-base: #706e6a;
--fx-wrap-text: true;
--fx-padding: 10;
--fx-backgroundRadius: 10;
--fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
+    -fx-text-fill: white;
+    -fx-font-family: arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-base: #706e6a;
+    -fx-wrap-text: true;
+    -fx-padding: 15;
+    -fx-backgroundRadius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
 }
 
 .button:hover {

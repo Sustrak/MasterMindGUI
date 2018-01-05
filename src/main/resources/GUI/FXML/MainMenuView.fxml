@@ -10,7 +10,8 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuViewController">
    <children>
-      <HBox alignment="CENTER" layoutX="-4.0" layoutY="209.0" prefHeight="394.0" prefWidth="911.0" spacing="60.0">
+      <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
+      <HBox alignment="CENTER" layoutX="-4.0" layoutY="89.0" prefHeight="514.0" prefWidth="911.0" spacing="60.0">
          <children>
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="200.0" spacing="40.0">
                <children>
@@ -34,6 +35,10 @@
             </VBox>
          </children>
       </HBox>
-      <ImageView fitHeight="201.0" fitWidth="911.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="282.0" fitWidth="747.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/mastermind.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -21,6 +21,7 @@ public class Main  extends Application{
         Parent root = FXMLLoader.load(new URL(Paths.get("src/main/resources/GUI/FXML/LoginView.fxml").toUri().toString()));
         stage = primaryStage;
         stage.setTitle("Master Mind");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root, 911, 510));
         stage.setResizable(false);
         stage.show();
