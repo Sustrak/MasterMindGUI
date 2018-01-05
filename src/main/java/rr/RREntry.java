@@ -1,5 +1,7 @@
 package rr;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RREntry {
@@ -23,7 +25,8 @@ public class RREntry {
 
     @Override
     public String toString() {
-        return date.toString() + "    " + username + "        " + score;
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return df.format(date) + "    " + username + "        " + score;
     }
 
     //For serialization

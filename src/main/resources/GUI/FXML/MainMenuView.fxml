@@ -17,14 +17,14 @@
                <children>
                   <Button fx:id="codeBreakerButton" mnemonicParsing="false" onAction="#codeBreakerButtonAction" prefWidth="200.0" text="CodeBreaker" />
                   <Button fx:id="codeMakerButton1" mnemonicParsing="false" onAction="#codeMakerButtonAction" prefWidth="200.0" text="CodeMaker" />
-                  <Button fx:id="loadGameButton1" mnemonicParsing="false" onAction="#loadGameButtonAction" prefWidth="200.0" text="Cargar partida" />
+                  <Button fx:id="loadGameButton1" mnemonicParsing="false" onAction="#loadGameButtonAction" prefWidth="200.0" text="Cargar Partida" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="494.0" prefWidth="200.0" spacing="40.0">
                <children>
-                  <Button fx:id="rankButton" mnemonicParsing="false" onAction="#rankButtonAction" prefWidth="200.0" text="Consultar rankings" />
+                  <Button fx:id="rankButton" mnemonicParsing="false" onAction="#rankButtonAction" prefWidth="200.0" text="Consultar Rankings" />
                   <Button fx:id="recordsButton" mnemonicParsing="false" onAction="#recordsButtonAction" prefWidth="200.0" text="Consultar Records" />
-                  <Button fx:id="playerButton" mnemonicParsing="false" onAction="#playerButtonAction" prefWidth="200.0" text="Consultar jugador" />
+                  <Button fx:id="playerButton" mnemonicParsing="false" onAction="#playerButtonAction" prefWidth="200.0" text="Consultar Jugador" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="494.0" prefWidth="183.0" spacing="50.0">
@@ -35,7 +35,7 @@
             </VBox>
          </children>
       </HBox>
-      <ImageView fitHeight="282.0" fitWidth="747.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mastermind" fitHeight="282.0" fitWidth="747.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/mastermind.png" />
          </image>

@@ -7,6 +7,10 @@ and open the template in the editor.
     Created on : 04-ene-2018, 0:34:25
     Author     : pererumbo
 */
+@font-face {
+    font-family: Adventure;
+    src: url("Adventure.otf");
+}
 
 AnchorPane {
     
@@ -26,14 +30,18 @@ AnchorPane {
 .button {
     
     -fx-text-fill: white;
-    -fx-font-family: arial, sans-serif;
-    -fx-base: #706e6a;
+    -fx-font-family: "Adventure",arial, sans-serif;
+    -fx-font-size: 1.2em;
+    -fx-base: #555555;
     -fx-wrap-text: true;
     -fx-padding: 10;
     -fx-backgroundRadius: 10;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0.0, 0,1);
 }
 
+.button .text{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.5), 7, 0.0, 0,1);
+}
 
 .button:hover {
     -fx-background-color: 
@@ -50,7 +58,8 @@ AnchorPane {
     -fx-max-width: 100px;
     -fx-max-height: 100px;
     -fx-font-weight: bold;
-    -fx-font-size: 1.2em;
+    -fx-font-size: 2em;
+    -fx-font-family: "Adventure";
 }
 
 #cont {
@@ -111,7 +120,7 @@ AnchorPane {
 #colorSelectionCircle4 {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
-    -fx-fill:linear-gradient(to bottom right, #45BF56, #044C1F);
+    -fx-fill:linear-gradient(to bottom right, #ABFFB5, #13B042);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
@@ -124,7 +133,7 @@ AnchorPane {
 #colorSelectionCircle5 {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
-    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-fill:linear-gradient(to bottom right, #EA9F98, #DB0D12);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
@@ -133,17 +142,28 @@ AnchorPane {
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
-#emptyCircle{
+/*Lila*/
+#colorSelectionCircle6 {
     -fx-stroke: #888888;
     -fx-stroke-width: 1;
-    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-fill:linear-gradient(to bottom right, #CA95C3, #92408D);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
+#colorSelectionCircle6:hover {
 
-#emptyCircle:hover {
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
+}
+
+/*Marrón*/
+#colorSelectionCircle7 {
     -fx-stroke: #888888;
-    -fx-stroke-width: 3;
-    -fx-fill:linear-gradient(to bottom right, #EA695D, #DB0D12);
+    -fx-stroke-width: 1;
+    -fx-fill:linear-gradient(to bottom right, #FFA475, #732716);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+}
+
+#colorSelectionCircle7:hover {
+
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }

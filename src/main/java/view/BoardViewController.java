@@ -153,7 +153,8 @@ public class BoardViewController implements Initializable {
                 circle = new Circle(20.0, Color.WHITE);
                 circle.setStroke(Color.GRAY);
                 circle.setId("emptyCircle" + i + j);
-                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #F9F9F9, #C2BEB6);");
+                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #F9F9F9, #C2BEB6);"
+                        + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 7, 0.0, 2,2);");
                 mainGridPane.add(circle, j, i);
             }
         }
@@ -162,7 +163,8 @@ public class BoardViewController implements Initializable {
                 circle = new Circle(10.0, Color.GRAY);
                 circle.setStroke(Color.web("#242424"));
                 circle.setId("checkPeg" + i + j);
-                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #878787, #404040);");
+                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #878787, #404040);"
+                        + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 7, 0.0, 2,2);");
                 checkGridPane.add(circle, j, i);
             }
         }

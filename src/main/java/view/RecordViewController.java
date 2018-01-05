@@ -16,6 +16,8 @@ import layers.DomainCtrl;
 import rr.RREntry;
 
 import java.net.MalformedURLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 public class RecordViewController {
@@ -33,9 +35,9 @@ public class RecordViewController {
     private void buildRecordsGridPane() {
 
         RREntry recordList[] = domainCtrl.getRecordsRREntryes();
-
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         for (int i = 0; i < 4; i++) {
-            Label label = new Label(recordList[i].getDate().toString());
+            Label label = new Label(df.format(recordList[i].getDate()));
             label.setId(("dateLabel" + i+1));
             recordGridPane.add(label, 1, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
