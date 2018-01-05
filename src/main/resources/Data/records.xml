@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_151" class="java.beans.XMLDecoder">
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
  <object class="rr.Records" id="Records0">
   <void property="maxExp">
    <void property="date">
     <object class="java.util.Date">
-     <long>1514472304809</long>
+     <long>1515014330006</long>
     </object>
    </void>
    <void property="score">
     <double>Infinity</double>
    </void>
    <void property="username">
-    <string>oriol</string>
+    <string>1/1</string>
    </void>
   </void>
   <void property="maxPlayedGames">
    <void property="date">
     <object class="java.util.Date">
-     <long>1514287379189</long>
+     <long>1515014011769</long>
     </object>
    </void>
   </void>
   <void property="maxWinnedGames">
    <void property="date">
     <object class="java.util.Date">
-     <long>1514287379189</long>
+     <long>1515014011769</long>
     </object>
    </void>
   </void>
   <void property="maxWinningSpree">
    <void property="date">
     <object class="java.util.Date">
-     <long>1514287379189</long>
+     <long>1515014011769</long>
     </object>
    </void>
   </void>

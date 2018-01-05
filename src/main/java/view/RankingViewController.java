@@ -12,6 +12,7 @@ import rr.RREntry;
 
 import java.net.MalformedURLException;
 import java.util.Date;
+import javafx.scene.text.Font;
 
 
 public class RankingViewController {
@@ -31,7 +32,7 @@ public class RankingViewController {
     }
 
     private void buildRankingsGridPane() {
-
+        
         RREntry rankingList[] = new RREntry[0];
 
         switch (ViewController.askCodeBreakerDifficulty()) {

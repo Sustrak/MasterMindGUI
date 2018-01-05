@@ -135,23 +135,27 @@ public class BoardViewController implements Initializable {
         colorSelectionVBox.getChildren().clear();
         Circle circle;
         for (int i = 0; i < nColors; ++i) {
-            circle = new Circle(16.0, getColor(i));
+            circle = new Circle(30.0, getColor(i));
             circle.setId("colorSelectionCircle" + i);
             colorSelectionVBox.getChildren().add(i, circle);
         }
         for (int i = 0; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
-                circle = new Circle(16.0, Color.WHITE);
-                circle.setStroke(Color.BLACK);
+                circle = new Circle(20.0, Color.WHITE);
+                circle.setStroke(Color.GRAY);
                 circle.setId("emptyCircle" + i + j);
+                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #F9F9F9, #C2BEB6);"
+                        + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 7, 0.0, 2,2);");
                 mainGridPane.add(circle, j, i);
             }
         }
         for (int i = 0; i < nRows -1; i++) {
             for (int j = 0; j < nColumns; j++) {
-                circle = new Circle(8.0, Color.GRAY);
-                circle.setStroke(Color.BLACK);
+                circle = new Circle(10.0, Color.GRAY);
+                circle.setStroke(Color.web("#242424"));
                 circle.setId("checkPeg" + i + j);
+                circle.setStyle("-fx-fill:linear-gradient(to bottom right, #878787, #404040);"
+                        + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 7, 0.0, 2,2);");
                 checkGridPane.add(circle, j, i);
             }
         }
@@ -171,14 +175,14 @@ public class BoardViewController implements Initializable {
             if (source instanceof Circle) {
                 if (GridPane.getRowIndex((Node)source) == selectedRow) {
                     ((Circle)source).setFill(selectedColor);
-                    if (fullRow < nColumns) {
-                        checkButton.setDisable(false);
-                    } else fullRow++;
+                    if (fullRow < nColumns) fullRow++;
+                    if (fullRow == nColumns) checkButton.setDisable(false);
+                    System.out.println(fullRow);
                 }
             }
         }
     };
-
+ 
     public void checkButtonAction(ActionEvent actionEvent) {
         ArrayList<Integer> newCombination = getCombination();
         System.out.print(newCombination);

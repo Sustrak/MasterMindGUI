@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_151" class="java.beans.XMLDecoder">
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
  <object class="layers.Meta">
   <void property="backgroundMusicVolume">
-   <double>0.18519230769230766</double>
+   <double>0.24759615384615385</double>
   </void>
   <void property="lastId">
-   <int>28</int>
+   <int>343</int>
   </void>
  </object>
 </java>
