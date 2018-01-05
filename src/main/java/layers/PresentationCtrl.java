@@ -341,7 +341,7 @@ public class PresentationCtrl {
         int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(time);
 
         sView.showMessage("Enhorabuena, has resuelto la combinación secreta");
-        double score = dCtrl.calculateScore();
+        double score = dCtrl.getScore();
         sView.showMessage("Duración del juego: " + minutes + " minutos y " + seconds + " segundos.");
         sView.showMessage("La puntuación obtenida es de: " + (int) score + " puntos." + "\n");
         sView.showMessage("---------------------------------------------------------------------\n");

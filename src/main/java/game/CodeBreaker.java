@@ -136,13 +136,13 @@ public class CodeBreaker extends Game {
     }
 
     public long setTimeElapsed() {
-        elapsedTime = System.currentTimeMillis() - initialTime;
+        elapsedTime += System.currentTimeMillis() - initialTime;
         return elapsedTime;
     }
 
     @Override
     public double calculateScore(){
-
+        setTimeElapsed();
         int nCombUsed = currentBoard.getNCombinations();
         switch(nCombUsed){
             case 1: score = 3000; break;
@@ -161,7 +161,7 @@ public class CodeBreaker extends Game {
         }
 
         double seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
-        score = score * (1./seconds) * 1000;
+        score = score * (1./seconds) * 100;
 
         return score;
     }

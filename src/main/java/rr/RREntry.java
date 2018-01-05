@@ -26,7 +26,7 @@ public class RREntry {
     @Override
     public String toString() {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        return df.format(date) + "    " + username + "        " + score;
+        return df.format(date) + "    " + username + "        " + (int)score;
     }
 
     //For serialization
