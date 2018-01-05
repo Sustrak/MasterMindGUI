@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ public class CodeBreaker extends Game {
 
     private long elapsedTime;
     private long initialTime;
+    private Date lastSaveDate;
 
     /**
      *
@@ -174,6 +176,14 @@ public class CodeBreaker extends Game {
         return difficulty;
     }
 
+    public void setLSDNow(){
+        this.lastSaveDate = new Date();
+    }
+
+    public Date getLastSaveDate() {
+        return lastSaveDate;
+    }
+
     //Methods for serialize the class
 
     public CodeBreaker() {
@@ -241,5 +251,9 @@ public class CodeBreaker extends Game {
 
     public void setInitialTime(long initialTime) {
         this.initialTime = initialTime;
+    }
+
+    public void setLastSaveDate(Date lastSaveDate) {
+        this.lastSaveDate = lastSaveDate;
     }
 }

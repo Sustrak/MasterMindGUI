@@ -67,10 +67,16 @@ AnchorPane {
 }
 
 #whiteCircle {
- -fx-stroke: #ffffff;
-    -fx-stroke-width: 1;
-    -fx-fill:linear-gradient(to bottom right, #ffffff, #ffffff);
-    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
+    
+    -fx-stroke: #555555;
+    -fx-stroke-width: .8;
+    -fx-fill:linear-gradient(to bottom right, #ffffff 50%, #cccccc 90%);
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.5), 5, 0.0, 1,1);
+}
+
+#whiteCircle:hover {
+    
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,1), 5, 0.0, 1,1);
 }
 
 #blueCircle {
@@ -199,9 +205,9 @@ AnchorPane {
 }
 
 #grayCheckPeg {
-    -fx-stroke: #808080;
+    -fx-stroke: #505050;
     -fx-stroke-width: 1;
-    -fx-fill:linear-gradient(to bottom right, #808080, #808080);
+    -fx-fill:linear-gradient(to bottom right, #cccccc 30%, #606060 100%);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
 
@@ -210,8 +216,29 @@ AnchorPane {
 }
 
 #whiteCheckPeg {
- -fx-stroke: #ffffff;
+    
+    -fx-stroke: #ffffff;
     -fx-stroke-width: 1;
     -fx-fill:linear-gradient(to bottom right, #ffffff, #ffffff);
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.3), 5, 0.0, 0,1);
 }
+
+#finish .label, #code {
+    
+    -fx-font-family: "Adventure";
+    -fx-font-size: 2em;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.5), 7, 0.0, 2,2);
+    -fx-text-fill:
+        linear-gradient(to bottom, #CCCCCC 0%, #FEFEFE 30%); 
+
+}
+
+#finish .label .text, #code .text{
+    -fx-stroke: #555555;
+    -fx-stroke-width: .5;
+}
+
+ #code {
+    
+    -fx-font-size: 2.8em;
+ }
