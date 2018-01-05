@@ -130,29 +130,6 @@ public class BoardViewController implements Initializable {
         }
     }
 
-    private Color getColor(int i) {
-        switch (i) {
-            case 0:
-                return Color.BLUE;
-            case 1:
-                return Color.HOTPINK;
-            case 2:
-                return Color.ORANGE;
-            case 3:
-                return Color.YELLOW;
-            case 4:
-                return Color.GREEN;
-            case 5:
-                return Color.RED;
-            case 6:
-                return Color.DARKVIOLET;
-            case 7:
-                return Color.BROWN;
-            default:
-                return Color.WHITE;
-        }
-    }
-
     private void buildBoard() {
         mainGridPane.getChildren().clear();
         checkGridPane.getChildren().clear();
@@ -299,7 +276,7 @@ public class BoardViewController implements Initializable {
         ArrayList<Integer> winnerCombination = domainCtrl.getWinnerCombinationArray();
         for (int i = 0; i < nColumns; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(i);
-            selectedCircle.setFill(getColor(winnerCombination.get(i)));
+            selectedCircle.setId(getColorId(winnerCombination.get(i)) + "Circle");
         }
     }
 

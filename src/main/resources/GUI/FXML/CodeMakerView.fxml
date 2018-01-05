@@ -10,7 +10,7 @@
 
 
 
-<HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CodeMakerViewController">
+<HBox alignment="BOTTOM_CENTER" stylesheets="@../../../java/view/BoardCSS.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CodeMakerViewController">
    <children>
       <VBox alignment="CENTER" spacing="20.0" />
       <VBox fx:id="colorSelectionVBox" alignment="CENTER" spacing="10.0" />
