@@ -246,7 +246,7 @@ public class BoardViewController implements Initializable {
                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
         int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(time);
 
-        double score = domainCtrl.calculateScore();
+        double score = domainCtrl.getScore();
 
         elapsedTimeLabel.setText(minutes + ":" + seconds);
         scoreLabel.setText(String.valueOf((int) score));

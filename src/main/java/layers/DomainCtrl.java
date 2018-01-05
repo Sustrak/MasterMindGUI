@@ -214,6 +214,7 @@ public class DomainCtrl {
 
     public void loadGame(int id) throws FileNotFoundException {
         currentGame = (CodeBreaker) PersistenceCtrl.loadGame(id, currentUser.getNickname());
+        ((CodeBreaker) currentGame).setInitialTime(System.currentTimeMillis());
     }
 
     public ArrayList<Integer> getNewCodeMakerComb() {
@@ -230,9 +231,8 @@ public class DomainCtrl {
     }
 
     public void saveGame() {
-        CodeBreaker game = (CodeBreaker) currentGame;
-        game.setLSDNow();
-        currentGame = game;
+        ((CodeBreaker) currentGame).setLSDNow();
+        ((CodeBreaker) currentGame).setTimeElapsed();
         PersistenceCtrl.saveGame(currentGame, currentGame.getId(), currentUser.getNickname());
         currentUser.addToSavedGames(currentGame.getId());
         PersistenceCtrl.saveObject(uSet, PersistenceCtrl.USERS_FILE_PATH);
