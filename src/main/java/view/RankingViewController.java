@@ -2,7 +2,6 @@ package view;
 
 import game.DiffEnum;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,7 +35,7 @@ public class RankingViewController {
         
         RREntry rankingList[] = new RREntry[0];
 
-        switch (ViewController.askDifficulty()) {
+        switch (ViewController.askCodeBreakerDifficulty()) {
             case EASY:
                 rankingList = domainCtrl.getRankingRREntryes(DiffEnum.EASY);
                 difficultyLabel.setText("Ranking dificultad Fácil");

@@ -93,24 +93,6 @@ public class ViewController {
         }
     }
 
-    public static DiffEnum askDifficulty() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Seleccion de nivel");
-        alert.setHeaderText(null);
-        alert.setContentText("Selecciona un nivel");
-
-        ButtonType easy = new ButtonType("Fácil");
-        ButtonType original = new ButtonType("Original");
-        ButtonType hard = new ButtonType("Dificil");
-
-        alert.getButtonTypes().setAll(easy, original, hard);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == easy) return DiffEnum.EASY;
-        else if (result.get() == original) return DiffEnum.ORIGINAL;
-        else return DiffEnum.HARD;
-    }
-
     public static void recordsView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/RecordView.fxml").toUri().toString()));
@@ -148,5 +130,68 @@ public class ViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void codeMakerView(DomainCtrl domainCtrl) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeMakerView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            CodeMakerViewController codeMakerViewController = Loader.getController();
+            codeMakerViewController.setDomainCtrl(domainCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static DiffEnum askCodeBreakerDifficulty() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Seleccion de nivel");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciona un nivel");
+
+        ButtonType easy = new ButtonType("Fácil");
+        ButtonType original = new ButtonType("Original");
+        ButtonType hard = new ButtonType("Dificil");
+
+        alert.getButtonTypes().setAll(easy, original, hard);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == easy) return DiffEnum.EASY;
+        else if (result.get() == original) return DiffEnum.ORIGINAL;
+        else return DiffEnum.HARD;
+    }
+
+    public static DiffEnum askCodeMakerDifficulty() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Seleccion de nivel");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciona un nivel");
+
+        ButtonType original = new ButtonType("Original");
+        ButtonType hard = new ButtonType("Dificil");
+
+        alert.getButtonTypes().setAll(original, hard);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == original) return DiffEnum.ORIGINAL;
+        else return DiffEnum.HARD;
+    }
+
+    public static void showErrorMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static void showInformationMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -21,15 +21,20 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
    <children>
-      <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" />
+      <Label fx:id="code" layoutX="688.0" layoutY="10.0" maxHeight="40.0" maxWidth="195.0" text="CodeBreaker" textAlignment="CENTER" />
+      <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" visible="false" />
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="911.0">
          <children>
-             <VBox alignment="CENTER" prefHeight="480.0" prefWidth="193.0" spacing="20.0">
+             <VBox alignment="BOTTOM_CENTER" minWidth="150.0" prefHeight="480.0" prefWidth="150.0" spacing="20.0">
                 <children>
-                  <Button id="check" fx:id="checkButton" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" textAlignment="CENTER" />
-                    <Label fx:id="winLabel" prefHeight="20.0" prefWidth="100.0" />
-                    <Label fx:id="elapsedTimeLabel" prefHeight="20.0" prefWidth="100.0" />
-                    <Label fx:id="scoreLabel" prefHeight="20.0" prefWidth="100.0" />
+                  <Button id="checkButton" fx:id="checkButton" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" textAlignment="CENTER" />
+                  <VBox fx:id="finish" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                          <Label fx:id="winLabel" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
+                          <Label fx:id="elapsedTimeLabel" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
+                          <Label fx:id="scoreLabel" prefHeight="30.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
                 </children>
                <HBox.margin>
                   <Insets top="120.0" />

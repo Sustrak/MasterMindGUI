@@ -22,6 +22,11 @@ public class MainMenuViewController {
     }
 
     public void codeMakerButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.codeMakerView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadGameButtonAction(ActionEvent actionEvent) {
