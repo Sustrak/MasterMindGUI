@@ -101,6 +101,8 @@ public class BoardViewController implements Initializable {
         winLabel.setText("");
         elapsedTimeLabel.setText("");
         scoreLabel.setText("");
+        timerLabel.setText("Tiempo :  0");
+        seconds = 0;
         buildBoard();
     }
 
