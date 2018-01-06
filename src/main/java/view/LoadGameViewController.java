@@ -1,17 +1,21 @@
 package view;
 
-import game.DiffEnum;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import layers.DomainCtrl;
-import rr.RREntry;
 
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class LoadGameViewController {
@@ -19,47 +23,59 @@ public class LoadGameViewController {
     private DomainCtrl domainCtrl;
 
     public VBox mainVBox;
-    public Label difficultyLabel;
-    public TableView<RREntry> rankingTable;
-    public TableColumn<RREntry, Date> dateColumn;
-    public TableColumn<RREntry, String> nickNameColumn;
-    public TableColumn<RREntry, Double> scoreColumn;
+    public GridPane savedGamesGridPane;
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
         this.domainCtrl = domainCtrl;
-        buildRankingsGridPane();
+        buildSavedGamesTable();
     }
 
-    private void buildRankingsGridPane() {
-        
-        RREntry rankingList[] = new RREntry[0];
+    private void buildSavedGamesTable() {
 
-        switch (ViewController.askCodeBreakerDifficulty()) {
-            case EASY:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.EASY);
-                difficultyLabel.setText("Ranking dificultad Fácil");
-                break;
-            case ORIGINAL:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.ORIGINAL);
-                difficultyLabel.setText("Ranking dificultad Original");
-                break;
-            case HARD:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.HARD);
-                difficultyLabel.setText("Ranking dificultad Difícil");
-                break;
+        Vector ids = domainCtrl.getIdSavedGames();
+        int i = 0;
+        int errorLoading = 0;
+        for (Object id1 : ids) {
+            int id = (int) id1;
+            ArrayList<String> infoGame = null;
+            try {
+                infoGame = domainCtrl.getInfoGame(id);
+            } catch (FileNotFoundException e) {
+                String s = "No se pudo cargar la partida con id: " + id + " comprueve que el archivo exista";
+                ViewController.showErrorMessage(s);
+                ++errorLoading;
+                continue;
+            }
+            addSavedGame(infoGame, i);
+            i++;
         }
-
-        dateColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, Date>("date"));
-
-        nickNameColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, String>("username"));
-
-        scoreColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, Double>("score"));
-
-        rankingTable.getItems().setAll(rankingList);
     }
+
+    private void addSavedGame(ArrayList<String> infoGame, int i) {
+        i++;
+        Label label = new Label(infoGame.get(2));
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        savedGamesGridPane.add(label, 0, i);
+        label = new Label(infoGame.get(1));
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+        savedGamesGridPane.add(label, 1, i);
+        Button button = new Button("Cargar");
+        button.setId(infoGame.get(0));
+        button.setOnAction(loadButtonAction);
+        GridPane.setHalignment(button, HPos.CENTER);
+        GridPane.setValignment(button, VPos.CENTER);
+        savedGamesGridPane.add(button, 2, i);
+    }
+
+    private EventHandler<ActionEvent> loadButtonAction = event -> {
+        Object source = event.getTarget();
+        if (source instanceof Button) {
+            System.out.print("button: " + ((Button)source).getId());
+        }
+    };
+
 
     public void exitButtonAction(ActionEvent actionEvent) {
         try {

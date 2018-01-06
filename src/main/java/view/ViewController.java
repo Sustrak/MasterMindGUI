@@ -145,6 +145,19 @@ public class ViewController {
         }
     }
 
+    public static void loadGameView(DomainCtrl domainCtrl) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/LoadGameView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            LoadGameViewController loadGameViewController = Loader.getController();
+            loadGameViewController.setDomainCtrl(domainCtrl);
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static DiffEnum askCodeBreakerDifficulty() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Seleccion de nivel");

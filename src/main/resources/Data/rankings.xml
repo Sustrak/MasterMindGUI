@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_111" class="java.beans.XMLDecoder">
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
  <object class="rr.Ranking" id="Ranking0">
   <void id="RREntryArray0" property="maxPuntuationEasy">
    <void index="0">
@@ -31,6 +31,19 @@
    <void index="2">
     <void property="date">
      <object class="java.util.Date">
+      <long>1515183233204</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>9523.809523809523</double>
+    </void>
+    <void property="username">
+     <string>j</string>
+    </void>
+   </void>
+   <void index="3">
+    <void property="date">
+     <object class="java.util.Date">
       <long>1515014011765</long>
      </object>
     </void>
@@ -38,7 +51,7 @@
      <double>90.0</double>
     </void>
    </void>
-   <void index="3">
+   <void index="4">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -48,7 +61,7 @@
      <double>80.0</double>
     </void>
    </void>
-   <void index="4">
+   <void index="5">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -58,7 +71,7 @@
      <double>70.0</double>
     </void>
    </void>
-   <void index="5">
+   <void index="6">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -68,7 +81,7 @@
      <double>60.0</double>
     </void>
    </void>
-   <void index="6">
+   <void index="7">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -78,7 +91,7 @@
      <double>50.0</double>
     </void>
    </void>
-   <void index="7">
+   <void index="8">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -88,7 +101,7 @@
      <double>40.0</double>
     </void>
    </void>
-   <void index="8">
+   <void index="9">
     <void property="date">
      <object class="java.util.Date">
       <long>1515014011765</long>
@@ -98,101 +111,19 @@
      <double>30.0</double>
     </void>
    </void>
-   <void index="9">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-    <void property="score">
-     <double>20.0</double>
-    </void>
-   </void>
   </void>
   <void id="RREntryArray1" property="maxPuntuationHard">
    <void index="0">
     <void property="date">
      <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="1">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="2">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="3">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="4">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="5">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="6">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="7">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="8">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-   <void index="9">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515014011765</long>
-     </object>
-    </void>
-   </void>
-  </void>
-  <void id="RREntryArray2" property="maxPuntuationOriginal">
-   <void index="0">
-    <void property="date">
-     <object class="java.util.Date">
-      <long>1515179219461</long>
+      <long>1515182911289</long>
      </object>
     </void>
     <void property="score">
-     <double>Infinity</double>
+     <double>882.3529411764706</double>
     </void>
     <void property="username">
-     <string>p</string>
+     <string>j</string>
     </void>
    </void>
    <void index="1">
@@ -283,6 +214,114 @@
     </void>
     <void property="score">
      <double>10.0</double>
+    </void>
+   </void>
+  </void>
+  <void id="RREntryArray2" property="maxPuntuationOriginal">
+   <void index="0">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515179219461</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>Infinity</double>
+    </void>
+    <void property="username">
+     <string>p</string>
+    </void>
+   </void>
+   <void index="1">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515183119107</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>23076.923076923078</double>
+    </void>
+    <void property="username">
+     <string>j</string>
+    </void>
+   </void>
+   <void index="2">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>90.0</double>
+    </void>
+   </void>
+   <void index="3">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>80.0</double>
+    </void>
+   </void>
+   <void index="4">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>70.0</double>
+    </void>
+   </void>
+   <void index="5">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>60.0</double>
+    </void>
+   </void>
+   <void index="6">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>50.0</double>
+    </void>
+   </void>
+   <void index="7">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>40.0</double>
+    </void>
+   </void>
+   <void index="8">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>30.0</double>
+    </void>
+   </void>
+   <void index="9">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1515014011765</long>
+     </object>
+    </void>
+    <void property="score">
+     <double>20.0</double>
     </void>
    </void>
   </void>

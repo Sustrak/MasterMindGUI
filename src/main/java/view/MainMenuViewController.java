@@ -30,6 +30,11 @@ public class MainMenuViewController {
     }
 
     public void loadGameButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.loadGameView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void rankButtonAction(ActionEvent actionEvent) {
