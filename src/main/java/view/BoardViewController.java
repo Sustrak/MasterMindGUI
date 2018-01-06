@@ -74,7 +74,7 @@ public class BoardViewController implements Initializable {
     public void newGame() {
         DiffEnum difficulty = ViewController.askCodeBreakerDifficulty();
         setDifficulty(difficulty);
-        domainCtrl.startNewCodeMaker(difficulty);
+        domainCtrl.startNewCodeBreaker(difficulty);
         selectedColor = "";
         selectedRow = 10;
         checkButton.setDisable(true);
