@@ -7,16 +7,66 @@ and open the template in the editor.
     Created on : 04-ene-2018, 18:37:32
     Author     : pererumbo
 */
+   
+
+@font-face {
+    font-family: Adventure;
+    src: url("Adventure.otf");
+}
 
 AnchorPane {
     
-    -fx-background-image: url("LogIn.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-position: center center;
-    -fx-background-size: 911 510;
+    -fx-background-color:
+        linear-gradient(to bottom, #fda085 0%, #FEFEFE 50%),
+        linear-gradient(to top, #f6d365 0%, #fda085 50%);
+}
+
+#back {
+    -fx-opacity: 0.2;
+    -fx-background-image:url("white.jpg");
+    -fx-background-size: 2000 2000;
+}
+
+#mastermind {
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.6), 7, 0.0, 5,5);
+
+}
+        
+Label  {
     
+    -fx-font-family: "Adventure", Arial;
+    -fx-font-size: 3em;
+    -fx-text-fill:
+        linear-gradient(to bottom, #CCCCCC 0%, #FEFEFE 50%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 7, 0.0, 0,1);
+
+}
+
+Label .text {
+    
+    -fx-stroke: #555555;
+    -fx-stroke-width: .8;
+}
+
+TextField, PasswordField {
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-border-color:  rgba(50,50,50,0.3);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.1), 7, 0.0, 0,1);
+    -fx-font-family: Arial;
+    -fx-font-size: 1.2em;
+
+}
+
+#logCase {
+    
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-border-color:  rgba(50,50,50,.3);
+    -fx-background-color:  rgba(1,1,0,0.1);
     
 }
+
 .button {
 -fx-text-fill: white;
 -fx-font-family: arial, sans-serif;

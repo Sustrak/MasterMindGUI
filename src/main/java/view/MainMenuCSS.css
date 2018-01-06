@@ -13,6 +13,20 @@ and open the template in the editor.
     src: url("Adventure.otf");
 }
 
+Label:not(#recordGridPane .Label)  {
+    
+    -fx-font-family: "Adventure", Arial;
+    -fx-font-size: 1.8em;
+    -fx-text-fill:
+        linear-gradient(to bottom, #CCCCCC 0%, #FEFEFE 30%);
+}
+
+Label .text :not(#recordGridPane .Label){
+    
+    -fx-stroke: #555555;
+    -fx-stroke-width: .5;
+}
+
 #mastermind {
 
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.6), 7, 0.0, 5,5);
@@ -62,8 +76,9 @@ AnchorPane, #recordBox, #rankingPane {
 }
 
 #back {
-    -fx-opacity: 0.1;
-    -fx-background-image:url("marble.jpg");
+    -fx-opacity: 0.2;
+    -fx-background-image:url("white.jpg");
+    -fx-background-size: 2000 2000;
 }
 
 .button {
@@ -102,4 +117,8 @@ Pane{
     -fx-border-width: 1;
     -fx-background-color: 
         linear-gradient(to bottom, #FFFFFF 0%, #D6D6D6 80%);
+}
+
+#nickNameTextField {
+    -fx-border-width: 5;
 }
