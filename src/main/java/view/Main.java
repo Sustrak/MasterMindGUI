@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import layers.PresentationCtrl;
 
@@ -25,6 +26,7 @@ public class Main  extends Application{
         stage.setScene(new Scene(root, 911, 600));
         stage.centerOnScreen();
         stage.setResizable(false);
+        stage.getIcons().addAll(new Image(Paths.get("src/main/resources/GUI/Images/icon.png").toUri().toString()));
         stage.show();
     }
 

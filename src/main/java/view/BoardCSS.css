@@ -213,7 +213,7 @@ AnchorPane {
     -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.8), 5, 0.0, 0,1);
 }
 
-#finish .label, #code {
+#finish .label, #code, #timerLabel  {
     
     -fx-font-family: "Adventure";
     -fx-font-size: 2em;
@@ -223,7 +223,7 @@ AnchorPane {
 
 }
 
-#finish .label .text, #code .text{
+#finish .label .text, #code .text, #timerLabel .text{
     -fx-stroke: #555555;
     -fx-stroke-width: .5;
 }

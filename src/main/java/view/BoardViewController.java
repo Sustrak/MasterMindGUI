@@ -1,7 +1,10 @@
 package view;
 
+import game.Board;
 import game.DiffEnum;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -16,6 +19,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import layers.DomainCtrl;
 
 import java.io.FileNotFoundException;
@@ -23,6 +28,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class BoardViewController implements Initializable {
@@ -53,18 +61,27 @@ public class BoardViewController implements Initializable {
     public Label elapsedTimeLabel;
     public Label scoreLabel;
     public Label winLabel;
+    public Label timerLabel;
 
     private boolean allowRepeat;
     private int nColors;
     private int nColumns;
     private int nRows;
     private int selectedRow = 10;
+    private int seconds;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainGridPane.setOnMouseClicked(mainGridPaneOnMouseClicked);
         colorSelectionVBox.setOnMouseClicked(colorSelectionVBoxOnMouseClicked);
+
+        //Timer
+        seconds = 0;
+
+        Timeline secondUpdate = new Timeline(new KeyFrame(Duration.seconds(1), event -> timerLabel.setText("Tiempo :  " + ++seconds)));
+        secondUpdate.setCycleCount(Timeline.INDEFINITE);
+        secondUpdate.play();
     }
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
@@ -232,6 +249,16 @@ public class BoardViewController implements Initializable {
 
     public void saveGameButtonAction(ActionEvent actionEvent) {
         domainCtrl.saveGame();
+        Dialog<Boolean> dialog = new Dialog<>();
+        dialog.setContentText("Su partida fue guardada");
+        dialog.show();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        dialog.setResult(Boolean.TRUE);
+        dialog.close();
     }
 
     public void newGameButtonAction(ActionEvent actionEvent) {
