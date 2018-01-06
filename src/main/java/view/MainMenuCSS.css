@@ -13,7 +13,7 @@ and open the template in the editor.
     src: url("Adventure.otf");
 }
 
-Label:not(#recordGridPane .Label)  {
+Label:not(#recordGridPane .Label), #ss  {
     
     -fx-font-family: "Adventure", Arial;
     -fx-font-size: 1.8em;
@@ -111,7 +111,7 @@ AnchorPane, #recordBox, #rankingPane {
     -fx-font-family: arial, sans-serif;
 }
 
-Pane{
+Pane:not(#signUp){
     -fx-border-radius: 1;
     -fx-border-color: #333333;
     -fx-border-width: 1;
@@ -119,6 +119,10 @@ Pane{
         linear-gradient(to bottom, #FFFFFF 0%, #D6D6D6 80%);
 }
 
-#nickNameTextField {
-    -fx-border-width: 5;
+#signUp TextField {
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-border-color:  rgba(50,50,50,0.3);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.1), 7, 0.0, 0,1);
+    -fx-font-family: Arial;
+    -fx-font-size: 1.2em;
 }
