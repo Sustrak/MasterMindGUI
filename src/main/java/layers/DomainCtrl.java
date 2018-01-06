@@ -55,7 +55,7 @@ public class DomainCtrl {
             meta.setBackgroundMusicVolume(0.25);
         }
         //Load Music
-        Media media = new Media (Paths.get("src/main/resources/GUI/Music/MM_music.mp4").toUri().toString());
+        Media media = new Media (Paths.get("src/main/resources/GUI/Music/MM_music.mp3").toUri().toString());
         backgroundMusic = new MediaPlayer(media);
         backgroundMusic.setCycleCount(99999);
         backgroundMusic.setVolume(meta.getBackgroundMusicVolume());
