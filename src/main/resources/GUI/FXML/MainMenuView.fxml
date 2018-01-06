@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,37 +9,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuViewController">
+<AnchorPane prefHeight="250.0" prefWidth="524.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuViewController">
    <children>
       <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
-      <HBox alignment="CENTER" layoutX="-4.0" layoutY="89.0" prefHeight="514.0" prefWidth="911.0" spacing="60.0">
+      <VBox alignment="CENTER" prefHeight="600.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="200.0" spacing="40.0">
+            <ImageView fx:id="mastermind" fitHeight="300.0" fitWidth="800.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/mastermind.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="TOP_CENTER" layoutX="-4.0" layoutY="150.0" prefHeight="450.0" prefWidth="911.0" spacing="60.0">
                <children>
-                  <Button fx:id="codeBreakerButton" mnemonicParsing="false" onAction="#codeBreakerButtonAction" prefWidth="200.0" text="CodeBreaker" />
-                  <Button fx:id="codeMakerButton1" mnemonicParsing="false" onAction="#codeMakerButtonAction" prefWidth="200.0" text="CodeMaker" />
-                  <Button fx:id="loadGameButton1" mnemonicParsing="false" onAction="#loadGameButtonAction" prefWidth="200.0" text="Cargar Partida" />
+                  <VBox alignment="CENTER" prefHeight="500.0" prefWidth="200.0" spacing="40.0">
+                     <children>
+                        <Button fx:id="codeBreakerButton" mnemonicParsing="false" onAction="#codeBreakerButtonAction" prefWidth="200.0" text="CodeBreaker" />
+                        <Button fx:id="codeMakerButton1" mnemonicParsing="false" onAction="#codeMakerButtonAction" prefWidth="200.0" text="CodeMaker" />
+                        <Button fx:id="loadGameButton1" mnemonicParsing="false" onAction="#loadGameButtonAction" prefWidth="200.0" text="Cargar Partida" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="494.0" prefWidth="200.0" spacing="40.0">
+                     <children>
+                        <Button fx:id="rankButton" mnemonicParsing="false" onAction="#rankButtonAction" prefWidth="200.0" text="Consultar Rankings" />
+                        <Button fx:id="recordsButton" mnemonicParsing="false" onAction="#recordsButtonAction" prefWidth="200.0" text="Consultar Records" />
+                        <Button fx:id="playerButton" mnemonicParsing="false" onAction="#playerButtonAction" prefWidth="200.0" text="Consultar Jugador" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="494.0" prefWidth="183.0" spacing="50.0">
+                     <children>
+                        <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsButtonAction" prefWidth="200.0" text="Ajustes" />
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" prefWidth="200.0" text="LogOut" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="494.0" prefWidth="200.0" spacing="40.0">
-               <children>
-                  <Button fx:id="rankButton" mnemonicParsing="false" onAction="#rankButtonAction" prefWidth="200.0" text="Consultar Rankings" />
-                  <Button fx:id="recordsButton" mnemonicParsing="false" onAction="#recordsButtonAction" prefWidth="200.0" text="Consultar Records" />
-                  <Button fx:id="playerButton" mnemonicParsing="false" onAction="#playerButtonAction" prefWidth="200.0" text="Consultar Jugador" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="494.0" prefWidth="183.0" spacing="50.0">
-               <children>
-                  <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsButtonAction" prefWidth="200.0" text="Ajustes" />
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" prefWidth="200.0" text="LogOut" />
-               </children>
-            </VBox>
+               <VBox.margin>
+                  <Insets top="-70.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-      </HBox>
-      <ImageView fx:id="mastermind" fitHeight="282.0" fitWidth="747.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/mastermind.png" />
-         </image>
-      </ImageView>
+      </VBox>
    </children>
 </AnchorPane>

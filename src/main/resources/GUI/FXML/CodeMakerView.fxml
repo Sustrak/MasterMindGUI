@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CodeMakerViewController">
    <children>
+      <AnchorPane fx:id="back" prefHeight="610.0" prefWidth="911.0" />
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="911.0" spacing="20.0">
          <children>
             <VBox fx:id="colorSelectionVBox" alignment="CENTER" minWidth="100.0" spacing="10.0" />
