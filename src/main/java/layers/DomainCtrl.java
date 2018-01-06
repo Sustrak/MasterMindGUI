@@ -300,7 +300,7 @@ public class DomainCtrl {
      * @return an ArrayList which contains the info of a game in this order:
      *         game.id, game.DiffEnum, game.lastSavedDate
      */
-    ArrayList<String> getInfoGame(int gameId) throws FileNotFoundException {
+    public ArrayList<String> getInfoGame(int gameId) throws FileNotFoundException {
         CodeBreaker game = null;
         game = (CodeBreaker) PersistenceCtrl.loadGame(gameId, currentUser.getNickname());
 
@@ -312,7 +312,7 @@ public class DomainCtrl {
         return info;
     }
 
-    Vector<Integer> getIdSavedGames() {
+    public Vector<Integer> getIdSavedGames() {
         return currentUser.getSavedGames();
     }
 

@@ -1,0 +1,113 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-ene-2018, 0:55:36
+    Author     : pererumbo
+*/
+
+@font-face {
+    font-family: Adventure;
+    src: url("Adventure.otf");
+}
+
+#mastermind {
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.6), 7, 0.0, 5,5);
+
+}
+
+#music {
+    
+    -fx-font-family: "Adventure";
+    -fx-font-size: 2.5em;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.5), 7, 0.0, 2,2);
+    -fx-text-fill:
+        linear-gradient(to bottom, #CCCCCC 0%, #FEFEFE 30%); 
+}
+
+#music .text {
+    -fx-stroke: #555555;
+    -fx-stroke-width: .5;
+}
+
+#difficultyLabel, #recordLabel{
+    
+    -fx-font-family: "Adventure";
+    -fx-font-size: 3.5em;
+    -fx-text-fill:
+        linear-gradient(to bottom, #CCCCCC 0%, #FEFEFE 30%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.5), 7, 0.0, 0,1);
+}
+
+#difficultyLabel .text, #recordLabel .text{
+    
+    -fx-stroke: #555555;
+    -fx-stroke-width: .5;
+}
+
+AnchorPane, #recordBox, #rankingPane {
+    
+    -fx-stroke: #044C1F;
+    -fx-stroke-width: 20;
+    -fx-background-color:
+        linear-gradient(to bottom, #fda085 0%, #FEFEFE 50%),
+        linear-gradient(to top, #f6d365 0%, #fda085 50%);
+}
+
+#rankingPane .table-cell {
+    -fx-alignment: CENTER;
+}
+
+#back {
+    -fx-opacity: 0.1;
+    -fx-background-image:url("marble.jpg");
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-base: #706e6a;
+    -fx-wrap-text: true;
+    -fx-padding: 15;
+    -fx-backgroundRadius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
+}
+
+.button:hover {
+        -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+
+.button .text{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
+}
+
+#recordGridPane, #rankingTable {
+    
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,.5), 5, 0.0, 3,2);
+    -fx-font-family: arial, sans-serif;
+}
+
+Pane{
+    -fx-border-radius: 1;
+    -fx-border-color: #333333;
+    -fx-border-width: 1;
+    -fx-background-color: 
+        linear-gradient(to bottom, #FFFFFF 0%, #D6D6D6 80%);
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
