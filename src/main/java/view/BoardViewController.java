@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import layers.DomainCtrl;
 
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -68,32 +69,12 @@ public class BoardViewController implements Initializable {
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
         this.domainCtrl = domainCtrl;
-        newGame();
     }
 
     public void newGame() {
-        switch (ViewController.askCodeBreakerDifficulty()) {
-            case EASY:
-                domainCtrl.startNewCodeBreaker(DiffEnum.EASY);
-                nColumns = 4;
-                nRows = 11;
-                nColors = 6;
-                allowRepeat = false;
-                break;
-            case ORIGINAL:
-                domainCtrl.startNewCodeBreaker(DiffEnum.ORIGINAL);
-                nColumns = 4;
-                nRows = 11;
-                nColors = 6;
-                allowRepeat = true;
-                break;
-            case HARD:
-                domainCtrl.startNewCodeBreaker(DiffEnum.HARD);
-                nColumns = 6;
-                nRows = 11;
-                nColors = 8;
-                break;
-        }
+        DiffEnum difficulty = ViewController.askCodeBreakerDifficulty();
+        setDifficulty(difficulty);
+        domainCtrl.startNewCodeMaker(difficulty);
         selectedColor = "";
         selectedRow = 10;
         checkButton.setDisable(true);
@@ -104,6 +85,28 @@ public class BoardViewController implements Initializable {
         elapsedTimeLabel.setText("");
         scoreLabel.setText("");
         buildBoard();
+    }
+
+    private void setDifficulty(DiffEnum difficulty) {
+        switch (difficulty) {
+            case EASY:
+                nColumns = 4;
+                nRows = 11;
+                nColors = 6;
+                allowRepeat = false;
+                break;
+            case ORIGINAL:
+                nColumns = 4;
+                nRows = 11;
+                nColors = 6;
+                allowRepeat = true;
+                break;
+            case HARD:
+                nColumns = 6;
+                nRows = 11;
+                nColors = 8;
+                break;
+        }
     }
 
     private String getColorId(int i) {
@@ -187,7 +190,7 @@ public class BoardViewController implements Initializable {
         System.out.print("newCombination: " + newCombination + "\n");
         System.out.print("WhitePegs: " + domainCtrl.getWhitePegs(9 - selectedRow) + "\n");
         System.out.print("BlackPegs: " + domainCtrl.getBlackPegs(9 - selectedRow) + "\n");
-        paintCheckPegs();
+        paintCheckPegs(selectedRow);
         if (selectedRow > 1) {
             selectedRow--;
         } else {
@@ -199,7 +202,12 @@ public class BoardViewController implements Initializable {
     }
 
     public void clue1ButtonAction(ActionEvent actionEvent) {
-        int colorRemoved = domainCtrl.useFirstClue();
+        domainCtrl.useFirstClue();
+        setClue1();
+    }
+
+    public void setClue1() {
+        int colorRemoved = domainCtrl.getColorRemoved();
         Circle selectedCircle = (Circle) colorSelectionVBox.getChildren().get(colorRemoved);
         selectedCircle.setDisable(true);
         selectedCircle.setId("grayCircle");
@@ -208,6 +216,10 @@ public class BoardViewController implements Initializable {
 
     public void clue2ButtonAction(ActionEvent actionEvent) {
         domainCtrl.useSecondClue();
+        setClue2();
+    }
+
+    public void setClue2() {
         int clue2Position = domainCtrl.getPositionClue();
         int clue2Color = domainCtrl.getColorClue();
         for (int i = 0; i <= 10; i++) {
@@ -261,18 +273,18 @@ public class BoardViewController implements Initializable {
         return true;
     }
 
-    private void paintCheckPegs() {
-        int nWhitePegs = domainCtrl.getWhitePegs(10 - selectedRow);
-        int nBlackPegs = domainCtrl.getBlackPegs(10 - selectedRow);
+    private void paintCheckPegs(int row) {
+        int nWhitePegs = domainCtrl.getWhitePegs(10 - row);
+        int nBlackPegs = domainCtrl.getBlackPegs(10 - row);
         int i = 0;
         while (nBlackPegs > 0) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow - 1) * nColumns + i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row - 1) * nColumns + i);
             selectedCircle.setId("blackCheckPeg");
             nBlackPegs--;
             i++;
         }
         while (nWhitePegs > 0) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow - 1) * nColumns + i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row - 1) * nColumns + i);
             selectedCircle.setId("whiteCheckPeg");
             nWhitePegs--;
             i++;
@@ -304,4 +316,43 @@ public class BoardViewController implements Initializable {
     }
 
 
+    public void loadGame(int gameId) {
+        try {
+            domainCtrl.loadGame(gameId);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        setDifficulty(domainCtrl.getDifficulty());
+        buildBoard();
+        selectedColor = "";
+        selectedRow = 10 - domainCtrl.getNCombinations();
+        System.out.print("selectedRow: " + selectedRow + "\n");
+        System.out.print("getNCombinations: " + domainCtrl.getNCombinations() + "\n");
+
+        checkButton.setDisable(true);
+        saveGameButton.setDisable(false);
+        if (domainCtrl.firstClueUsed()) {
+            clue1Button.setDisable(true);
+            setClue1();
+        }
+        if (domainCtrl.secondClueUsed()) {
+            clue2Button.setDisable(true);
+            setClue2();
+        }
+        winLabel.setText("");
+        elapsedTimeLabel.setText("");
+        scoreLabel.setText("");
+        loadBuildBoard();
+    }
+
+    private void loadBuildBoard() {
+        for (int i = 0; i < domainCtrl.getNCombinations(); i++) {
+            ArrayList<Integer> combination = domainCtrl.getCombination(i);
+            for (int j = 0; j < nColumns; j++) {
+                Circle selectedCircle = (Circle)mainGridPane.getChildren().get((10-i) * nColumns + j);
+                selectedCircle.setId(getColorId(combination.get(j)) + "Circle");
+            }
+            paintCheckPegs(10 - i);
+        }
+    }
 }

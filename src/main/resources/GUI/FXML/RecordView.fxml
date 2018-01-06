@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="recordAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RecordViewController">
+<AnchorPane fx:id="recordAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/recordsCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RecordViewController">
    <children>
       <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
       <HBox fx:id="recordBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0">
@@ -41,17 +41,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                          </rowConstraints>
                          <children>
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="1" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="2" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="3" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="1" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="1" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="2" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="3" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="4" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="1" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="2" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="2" />
+                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../java/view/recordsCSS.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -59,34 +59,34 @@
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                         <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="3" />
-                             <Label alignment="CENTER" style="-fx-font-weight: bold;" text="Date" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="3" />
+                             <Label alignment="CENTER" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Date" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                        <Label style="-fx-font-weight: bold;" text="Más partidas jugadas:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="3">
+                        <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Más partidas jugadas:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                             <Label style="-fx-font-weight: bold;" text="Más partidas ganadas:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
+                             <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Más partidas ganadas:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                             <Label style="-fx-font-weight: bold;" text="NickName" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                             <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="NickName" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                             <Label style="-fx-font-weight: bold;" text="Score" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                             <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Score" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                             <Label style="-fx-font-weight: bold;" text="Más Experiencia:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                             <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Más Experiencia:" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
-                             <Label style="-fx-font-weight: bold;" text="Más partidas ganadas sin perder:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+                             <Label style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Más partidas ganadas sin perder:" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font></Label>
                          </children>
                          <VBox.margin>

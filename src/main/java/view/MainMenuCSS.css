@@ -48,7 +48,7 @@ Label .text {
     -fx-stroke-width: .5;
 }
 
-#difficultyLabel, #recordLabel{
+#difficultyLabel{
     
     -fx-font-family: "Adventure";
     -fx-font-size: 3.5em;
@@ -57,7 +57,7 @@ Label .text {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.5), 7, 0.0, 0,1);
 }
 
-#difficultyLabel .text, #recordLabel .text{
+#difficultyLabel .text{
     
     -fx-stroke: #555555;
     -fx-stroke-width: .5;
@@ -106,24 +106,10 @@ AnchorPane {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);
 }
 
-#recordGridPane, #rankingTable {
+#rankingTable {
     
     -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,.5), 5, 0.0, 3,2);
     -fx-font-family: arial, sans-serif;
-}
-
-#recordAP Pane {
-    -fx-border-radius: 1;
-    -fx-border-color: #333333;
-    -fx-border-width: 1;
-    -fx-background-color: 
-        linear-gradient(to bottom, #FFFFFF 0%, #D6D6D6 80%);
-}
-
-#data, #data .text{
-    
-    -fx-fill: #222222;
-    -fx-stroke-width: 0;
 }
 
 TextField {

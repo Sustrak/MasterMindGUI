@@ -72,7 +72,12 @@ public class LoadGameViewController {
     private EventHandler<ActionEvent> loadButtonAction = event -> {
         Object source = event.getTarget();
         if (source instanceof Button) {
-            System.out.print("button: " + ((Button)source).getId());
+            int gameId = Integer.parseInt(((Button)source).getId());
+            try {
+                ViewController.loadBoardView(domainCtrl, gameId);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
     };
 
