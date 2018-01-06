@@ -15,13 +15,28 @@ import java.util.Optional;
 
 public class ViewController {
 
-    public static void boardView(DomainCtrl domainCtrl) throws MalformedURLException {
+    public static void newBoardView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/BoardView.fxml").toUri().toString()));
         try {
             Loader.load();
             BoardViewController boardViewController = Loader.getController();
             boardViewController.setDomainCtrl(domainCtrl);
+            boardViewController.newGame();
+            Main.changeScene(Loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadBoardView(DomainCtrl domainCtrl, int gameId) throws MalformedURLException {
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/BoardView.fxml").toUri().toString()));
+        try {
+            Loader.load();
+            BoardViewController boardViewController = Loader.getController();
+            boardViewController.setDomainCtrl(domainCtrl);
+            boardViewController.loadGame(gameId);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();

@@ -15,7 +15,7 @@ public class MainMenuViewController {
 
     public void codeBreakerButtonAction(ActionEvent actionEvent) {
         try {
-            ViewController.boardView(domainCtrl);
+            ViewController.newBoardView(domainCtrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
