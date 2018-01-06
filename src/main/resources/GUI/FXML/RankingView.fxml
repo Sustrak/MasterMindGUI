@@ -13,26 +13,34 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="rankingPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RankingViewController">
+<AnchorPane fx:id="rankingAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RankingViewController">
    <children>
-      <VBox fx:id="mainVBox" alignment="CENTER" prefHeight="500.0" prefWidth="900.0" spacing="20.0">
+      <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
+      <HBox fx:id="rankingPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
          <children>
-            <Label fx:id="difficultyLabel" />
-            <TableView fx:id="rankingTable" fixedCellSize="25.0" prefHeight="278.0" prefWidth="700.0">
-              <columns>
-                  <TableColumn fx:id="dateColumn" text="Date" />
-                  <TableColumn fx:id="nickNameColumn" text="NickName" />
-                  <TableColumn fx:id="scoreColumn" text="Score" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="46.0" prefWidth="113.0" text="Volver" />
+            <VBox fx:id="mainVBox" alignment="CENTER" prefHeight="600.0" prefWidth="900.0" spacing="30.0">
+               <children>
+                  <Label fx:id="difficultyLabel" />
+                  <TableView fx:id="rankingTable" fixedCellSize="25.0" prefHeight="290.0">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Date" />
+                        <TableColumn fx:id="nickNameColumn" text="NickName" />
+                        <TableColumn fx:id="scoreColumn" text="Score" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="46.0" prefWidth="113.0" text="Volver">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin></Button>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="100.0" />
+               </padding>
+            </VBox>
          </children>
-         <padding>
-            <Insets left="100.0" right="100.0" />
-         </padding>
-      </VBox>
+      </HBox>
    </children>
-</HBox>
+</AnchorPane>
