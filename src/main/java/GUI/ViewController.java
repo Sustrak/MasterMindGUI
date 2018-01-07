@@ -17,12 +17,12 @@ public class ViewController {
 
     public static void newBoardView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/BoardView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeBrakerView.fxml").toUri().toString()));
         try {
             Loader.load();
-            BoardViewController boardViewController = Loader.getController();
-            boardViewController.setDomainCtrl(domainCtrl);
-            boardViewController.newGame();
+            CodeBreakerViewController codeBreakerViewController = Loader.getController();
+            codeBreakerViewController.setDomainCtrl(domainCtrl);
+            codeBreakerViewController.newGame();
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,12 +31,12 @@ public class ViewController {
 
     public static void loadBoardView(DomainCtrl domainCtrl, int gameId) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/BoardView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeBrakerView.fxml").toUri().toString()));
         try {
             Loader.load();
-            BoardViewController boardViewController = Loader.getController();
-            boardViewController.setDomainCtrl(domainCtrl);
-            boardViewController.loadGame(gameId);
+            CodeBreakerViewController codeBreakerViewController = Loader.getController();
+            codeBreakerViewController.setDomainCtrl(domainCtrl);
+            codeBreakerViewController.loadGame(gameId);
             Main.changeScene(Loader);
         } catch (IOException e) {
             e.printStackTrace();

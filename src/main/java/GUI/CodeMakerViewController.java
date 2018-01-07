@@ -95,29 +95,6 @@ public class CodeMakerViewController implements Initializable {
         return true;
     }
 
-    private String getColorId(int i) {
-        switch (i) {
-            case 0:
-                return "blue";
-            case 1:
-                return "pink";
-            case 2:
-                return "orange";
-            case 3:
-                return "yellow";
-            case 4:
-                return "green";
-            case 5:
-                return "red";
-            case 6:
-                return "violet";
-            case 7:
-                return "brown";
-            default:
-                return "white";
-        }
-    }
-
     private void buildBoard() {
         mainGridPane.getChildren().clear();
         checkGridPane.getChildren().clear();
@@ -125,7 +102,7 @@ public class CodeMakerViewController implements Initializable {
         Circle circle;
         for (int i = 0; i < nColors; ++i) {
             circle = new Circle(30.0);
-            circle.setId(getColorId(i) + "Circle");
+            circle.setId(BoardViewsUtils.getColorId(i) + "Circle");
             colorSelectionVBox.getChildren().add(i, circle);
         }
         for (int i = 0; i < nRows; i++) {
@@ -204,7 +181,7 @@ public class CodeMakerViewController implements Initializable {
         domainCtrl.setNewCombination(newComb);
         for (int i = 0; i < nColumns; i++) {
             Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow * nColumns + i);
-            selectedCircle.setId(getColorId(newComb.get(i)) + "Circle");
+            selectedCircle.setId(BoardViewsUtils.getColorId(newComb.get(i)) + "Circle");
         }
     }
 

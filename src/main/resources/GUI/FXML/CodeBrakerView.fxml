@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="911.0" stylesheets="@../CSS/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BoardViewController">
+<AnchorPane prefHeight="500.0" prefWidth="911.0" stylesheets="@../CSS/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CodeBreakerViewController">
    <children>
       <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="911.0" stylesheets="@../CSS/BoardCSS.css" />
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="911.0">
