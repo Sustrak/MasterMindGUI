@@ -7,6 +7,8 @@ import layers.DomainCtrl;
 import java.net.MalformedURLException;
 import javafx.application.Platform;
 
+import javax.swing.text.View;
+
 public class LoginViewController {
 
     public TextField usernameTextField;
@@ -27,7 +29,6 @@ public class LoginViewController {
         String password = passwordTextField.getText();
         int result = domainCtrl.logIn(username, password);
         if (result == 0) {
-            System.out.print("LOGIN OK");
             try {
                 //Starts the music
                 domainCtrl.playBackgroundMusic();
@@ -37,7 +38,7 @@ public class LoginViewController {
             }
         }
         else {
-            System.out.print("BAD LOGIN");
+            ViewController.showErrorMessage("Usuario o contraseña incorrectos.");
         }
     }
 

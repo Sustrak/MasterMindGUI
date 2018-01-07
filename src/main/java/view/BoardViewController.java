@@ -42,6 +42,7 @@ public class BoardViewController implements Initializable {
 
 
     private String selectedColor = "";
+
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
@@ -64,6 +65,8 @@ public class BoardViewController implements Initializable {
     private int selectedRow = 10;
     private int seconds;
 
+    private Timeline secondUpdate;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,9 +77,8 @@ public class BoardViewController implements Initializable {
         seconds = -1;
         
         NumberFormat f = new DecimalFormat("00");
-        Timeline secondUpdate = new Timeline(new KeyFrame(Duration.seconds(1), event -> timerLabel.setText("" + f.format(TimeUnit.SECONDS.toMinutes(++seconds)) + " : " + f.format(seconds%60))));
+        secondUpdate = new Timeline(new KeyFrame(Duration.seconds(1), event -> timerLabel.setText("" + f.format(TimeUnit.SECONDS.toMinutes(++seconds)) + " : " + f.format(seconds%60))));
         secondUpdate.setCycleCount(Timeline.INDEFINITE);
-        secondUpdate.play();
     }
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
@@ -98,6 +100,7 @@ public class BoardViewController implements Initializable {
         scoreLabel.setText("");
         timerLabel.setText("00 : 00");
         seconds = 0;
+        secondUpdate.play();
         buildBoard();
     }
 
@@ -253,16 +256,7 @@ public class BoardViewController implements Initializable {
 
     public void saveGameButtonAction(ActionEvent actionEvent) {
         domainCtrl.saveGame();
-        Dialog<Boolean> dialog = new Dialog<>();
-        dialog.setContentText("Su partida fue guardada");
-        dialog.show();
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        dialog.setResult(Boolean.TRUE);
-        dialog.close();
+        ViewController.showInformationMessage("Partida guardada correctamente.");
     }
 
     public void newGameButtonAction(ActionEvent actionEvent) {
@@ -293,6 +287,8 @@ public class BoardViewController implements Initializable {
 
         elapsedTimeLabel.setText(minutes + ":" + seconds);
         scoreLabel.setText(String.valueOf((int) score));
+
+        secondUpdate.stop();
 
     }
 
