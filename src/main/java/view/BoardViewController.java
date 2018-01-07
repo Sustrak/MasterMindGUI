@@ -149,7 +149,14 @@ public class BoardViewController implements Initializable {
                 mainGridPane.add(circle, j, i);
             }
         }
-        for (int i = 0; i < nRows - 1; i++) {
+        
+        Label winComb = new Label();
+        winComb.setText("Combinación Ganadora");
+        winComb.setId("winComb");
+        winComb.setWrapText(true);
+        checkGridPane.add(winComb, 0, 0, 8, 1);
+        
+        for (int i = 1; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
                 circle = new Circle(10.0);
                 circle.setId("grayCheckPeg");
@@ -188,8 +195,8 @@ public class BoardViewController implements Initializable {
         }
         System.out.print("WinnerCombo:" + domainCtrl.getWinnerCombinationArray() + "\n");
         System.out.print("newCombination: " + newCombination + "\n");
-        System.out.print("WhitePegs: " + domainCtrl.getWhitePegs(9 - selectedRow) + "\n");
-        System.out.print("BlackPegs: " + domainCtrl.getBlackPegs(9 - selectedRow) + "\n");
+        System.out.print("WhitePegs: " + domainCtrl.getWhitePegs(10 - selectedRow) + "\n");
+        System.out.print("BlackPegs: " + domainCtrl.getBlackPegs(10 - selectedRow) + "\n");
         paintCheckPegs(selectedRow);
         if (selectedRow > 1) {
             selectedRow--;
@@ -274,17 +281,18 @@ public class BoardViewController implements Initializable {
     }
 
     private void paintCheckPegs(int row) {
+        
         int nWhitePegs = domainCtrl.getWhitePegs(10 - row);
         int nBlackPegs = domainCtrl.getBlackPegs(10 - row);
         int i = 0;
         while (nBlackPegs > 0) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row - 1) * nColumns + i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row-1) * nColumns + i + 1);
             selectedCircle.setId("blackCheckPeg");
             nBlackPegs--;
             i++;
         }
         while (nWhitePegs > 0) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row - 1) * nColumns + i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((row-1) * nColumns + i + 1);
             selectedCircle.setId("whiteCheckPeg");
             nWhitePegs--;
             i++;

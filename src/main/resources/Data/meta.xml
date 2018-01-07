@@ -4,5 +4,8 @@
   <void property="backgroundMusicVolume">
    <double>0.25</double>
   </void>
+  <void property="lastId">
+   <int>114</int>
+  </void>
  </object>
 </java>

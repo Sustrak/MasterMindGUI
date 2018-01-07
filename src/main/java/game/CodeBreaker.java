@@ -37,11 +37,11 @@ public class CodeBreaker extends Game {
 
 
         if(difficulty == DiffEnum.EASY || difficulty == DiffEnum.ORIGINAL) {
-            currentBoard = new Board(4, 12);
+            currentBoard = new Board(4, 10);
             colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5));
         }
         else {
-            currentBoard = new Board(6, 12);
+            currentBoard = new Board(6, 10);
             colorsAvailable = new ArrayList<>(Arrays.asList(0,1,2,3,4,5,6,7));
         }
 
@@ -142,26 +142,27 @@ public class CodeBreaker extends Game {
 
     @Override
     public double calculateScore(){
-        setTimeElapsed();
-        int nCombUsed = currentBoard.getNCombinations();
-        switch(nCombUsed){
-            case 1: score = 3000; break;
-            case 2: score = 2000; break;
-            case 3: score = 1500; break;
-            case 4: score = 1200; break;
-            case 5: score = 1000; break;
-            case 6: score = 900; break;
-            case 7: score = 800; break;
-            case 8: score = 500; break;
-            case 9: score = 400; break;
-            case 10: score = 300; break;
-            case 11: score = 200; break;
-            case 12: score = 100; break;
-            default: break;
+        if(score == 0){
+            setTimeElapsed();
+            System.out.println(elapsedTime);
+            int nCombUsed = currentBoard.getNCombinations();
+            switch(nCombUsed){
+                case 1: score = 3000; break;
+                case 2: score = 2000; break;
+                case 3: score = 1500; break;
+                case 4: score = 1200; break;
+                case 5: score = 1000; break;
+                case 6: score = 900; break;
+                case 7: score = 800; break;
+                case 8: score = 500; break;
+                case 9: score = 400; break;
+                case 10: score = 300; break;
+                default: break;
+            }
+        
+            double seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+            score = score * (1./seconds) * 100;
         }
-
-        double seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
-        score = score * (1./seconds) * 100;
 
         return score;
     }

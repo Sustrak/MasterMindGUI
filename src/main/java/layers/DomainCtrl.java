@@ -279,6 +279,7 @@ public class DomainCtrl {
     }
 
     public double getScore() {
+        calculateScore();
         return currentGame.getScore();
     }
 

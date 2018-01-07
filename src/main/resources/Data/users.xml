@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_111" class="java.beans.XMLDecoder">
+<java version="1.8.0_144" class="java.beans.XMLDecoder">
  <object class="users.UserSet" id="UserSet0">
   <void property="users">
    <void method="put">
@@ -38,7 +38,7 @@
      <void property="playedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>15.0</double>
+        <double>21.0</double>
        </void>
        <void property="hard">
         <double>3.0</double>
@@ -89,6 +89,48 @@
        <void method="add">
         <int>0</int>
        </void>
+       <void method="add">
+        <int>1</int>
+       </void>
+       <void method="add">
+        <int>2</int>
+       </void>
+       <void method="add">
+        <int>3</int>
+       </void>
+       <void method="add">
+        <int>4</int>
+       </void>
+       <void method="add">
+        <int>5</int>
+       </void>
+       <void method="add">
+        <int>6</int>
+       </void>
+       <void method="add">
+        <int>7</int>
+       </void>
+       <void method="add">
+        <int>8</int>
+       </void>
+       <void method="add">
+        <int>9</int>
+       </void>
+       <void method="add">
+        <int>10</int>
+       </void>
+       <void method="add">
+        <int>11</int>
+       </void>
+       <void method="add">
+        <int>12</int>
+       </void>
+       <void method="add">
+        <int>13</int>
+       </void>
+       <void method="add">
+        <int>14</int>
+       </void>
       </object>
      </void>
      <void property="surname">
@@ -97,7 +139,7 @@
      <void property="winnedGames">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>5.0</double>
+        <double>10.0</double>
        </void>
        <void property="hard">
         <double>3.0</double>
@@ -110,7 +152,7 @@
      <void property="winningSpree">
       <object class="users.GameTriple">
        <void property="easy">
-        <double>5.0</double>
+        <double>3.0</double>
        </void>
        <void property="hard">
         <double>3.0</double>

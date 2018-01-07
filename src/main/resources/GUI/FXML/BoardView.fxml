@@ -21,7 +21,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../java/view/BoardCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoardViewController">
    <children>
-      <Label fx:id="code" layoutX="688.0" layoutY="10.0" maxHeight="40.0" maxWidth="195.0" text="CodeBreaker" textAlignment="CENTER" />
+      <Label fx:id="code" alignment="CENTER" layoutX="20.0" layoutY="10.0" maxHeight="100.0" maxWidth="120.0" text="Code Breaker" textAlignment="CENTER" wrapText="true" />
       <AnchorPane fx:id="back" layoutX="5.0" layoutY="-4.0" prefHeight="600.0" prefWidth="920.0" stylesheets="@../../../java/view/BoardCSS.css" />
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="911.0">
          <children>
@@ -30,9 +30,9 @@
                   <Button id="checkButton" fx:id="checkButton" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#checkButtonAction" prefWidth="100.0" text="Check" textAlignment="CENTER" />
                   <VBox fx:id="finish" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                      <children>
-                          <Label fx:id="winLabel" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
-                          <Label fx:id="elapsedTimeLabel" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
-                          <Label fx:id="scoreLabel" prefHeight="30.0" prefWidth="200.0" />
+                          <Label fx:id="winLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
+                          <Label fx:id="elapsedTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER" />
+                          <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                 </children>
@@ -43,11 +43,11 @@
             <HBox alignment="CENTER" spacing="20.0">
                <children>
             
-                              
+                                    
                                  <VBox fx:id="colorSelectionVBox" alignment="CENTER" spacing="10.0" />
                      <GridPane fx:id="mainGridPane" alignment="CENTER" gridLinesVisible="true" hgap="12.0" prefHeight="600.0" prefWidth="77.0" vgap="10.0">
             
-                                          <columnConstraints>
+                                                <columnConstraints>
                            <ColumnConstraints />
                            <ColumnConstraints />
                            <ColumnConstraints />
@@ -74,13 +74,13 @@
                            <Insets right="-30.0" />
                         </padding>
             
-                              
+                                    
                                  </GridPane>
             
-                              
+                                    
                                   <GridPane fx:id="checkGridPane" alignment="CENTER" gridLinesVisible="true" hgap="10.0" vgap="30.0">
             
-                                            <columnConstraints>
+                                                  <columnConstraints>
                               <ColumnConstraints />
                               <ColumnConstraints />
                               <ColumnConstraints />
@@ -91,6 +91,7 @@
                               <ColumnConstraints />
                           </columnConstraints>
                           <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
                               <RowConstraints />
                               <RowConstraints />
                               <RowConstraints />
@@ -102,15 +103,15 @@
                               <RowConstraints />
                               <RowConstraints />
                           </rowConstraints>
-                        <padding>
-                           <Insets top="53.0" />
-                        </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
             
-                              
+                                    
                         
-                              
+                                    
                                       </GridPane>
-                   <VBox fx:id="buttonsVBox" alignment="CENTER_LEFT" minWidth="-Infinity" prefHeight="600.0" prefWidth="136.0" spacing="20.0">
+                   <VBox fx:id="buttonsVBox" alignment="CENTER_LEFT" maxHeight="440.0" minWidth="-Infinity" prefHeight="500.0" prefWidth="136.0" spacing="20.0">
                       <children>
                           <Button fx:id="clue1Button" focusTraversable="false" mnemonicParsing="false" onAction="#clue1ButtonAction" prefWidth="105.0" text="Pista 1 Eliminar Color" textAlignment="CENTER" wrapText="true" />
                           <Button fx:id="clue2Button" mnemonicParsing="false" onAction="#clue2ButtonAction" prefWidth="105.0" text="Pista 2 Descifrar Color" textAlignment="CENTER" wrapText="true" />

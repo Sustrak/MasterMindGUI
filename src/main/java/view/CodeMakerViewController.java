@@ -140,7 +140,7 @@ public class CodeMakerViewController implements Initializable {
                 mainGridPane.add(circle, j, i);
             }
         }
-        for (int i = 0; i < nRows -1; i++) {
+        for (int i = 1; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
                 circle = new Circle(10.0);
                 circle.setId("grayCheckPeg");

@@ -31,11 +31,11 @@
   <void property="maxWinningSpree">
    <void property="date">
     <object class="java.util.Date">
-     <long>1515238803048</long>
+     <long>1515279872163</long>
     </object>
    </void>
    <void property="score">
-    <double>5.0</double>
+    <double>7.0</double>
    </void>
    <void property="username">
     <string>p</string>

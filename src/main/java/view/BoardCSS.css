@@ -232,3 +232,14 @@ AnchorPane {
     
     -fx-font-size: 2.8em;
  }
+ 
+ #winComb, #winComb .text {
+     
+     -fx-font-family: Adventure;
+     -fx-font-size:1.6em;
+     -fx-fill:
+        linear-gradient(to bottom, #FFFFFF   30%, #AAAAAA 100%);
+     -fx-stroke: #555555;
+     -fx-stroke-width: .5;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.2), 7, 0.0, 2,2);
+ }
