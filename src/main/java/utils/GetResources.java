@@ -19,6 +19,7 @@ public final class GetResources {
 
     public static String getFilePath(String fileName) {
         //Get file from resources folder
+        System.out.println("GET:  " + fileName);
         ClassLoader classLoader = GetResources.class.getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
 
