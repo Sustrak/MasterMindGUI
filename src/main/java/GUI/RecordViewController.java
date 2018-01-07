@@ -12,6 +12,7 @@ import rr.RREntry;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 public class RecordViewController {
@@ -36,25 +37,24 @@ public class RecordViewController {
 
     private void buildRecordsGridPane() {
 
-       /* RREntry recordList[] = domainCtrl.getRecordsRREntryes();
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        ArrayList<ArrayList<String>> recordList = domainCtrl.getRecordsTable();
         for (int i = 0; i < 4; i++) {
-            Label label = new Label(df.format(recordList[i].getDate()));
-            label.setId(("dateLabel" + i+1));
+            Label label = new Label(recordList.get(i).get(0));
+            label.setId(("nameLabel" + i));
             recordGridPane.add(label, 1, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
-            label = new Label(recordList[i].getUsername());
-            label.setId(("usernameLabel" + i+1));
+            label = new Label(recordList.get(i).get(1));
+            label.setId(("scoreLabel" + i));
             recordGridPane.add(label, 2, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
-            label = new Label(String.valueOf(recordList[i].getScore()));
-            label.setId(("usernameLabel" + i+1));
+            label = new Label(recordList.get(i).get(2));
+            label.setId(("dateLabel" + i+1));
             recordGridPane.add(label, 3, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
-        }*/
+        }
     }
 
 }

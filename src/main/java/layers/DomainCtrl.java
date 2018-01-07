@@ -7,6 +7,7 @@ import rr.*;
 import users.*;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -193,8 +194,8 @@ public class DomainCtrl {
                 rrEntry =  ranking.getMaxPuntuationHard();
                 break;
         }
-        ArrayList<String> s = new ArrayList<>();
         for (int i = 0; i < rrEntry.length; i++) {
+            ArrayList<String> s = new ArrayList<>();
             s.add(rrEntry[i].getUsername());
             s.add(String.valueOf(rrEntry[i].getScore()));
             s.add(new SimpleDateFormat("dd/mm/yyyy").format(rrEntry[i].getDate()));
@@ -214,6 +215,23 @@ public class DomainCtrl {
             s[i] = rrEntrys[i].toString();
         }
         return s;
+    }
+
+    public ArrayList<ArrayList<String>> getRecordsTable() {
+        ArrayList<ArrayList<String>> recordList = new ArrayList<>();
+        RREntry rrEntrys[] = new RREntry[Records.NUM_RECORDS];
+        rrEntrys[0] = records.getMaxExp();
+        rrEntrys[1] = records.getMaxWinningSpree();
+        rrEntrys[2] = records.getMaxPlayedGames();
+        rrEntrys[3] = records.getMaxWinnedGames();
+        for (int i = 0; i < rrEntrys.length; i++) {
+            ArrayList<String> s = new ArrayList<>();
+            s.add(rrEntrys[i].getUsername());
+            s.add(String.valueOf(rrEntrys[i].getScore()));
+            s.add(new SimpleDateFormat("dd/mm/yyyy").format(rrEntrys[i].getDate()));
+            recordList.add(s);
+        }
+        return recordList;
     }
 
     public Map<String, ArrayList<String>> getPlayerInfo(String nickname) throws UserNotFoundException {
