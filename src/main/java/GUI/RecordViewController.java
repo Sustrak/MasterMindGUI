@@ -36,7 +36,7 @@ public class RecordViewController {
 
     private void buildRecordsGridPane() {
 
-        RREntry recordList[] = domainCtrl.getRecordsRREntryes();
+       /* RREntry recordList[] = domainCtrl.getRecordsRREntryes();
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         for (int i = 0; i < 4; i++) {
             Label label = new Label(df.format(recordList[i].getDate()));
@@ -54,7 +54,7 @@ public class RecordViewController {
             recordGridPane.add(label, 3, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
-        }
+        }*/
     }
 
 }

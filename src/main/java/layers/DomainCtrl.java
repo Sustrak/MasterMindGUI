@@ -160,18 +160,6 @@ public class DomainCtrl {
     }
 
     public String[] getRanking(DiffEnum diff) {
-
-        RREntry rrEntry[] = getRankingRREntryes(diff);
-
-        String s[] = new String[Ranking.NUM_ENTRYS_RANKING];
-        for (int i = 0; i < s.length; i++) {
-            s[i] = rrEntry[i].toString();
-        }
-
-        return s;
-    }
-
-    public RREntry[] getRankingRREntryes(DiffEnum diff) {
         RREntry rrEntry[] = new RREntry[0];
         switch (diff) {
             case EASY:
@@ -184,28 +172,48 @@ public class DomainCtrl {
                 rrEntry =  ranking.getMaxPuntuationHard();
                 break;
         }
-        return rrEntry;
-    }
-
-    public String[] getRecords() {
-        RREntry rrEntrys[] = getRecordsRREntryes();
-
-        String s[] = new String[Records.NUM_RECORDS];
+        String s[] = new String[Ranking.NUM_ENTRYS_RANKING];
         for (int i = 0; i < s.length; i++) {
-            s[i] = rrEntrys[i].toString();
+            s[i] = rrEntry[i].toString();
         }
-
         return s;
     }
 
-    public RREntry[] getRecordsRREntryes() {
+    public ArrayList<ArrayList<String>> getRankingTable(DiffEnum diff) {
+        ArrayList<ArrayList<String>> rankingList = new ArrayList<>();
+        RREntry rrEntry[] = new RREntry[0];
+        switch (diff) {
+            case EASY:
+                rrEntry =  ranking.getMaxPuntuationEasy();
+                break;
+            case ORIGINAL:
+                rrEntry =  ranking.getMaxPuntuationOriginal();
+                break;
+            case HARD:
+                rrEntry =  ranking.getMaxPuntuationHard();
+                break;
+        }
+        ArrayList<String> s = new ArrayList<>();
+        for (int i = 0; i < rrEntry.length; i++) {
+            s.add(rrEntry[i].getUsername());
+            s.add(String.valueOf(rrEntry[i].getScore()));
+            s.add(new SimpleDateFormat("dd/mm/yyyy").format(rrEntry[i].getDate()));
+            rankingList.add(s);
+        }
+        return rankingList;
+    }
+
+    public String[] getRecords() {
         RREntry rrEntrys[] = new RREntry[Records.NUM_RECORDS];
         rrEntrys[0] = records.getMaxExp();
         rrEntrys[1] = records.getMaxWinningSpree();
         rrEntrys[2] = records.getMaxPlayedGames();
         rrEntrys[3] = records.getMaxWinnedGames();
-
-        return rrEntrys;
+        String s[] = new String[Records.NUM_RECORDS];
+        for (int i = 0; i < s.length; i++) {
+            s[i] = rrEntrys[i].toString();
+        }
+        return s;
     }
 
     public Map<String, ArrayList<String>> getPlayerInfo(String nickname) throws UserNotFoundException {
