@@ -1,5 +1,6 @@
 package game;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -159,9 +160,10 @@ public class CodeBreaker extends Game {
                 case 10: score = 300; break;
                 default: break;
             }
-        
+
             double seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
             score = score * (1./seconds) * 100;
+            score = Math.round(score*100.0)/100.0;
         }
 
         return score;
