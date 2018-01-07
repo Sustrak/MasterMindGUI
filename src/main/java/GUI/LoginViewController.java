@@ -9,10 +9,10 @@ import javafx.application.Platform;
 
 public class LoginViewController {
 
+    private DomainCtrl domainCtrl = new DomainCtrl();
+
     public TextField usernameTextField;
     public TextField passwordTextField;
-
-    private DomainCtrl domainCtrl = new DomainCtrl();
 
     public void setDomainCtrl(DomainCtrl dCtrl) {
         this.domainCtrl = dCtrl;

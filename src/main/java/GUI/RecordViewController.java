@@ -26,6 +26,14 @@ public class RecordViewController {
         buildRecordsGridPane();
     }
 
+    public void exitButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.mainMenuView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void buildRecordsGridPane() {
 
         RREntry recordList[] = domainCtrl.getRecordsRREntryes();
@@ -49,11 +57,4 @@ public class RecordViewController {
         }
     }
 
-    public void exitButtonAction(ActionEvent actionEvent) {
-        try {
-            ViewController.mainMenuView(domainCtrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
 }

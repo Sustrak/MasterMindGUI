@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="recordAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../CSS/recordsCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RecordViewController">
+<AnchorPane fx:id="recordAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../CSS/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RecordViewController">
    <children>
       <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
       <HBox fx:id="recordBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="911.0">
@@ -31,25 +31,25 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                          </rowConstraints>
                          <children>
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="1" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="2" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="3" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="1" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="2" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../java/view/recordsCSS.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Pane fx:id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Pane fx:id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="3" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="1" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="2" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="3" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.rowIndex="4" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="1" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="2" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Pane id="data" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Pane id="title" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #666666 30%, #777777 80%);" GridPane.columnIndex="3" />
                              <Label alignment="CENTER" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 7, 0.0, 0,1);" text="Date" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="14.0" />

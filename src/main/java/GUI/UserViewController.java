@@ -17,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class UserViewController implements Initializable{
 
+    private DomainCtrl domainCtrl;
+
     public Label nameLabel;
     public Label categoryLabel;
     public Label experienceLabel;
@@ -33,8 +35,6 @@ public class UserViewController implements Initializable{
     public Label hardPlayedGamesLabel;
     public Label originalWinningSpreeLabel;
 
-    private DomainCtrl domainCtrl;
-
     public VBox mainVBox;
     public Label userNotFoundLabel;
     public TextField nickNameTextField;
@@ -50,29 +50,6 @@ public class UserViewController implements Initializable{
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
         this.domainCtrl = domainCtrl;
-    }
-
-    private void fillGridPanes(String nickName, Map<String, ArrayList<String>> info) {
-        nameLabel.setText(info.get("name").get(0));
-        categoryLabel.setText(info.get("category").get(0));
-        experienceLabel.setText(info.get("experience").get(0));
-        // Max Score
-        easyMaxScoreLabel.setText(info.get("maxScore").get(0));
-        originalMaxScoreLabel.setText(info.get("maxScore").get(1));
-        hardMaxScoreLabel.setText(info.get("maxScore").get(2));
-        // Played Games
-        easyPlayedGamesLabel.setText(info.get("playedGames").get(0));
-        originalPlayedGamesLabel.setText(info.get("playedGames").get(1));
-        hardPlayedGamesLabel.setText(info.get("playedGames").get(2));
-        // Winned Games
-        easyWinnedGamesLabel.setText(info.get("winnedGames").get(0));
-        originalWinnedGamesLabel.setText(info.get("winnedGames").get(1));
-        hardWinnedGamesLabel.setText(info.get("winnedGames").get(2));
-        // Winning Spree
-        easyWinningSpreeLabel.setText(info.get("winningSpree").get(0));
-        originalWinningSpreeLabel.setText(info.get("winningSpree").get(1));
-        hardWinningSpreeLabel.setText(info.get("winningSpree").get(2));
-
     }
 
     public void checkButtonAction(ActionEvent actionEvent) {
@@ -103,4 +80,28 @@ public class UserViewController implements Initializable{
             e.printStackTrace();
         }
     }
+
+    private void fillGridPanes(String nickName, Map<String, ArrayList<String>> info) {
+        nameLabel.setText(info.get("name").get(0));
+        categoryLabel.setText(info.get("category").get(0));
+        experienceLabel.setText(info.get("experience").get(0));
+        // Max Score
+        easyMaxScoreLabel.setText(info.get("maxScore").get(0));
+        originalMaxScoreLabel.setText(info.get("maxScore").get(1));
+        hardMaxScoreLabel.setText(info.get("maxScore").get(2));
+        // Played Games
+        easyPlayedGamesLabel.setText(info.get("playedGames").get(0));
+        originalPlayedGamesLabel.setText(info.get("playedGames").get(1));
+        hardPlayedGamesLabel.setText(info.get("playedGames").get(2));
+        // Winned Games
+        easyWinnedGamesLabel.setText(info.get("winnedGames").get(0));
+        originalWinnedGamesLabel.setText(info.get("winnedGames").get(1));
+        hardWinnedGamesLabel.setText(info.get("winnedGames").get(2));
+        // Winning Spree
+        easyWinningSpreeLabel.setText(info.get("winningSpree").get(0));
+        originalWinningSpreeLabel.setText(info.get("winningSpree").get(1));
+        hardWinningSpreeLabel.setText(info.get("winningSpree").get(2));
+
+    }
+
 }

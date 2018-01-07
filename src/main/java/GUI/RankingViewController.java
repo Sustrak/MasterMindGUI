@@ -30,6 +30,14 @@ public class RankingViewController {
         buildRankingsGridPane();
     }
 
+    public void exitButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.mainMenuView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void buildRankingsGridPane() {
         
         RREntry rankingList[] = new RREntry[0];
@@ -61,11 +69,4 @@ public class RankingViewController {
         rankingTable.getItems().setAll(rankingList);
     }
 
-    public void exitButtonAction(ActionEvent actionEvent) {
-        try {
-            ViewController.mainMenuView(domainCtrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
 }

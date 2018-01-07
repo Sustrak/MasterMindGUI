@@ -28,6 +28,14 @@ public class LoadGameViewController {
         buildSavedGamesTable();
     }
 
+    public void exitButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.mainMenuView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void buildSavedGamesTable() {
 
         Vector ids = domainCtrl.getIdSavedGames();
@@ -79,12 +87,4 @@ public class LoadGameViewController {
         }
     };
 
-
-    public void exitButtonAction(ActionEvent actionEvent) {
-        try {
-            ViewController.mainMenuView(domainCtrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -24,17 +24,6 @@ public class CodeMakerViewController implements Initializable {
 
     private DomainCtrl domainCtrl;
 
-    private static final int BLUE = 0;
-    private static final int PINK = 1;
-    private static final int ORANGE = 2;
-    private static final int YELLOW = 3;
-    private static final int GREEN = 4;
-    private static final int RED = 5;
-    private static final int VIOLET = 6;
-    private static final int BROWN = 7;
-
-
-    private String selectedColor = "";
     public GridPane mainGridPane;
     public GridPane checkGridPane;
     public VBox colorSelectionVBox;
@@ -42,6 +31,7 @@ public class CodeMakerViewController implements Initializable {
     public Button newGameButton;
     public Button exitButton;
 
+    private String selectedColor = "";
     private int nColors;
     private int nColumns;
     private int nRows;
@@ -87,6 +77,34 @@ public class CodeMakerViewController implements Initializable {
         buildBoard();
     }
 
+    public void solveButtonAction(ActionEvent actionEvent) {
+        if (first) {
+            first = false;
+            setWinnerCombination();
+            selectedRow = 10;
+            changeColors();
+            paintNewCombination();
+            selectedRow--;
+        } else if (checkCorrectionCombination()) {
+            if (solved) endGame();
+            else paintNewCombination();
+            selectedRow--;
+            nAttemps++;
+        }
+    }
+
+    public void newGameButtonAction(ActionEvent actionEvent) {
+        newGame();
+    }
+
+    public void exitButtonAction(ActionEvent actionEvent) {
+        try {
+            ViewController.mainMenuView(domainCtrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean checkFullRow(GridPane gridPane) {
         for (int i = 0; i < nColumns; i++) {
             Circle selectedCircle = (Circle) gridPane.getChildren().get(selectedRow * nColumns + i);
@@ -112,13 +130,13 @@ public class CodeMakerViewController implements Initializable {
                 mainGridPane.add(circle, j, i);
             }
         }
-        
+
         Label winComb = new Label();
         winComb.setText("Combinación Ganadora");
         winComb.setId("winComb");
         winComb.setWrapText(true);
         checkGridPane.add(winComb, 0, 0, nColumns, 1);
-        
+
         for (int i = 1; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
                 circle = new Circle(10.0);
@@ -126,6 +144,72 @@ public class CodeMakerViewController implements Initializable {
                 checkGridPane.add(circle, j, i);
             }
         }
+    }
+
+    private void paintNewCombination() {
+        ArrayList<Integer> newComb = domainCtrl.getNewCodeMakerComb();
+        domainCtrl.setNewCombination(newComb);
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow * nColumns + i);
+            selectedCircle.setId(BoardViewsUtils.getColorId(newComb.get(i)) + "Circle");
+        }
+    }
+
+    private Boolean checkCorrectionCombination() {
+        int blackPegs = 0;
+        int whitePegs = 0;
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow) * nColumns + i + 1);
+            System.out.println(selectedRow);
+            System.out.println((selectedRow) * nColumns + i + 1);
+            if (selectedCircle.getId().equals("blackCheckPeg")) blackPegs++;
+            else if (selectedCircle.getId().equals("whiteCheckPeg")) whitePegs++;
+        }
+        if (domainCtrl.isGoodCorrection(blackPegs, whitePegs)) {
+            System.out.print("black: " + blackPegs + "\n");
+            System.out.print("white:" + whitePegs + "\n");
+            if (blackPegs == domainCtrl.getNPieces()) solved = true;
+            return true;
+        } else {
+            ViewController.showErrorMessage("La corrección introducida no es correcta.");
+            return false;
+        }
+    }
+
+    private void endGame() {
+        solveButton.setDisable(true);
+        ViewController.showInformationMessage("Breaked in " + nAttemps + "!!!.");
+    }
+
+    private void setWinnerCombination() {
+        ArrayList<Integer> combination = new ArrayList<>();
+        for (int i = 0; i < nColumns; i++) {
+            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow* nColumns +i);
+            if (selectedCircle.getId().equals("blueCircle")) combination.add(0);
+            else if (selectedCircle.getId().equals("pinkCircle")) combination.add(1);
+            else if (selectedCircle.getId().equals("orangeCircle")) combination.add(2);
+            else if (selectedCircle.getId().equals("yellowCircle")) combination.add(3);
+            else if (selectedCircle.getId().equals("greenCircle")) combination.add(4);
+            else if (selectedCircle.getId().equals("redCircle")) combination.add(5);
+            else if (selectedCircle.getId().equals("violetCircle")) combination.add(6);
+            else if (selectedCircle.getId().equals("brownCircle")) combination.add(7);
+        }
+        domainCtrl.setWinnerCombination(combination);
+    }
+
+    private void changeColors() {
+        colorSelectionVBox.getChildren().clear();
+        Circle circle;
+        circle = new Circle(16.0);
+        circle.setId("blackCheckPeg");
+        colorSelectionVBox.getChildren().add(0, circle);
+        circle = new Circle(16.0);
+        circle.setId("whiteCheckPeg");
+        colorSelectionVBox.getChildren().add(1, circle);
+        circle = new Circle(16.0);
+        circle.setId("grayCheckPeg");
+        colorSelectionVBox.getChildren().add(2, circle);
+        selectedColor = "";
     }
 
     private EventHandler<MouseEvent> colorSelectionVBoxOnMouseClicked = event -> {
@@ -163,98 +247,4 @@ public class CodeMakerViewController implements Initializable {
             }
         }
     };
-
-    public void newGameButtonAction(ActionEvent actionEvent) {
-        newGame();
-    }
-
-    public void exitButtonAction(ActionEvent actionEvent) {
-        try {
-            ViewController.mainMenuView(domainCtrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void paintNewCombination() {
-        ArrayList<Integer> newComb = domainCtrl.getNewCodeMakerComb();
-        domainCtrl.setNewCombination(newComb);
-        for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow * nColumns + i);
-            selectedCircle.setId(BoardViewsUtils.getColorId(newComb.get(i)) + "Circle");
-        }
-    }
-
-    private Boolean checkCorrectionCombination() {
-        int blackPegs = 0;
-        int whitePegs = 0;
-        for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow) * nColumns + i + 1);
-            System.out.println(selectedRow);
-            System.out.println((selectedRow) * nColumns + i + 1);
-            if (selectedCircle.getId().equals("blackCheckPeg")) blackPegs++;
-            else if (selectedCircle.getId().equals("whiteCheckPeg")) whitePegs++;
-        }
-        if (domainCtrl.isGoodCorrection(blackPegs, whitePegs)) {
-            System.out.print("black: " + blackPegs + "\n");
-            System.out.print("white:" + whitePegs + "\n");
-            if (blackPegs == domainCtrl.getNPieces()) solved = true;
-            return true;
-        } else {
-            ViewController.showErrorMessage("La corrección introducida no es correcta.");
-            return false;
-        }
-    }
-
-    public void solveButtonAction(ActionEvent actionEvent) {
-        if (first) {
-            first = false;
-            setWinnerCombination();
-            selectedRow = 10;
-            changeColors();
-            paintNewCombination();
-            selectedRow--;
-        } else if (checkCorrectionCombination()) {
-            if (solved) endGame();
-            else paintNewCombination();
-            selectedRow--;
-            nAttemps++;
-        }
-    }
-
-    private void endGame() {
-        solveButton.setDisable(true);
-        ViewController.showInformationMessage("Breaked in " + nAttemps + "!!!.");
-    }
-
-    private void setWinnerCombination() {
-        ArrayList<Integer> combination = new ArrayList<>();
-        for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle)mainGridPane.getChildren().get(selectedRow* nColumns +i);
-            if (selectedCircle.getId().equals("blueCircle")) combination.add(BLUE);
-            else if (selectedCircle.getId().equals("pinkCircle")) combination.add(PINK);
-            else if (selectedCircle.getId().equals("orangeCircle")) combination.add(ORANGE);
-            else if (selectedCircle.getId().equals("yellowCircle")) combination.add(YELLOW);
-            else if (selectedCircle.getId().equals("greenCircle")) combination.add(GREEN);
-            else if (selectedCircle.getId().equals("redCircle")) combination.add(RED);
-            else if (selectedCircle.getId().equals("violetCircle")) combination.add(VIOLET);
-            else if (selectedCircle.getId().equals("brownCircle")) combination.add(BROWN);
-        }
-        domainCtrl.setWinnerCombination(combination);
-    }
-
-    private void changeColors() {
-        colorSelectionVBox.getChildren().clear();
-        Circle circle;
-        circle = new Circle(16.0);
-        circle.setId("blackCheckPeg");
-        colorSelectionVBox.getChildren().add(0, circle);
-        circle = new Circle(16.0);
-        circle.setId("whiteCheckPeg");
-        colorSelectionVBox.getChildren().add(1, circle);
-        circle = new Circle(16.0);
-        circle.setId("grayCheckPeg");
-        colorSelectionVBox.getChildren().add(2, circle);
-        selectedColor = "";
-    }
 }

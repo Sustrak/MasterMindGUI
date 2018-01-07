@@ -11,15 +11,9 @@ import java.util.ResourceBundle;
 
 public class SettingsViewController implements Initializable{
 
-    public Slider volumeSlider;
-
     private DomainCtrl domainCtrl;
 
-
-    public void setDomainCtrl(DomainCtrl domainCtrl) {
-        this.domainCtrl = domainCtrl;
-        volumeSlider.setValue(domainCtrl.getVolumeBackgrounMusic());
-    }
+    public Slider volumeSlider;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,6 +21,13 @@ public class SettingsViewController implements Initializable{
             domainCtrl.setVolumeBackgroundMusic(volumeSlider.getValue());
         });
     }
+
+    public void setDomainCtrl(DomainCtrl domainCtrl) {
+        this.domainCtrl = domainCtrl;
+        volumeSlider.setValue(domainCtrl.getVolumeBackgrounMusic());
+    }
+
+
 
     public void exitButtonAction(ActionEvent actionEvent) {
         try {
