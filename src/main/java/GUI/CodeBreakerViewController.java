@@ -108,7 +108,7 @@ public class CodeBreakerViewController implements Initializable {
 
     public void saveGameButtonAction(ActionEvent actionEvent) {
         domainCtrl.saveGame();
-        ViewController.showInformationMessage("Partida guardada correctamente.");
+        ViewController.showInformationMessageSeconds("Partida guardada correctamente", 1);
     }
 
     public void newGameButtonAction(ActionEvent actionEvent) {

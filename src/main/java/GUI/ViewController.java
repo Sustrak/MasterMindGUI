@@ -4,6 +4,7 @@ import game.DiffEnum;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import layers.DomainCtrl;
 import view.Main;
 
@@ -12,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 public class ViewController {
 
@@ -221,5 +223,18 @@ public class ViewController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public static void showInformationMessageSeconds(String message, int seconds) {
+        Dialog<Boolean> dialog = new Dialog<>();
+        dialog.setContentText(message);
+        dialog.show();
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        dialog.setResult(Boolean.TRUE);
+        dialog.close();
     }
 }
