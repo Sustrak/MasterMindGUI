@@ -2,15 +2,21 @@ package GUI;
 
 import game.DiffEnum;
 import javafx.event.ActionEvent;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import layers.DomainCtrl;
 import rr.RREntry;
 
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -20,10 +26,7 @@ public class RankingViewController {
 
     public VBox mainVBox;
     public Label difficultyLabel;
-    public TableView<RREntry> rankingTable;
-    public TableColumn<RREntry, Date> dateColumn;
-    public TableColumn<RREntry, String> nickNameColumn;
-    public TableColumn<RREntry, Double> scoreColumn;
+    public GridPane rankingGridPane;
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
         this.domainCtrl = domainCtrl;
@@ -40,33 +43,38 @@ public class RankingViewController {
 
     private void buildRankingsGridPane() {
         
-        RREntry rankingList[] = new RREntry[0];
+        ArrayList<ArrayList<String>> rankingList = new ArrayList<>();
 
         switch (ViewController.askCodeBreakerDifficulty()) {
             case EASY:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.EASY);
+                rankingList = domainCtrl.getRankingTable(DiffEnum.EASY);
                 difficultyLabel.setText("Ranking dificultad Fácil");
                 break;
             case ORIGINAL:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.ORIGINAL);
+                rankingList = domainCtrl.getRankingTable(DiffEnum.ORIGINAL);
                 difficultyLabel.setText("Ranking dificultad Original");
                 break;
             case HARD:
-                rankingList = domainCtrl.getRankingRREntryes(DiffEnum.HARD);
+                rankingList = domainCtrl.getRankingTable(DiffEnum.HARD);
                 difficultyLabel.setText("Ranking dificultad Difícil");
                 break;
         }
 
-        dateColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, Date>("date"));
+        for (int i = 0; i < rankingList.size(); i++) {
+            Label label = new Label(rankingList.get(i).get(0));
+            GridPane.setHalignment(label, HPos.CENTER);
+            GridPane.setValignment(label, VPos.CENTER);
+            rankingGridPane.add(label, 0, i+1);
+            label = new Label(rankingList.get(i).get(1));
+            GridPane.setHalignment(label, HPos.CENTER);
+            GridPane.setValignment(label, VPos.CENTER);
+            rankingGridPane.add(label, 1, i+1);
+            label = new Label(rankingList.get(i).get(2));
+            GridPane.setHalignment(label, HPos.CENTER);
+            GridPane.setValignment(label, VPos.CENTER);
+            rankingGridPane.add(label, 2, i+1);
+        }
 
-        nickNameColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, String>("username"));
-
-        scoreColumn.setCellValueFactory(
-                new PropertyValueFactory<RREntry, Double>("score"));
-
-        rankingTable.getItems().setAll(rankingList);
     }
 
 }
