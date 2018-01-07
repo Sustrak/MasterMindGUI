@@ -309,7 +309,7 @@ public class DomainCtrl {
         assert game != null;
         info.add(String.valueOf(gameId));
         info.add(game.getDificulty().toString());
-        info.add(game.getLastSaveDate().toString());
+        info.add(new SimpleDateFormat("dd/mm/yyyy").format(game.getLastSaveDate()));
         return info;
     }
 
