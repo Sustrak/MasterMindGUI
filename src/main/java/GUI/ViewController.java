@@ -1,11 +1,11 @@
-package view;
+package GUI;
 
 import game.DiffEnum;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import layers.DomainCtrl;
+import view.Main;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

@@ -10,7 +10,7 @@ and open the template in the editor.
 
 @font-face {
     font-family: Adventure;
-    src: url("Adventure.otf");
+    src: url("../Fonts/Adventure.otf");
 }
 
 Label {
@@ -76,11 +76,11 @@ AnchorPane {
     -fx-alignment: CENTER;
 }
 
-#back {
+/*#back {
     -fx-opacity: 0.2;
     -fx-background-image:url("white.jpg");
     -fx-background-size: 2000 2000;
-}
+}*/
 
 .button {
     -fx-text-fill: white;

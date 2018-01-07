@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -6,10 +6,8 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import layers.DomainCtrl;
 
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
@@ -6,8 +6,6 @@ import layers.DomainCtrl;
 
 import java.net.MalformedURLException;
 import javafx.application.Platform;
-
-import javax.swing.text.View;
 
 public class LoginViewController {
 

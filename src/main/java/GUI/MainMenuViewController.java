@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import javafx.event.ActionEvent;
 import layers.DomainCtrl;

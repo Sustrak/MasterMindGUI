@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rankingAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../../../java/view/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RankingViewController">
+<AnchorPane fx:id="rankingAP" prefHeight="600.0" prefWidth="911.0" stylesheets="@../CSS/MainMenuCSS.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RankingViewController">
    <children>
       <AnchorPane fx:id="back" prefHeight="600.0" prefWidth="911.0" />
       <HBox fx:id="rankingPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">

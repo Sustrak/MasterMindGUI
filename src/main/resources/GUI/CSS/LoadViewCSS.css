@@ -10,7 +10,7 @@ and open the template in the editor.
 
 @font-face {
     font-family: Adventure;
-    src: url("Adventure.otf");
+    src: url("../Fonts/Adventure.otf");
 }
 
 #mastermind {

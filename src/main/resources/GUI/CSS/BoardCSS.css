@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 @font-face {
     font-family: Adventure;
-    src: url("Adventure.otf");
+    src: url("../Fonts/Adventure.otf");
 }
 
 AnchorPane {
@@ -19,11 +19,11 @@ AnchorPane {
         linear-gradient(to top, #f6d365 0%, #fda085 50%);
 }
 
-#back {
+/*#back {
     -fx-opacity: 0.2;
     -fx-background-image:url("white.jpg");
     -fx-background-size: 2000 2000;
-}
+}*/
 
 .button {
     

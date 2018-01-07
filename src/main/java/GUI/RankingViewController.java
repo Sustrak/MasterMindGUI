@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import game.DiffEnum;
 import javafx.event.ActionEvent;
@@ -12,7 +12,6 @@ import rr.RREntry;
 
 import java.net.MalformedURLException;
 import java.util.Date;
-import javafx.scene.text.Font;
 
 
 public class RankingViewController {
