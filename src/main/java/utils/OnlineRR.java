@@ -42,7 +42,7 @@ public class OnlineRR {
             out.write(boundaryBytes);
 
             // Send FILE
-            try(InputStream file = new FileInputStream(Paths.get("src/main/resources/Data/" + fileName).toString())) {
+            try(InputStream file = new FileInputStream(GetResources.getFilePath("Data") + "/" + fileName)) {
                 String o = "Content-Disposition: form-data; name=\"" + URLEncoder.encode(fileName,"UTF-8")
                         + "\"; filename=\"" + URLEncoder.encode(fileName,"UTF-8") + "\"\r\n\r\n";
                 out.write(o.getBytes(StandardCharsets.UTF_8));
@@ -70,7 +70,7 @@ public class OnlineRR {
 
         InputStream in = http.getInputStream();
 
-        File targetFile = new File(Paths.get("src/main/resources/Data/" + fileName).toString());
+        File targetFile = new File(GetResources.getFilePath("Data") + "/" + fileName);
         Files.copy(in, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
         in.close();

@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import layers.DomainCtrl;
+import utils.GetResources;
 import view.Main;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class ViewController {
 
     public static void newBoardView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeBrakerView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/CodeBreakerView.fxml")));
         try {
             Loader.load();
             CodeBreakerViewController codeBreakerViewController = Loader.getController();
@@ -33,7 +34,7 @@ public class ViewController {
 
     public static void loadBoardView(DomainCtrl domainCtrl, int gameId) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeBrakerView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/CodeBreakerView.fxml")));
         try {
             Loader.load();
             CodeBreakerViewController codeBreakerViewController = Loader.getController();
@@ -45,9 +46,9 @@ public class ViewController {
         }
     }
 
-    public static void signUpView(DomainCtrl domainCtrl) throws MalformedURLException, MalformedURLException {
+    public static void signUpView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/SignUpView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/SignUpView.fxml")));
         try {
             Loader.load();
             SignUpViewController signUpViewController = Loader.getController();
@@ -60,7 +61,7 @@ public class ViewController {
 
     public static void loginView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/LoginView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/LoginView.fxml")));
         try {
             Loader.load();
             LoginViewController loginViewController = Loader.getController();
@@ -73,7 +74,7 @@ public class ViewController {
 
     public static void resetPasswordView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/ResetPasswordView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/ResetPasswordView.fxml")));
         try {
             Loader.load();
             ResetPasswordViewController resetPasswordViewController = Loader.getController();
@@ -86,7 +87,7 @@ public class ViewController {
 
     public static void mainMenuView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/MainMenuView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/MainMenuView.fxml")));
         try {
             Loader.load();
             MainMenuViewController mainMenuViewController = Loader.getController();
@@ -99,7 +100,7 @@ public class ViewController {
 
     public static void rankingsView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/RankingView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/RankingView.fxml")));
         try {
             Loader.load();
             RankingViewController rankingViewController = Loader.getController();
@@ -112,7 +113,7 @@ public class ViewController {
 
     public static void recordsView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/RecordView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/RecordView.fxml")));
         try {
             Loader.load();
             RecordViewController recordViewController = Loader.getController();
@@ -125,7 +126,7 @@ public class ViewController {
 
     public static void userView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/UserView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/UserView.fxml")));
         try {
             Loader.load();
             UserViewController userViewController = Loader.getController();
@@ -138,7 +139,7 @@ public class ViewController {
 
     public static void settingsView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/SettingsView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/SettingsView.fxml")));
         try {
             Loader.load();
             SettingsViewController settingsViewController = Loader.getController();
@@ -151,7 +152,7 @@ public class ViewController {
 
     public static void codeMakerView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/CodeMakerView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/CodeMakerView.fxml")));
         try {
             Loader.load();
             CodeMakerViewController codeMakerViewController = Loader.getController();
@@ -164,7 +165,7 @@ public class ViewController {
 
     public static void loadGameView(DomainCtrl domainCtrl) throws MalformedURLException {
         FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(new URL(Paths.get("src/main/resources/GUI/FXML/LoadGameView.fxml").toUri().toString()));
+        Loader.setLocation(new URL(GetResources.getURLFile("GUI/FXML/LoadGameView.fxml")));
         try {
             Loader.load();
             LoadGameViewController loadGameViewController = Loader.getController();

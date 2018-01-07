@@ -5,6 +5,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import rr.*;
 import users.*;
+import utils.GetResources;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
@@ -55,7 +56,7 @@ public class DomainCtrl {
             meta.setBackgroundMusicVolume(0.25);
         }
         //Load Music
-        Media media = new Media (Paths.get("src/main/resources/GUI/Music/MM_music.mp3").toUri().toString());
+        Media media = new Media (GetResources.getFile("GUI/Music/MM_music.mp3").toURI().toString());
         backgroundMusic = new MediaPlayer(media);
         backgroundMusic.setCycleCount(99999);
         backgroundMusic.setVolume(meta.getBackgroundMusicVolume());

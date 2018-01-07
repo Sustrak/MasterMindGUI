@@ -7,11 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import jdk.nashorn.internal.runtime.GlobalConstants;
 import layers.PresentationCtrl;
 
 import java.net.URL;
 import java.nio.file.Paths;
 import javafx.stage.StageStyle;
+import utils.GetResources;
 
 public class Main  extends Application{
 
@@ -19,14 +21,18 @@ public class Main  extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(new URL(Paths.get("src/main/resources/GUI/FXML/LoginView.fxml").toUri().toString()));
+        FXMLLoader loader = new FXMLLoader();
+        String source = GetResources.getFilePath("GUI/FXML/LoginView.fxml");
+        source = GetResources.fileSearchPrepend + source;
+        loader.setLocation(new URL(source));
+        Parent root = loader.load();
         stage = primaryStage;
         stage.setTitle("Master Mind");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root, 911, 600));
         stage.centerOnScreen();
         stage.setResizable(false);
-        stage.getIcons().addAll(new Image(Paths.get("src/main/resources/GUI/Images/icon.png").toUri().toString()));
+        stage.getIcons().add(new Image(GetResources.fileSearchPrepend + GetResources.getFilePath("GUI/Images/icon.png")));
         stage.show();
     }
 

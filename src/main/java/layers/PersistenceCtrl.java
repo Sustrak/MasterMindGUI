@@ -2,6 +2,7 @@ package layers;
 
 import game.CodeBreaker;
 import game.DiffEnum;
+import utils.GetResources;
 import utils.OnlineRR;
 
 import java.beans.XMLDecoder;
@@ -10,24 +11,23 @@ import java.io.*;
 
 
 public class PersistenceCtrl {
-    public static final String USERS_FILE_PATH = "src/main/resources/Data/users.xml";
-    public static final String RANKINGS_FILE_PATH = "src/main/resources/Data/rankings.xml";
-    public static final String RECORDS_FILE_PATH = "src/main/resources/Data/records.xml";
-    public static final String META_FILE_PATH = "src/main/resources/Data/meta.xml";
-    public static final String GAMES_DIR_PATH = "src/main/resources/Data/Games/";
+    public static final String USERS_FILE_PATH = GetResources.getFilePath("Data") + "/users.xml";
+    public static final String RANKINGS_FILE_PATH = GetResources.getFilePath("Data") + "/rankings.xml";
+    public static final String RECORDS_FILE_PATH = GetResources.getFilePath("Data") + "/records.xml";
+    public static final String META_FILE_PATH = GetResources.getFilePath("Data") + "/meta.xml";
+    public static final String GAMES_DIR_PATH = GetResources.getFilePath("Data/Games/") + File.separator;
 
     public PersistenceCtrl() {}
 
     private static String getFileName(String path) {
-        switch (path) {
-            case USERS_FILE_PATH:
-                return "users.xml";
-            case RANKINGS_FILE_PATH:
-                return "rankings.xml";
-            case RECORDS_FILE_PATH:
-                return "records.xml";
-            default:
-                return null;
+        if (path.equals(USERS_FILE_PATH)) {
+            return "users.xml";
+        } else if (path.equals(RANKINGS_FILE_PATH)) {
+            return "rankings.xml";
+        } else if (path.equals(RECORDS_FILE_PATH)) {
+            return "records.xml";
+        } else {
+            return null;
         }
     }
 
