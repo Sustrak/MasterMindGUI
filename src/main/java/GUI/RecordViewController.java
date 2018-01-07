@@ -49,11 +49,6 @@ public class RecordViewController {
             recordGridPane.add(label, 2, i+1);
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
-            label = new Label(recordList.get(i).get(2));
-            label.setId(("dateLabel" + i+1));
-            recordGridPane.add(label, 3, i+1);
-            GridPane.setHalignment(label, HPos.CENTER);
-            GridPane.setValignment(label, VPos.CENTER);
         }
     }
 
