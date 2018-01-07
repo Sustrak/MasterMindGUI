@@ -2,6 +2,8 @@ package view;
 
 import game.DiffEnum;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -10,17 +12,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
-import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import layers.DomainCtrl;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
@@ -53,18 +55,28 @@ public class BoardViewController implements Initializable {
     public Label elapsedTimeLabel;
     public Label scoreLabel;
     public Label winLabel;
+    public Label timerLabel;
 
     private boolean allowRepeat;
     private int nColors;
     private int nColumns;
     private int nRows;
     private int selectedRow = 10;
+    private int seconds;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainGridPane.setOnMouseClicked(mainGridPaneOnMouseClicked);
         colorSelectionVBox.setOnMouseClicked(colorSelectionVBoxOnMouseClicked);
+
+        //Timer
+        seconds = -1;
+        
+        NumberFormat f = new DecimalFormat("00");
+        Timeline secondUpdate = new Timeline(new KeyFrame(Duration.seconds(1), event -> timerLabel.setText("" + f.format(TimeUnit.SECONDS.toMinutes(++seconds)) + " : " + f.format(seconds%60))));
+        secondUpdate.setCycleCount(Timeline.INDEFINITE);
+        secondUpdate.play();
     }
 
     public void setDomainCtrl(DomainCtrl domainCtrl) {
@@ -84,6 +96,8 @@ public class BoardViewController implements Initializable {
         winLabel.setText("");
         elapsedTimeLabel.setText("");
         scoreLabel.setText("");
+        timerLabel.setText("00 : 00");
+        seconds = 0;
         buildBoard();
     }
 
@@ -154,7 +168,7 @@ public class BoardViewController implements Initializable {
         winComb.setText("Combinación Ganadora");
         winComb.setId("winComb");
         winComb.setWrapText(true);
-        checkGridPane.add(winComb, 0, 0, 8, 1);
+        checkGridPane.add(winComb, 0, 0, nColumns, 1);
         
         for (int i = 1; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
@@ -239,6 +253,16 @@ public class BoardViewController implements Initializable {
 
     public void saveGameButtonAction(ActionEvent actionEvent) {
         domainCtrl.saveGame();
+        Dialog<Boolean> dialog = new Dialog<>();
+        dialog.setContentText("Su partida fue guardada");
+        dialog.show();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        dialog.setResult(Boolean.TRUE);
+        dialog.close();
     }
 
     public void newGameButtonAction(ActionEvent actionEvent) {

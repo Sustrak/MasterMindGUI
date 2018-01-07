@@ -10,20 +10,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
-import javafx.scene.paint.Color;
-import javafx.util.Pair;
 import layers.DomainCtrl;
 
-import javax.swing.text.View;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class CodeMakerViewController implements Initializable {
 
@@ -140,6 +135,13 @@ public class CodeMakerViewController implements Initializable {
                 mainGridPane.add(circle, j, i);
             }
         }
+        
+        Label winComb = new Label();
+        winComb.setText("Combinación Ganadora");
+        winComb.setId("winComb");
+        winComb.setWrapText(true);
+        checkGridPane.add(winComb, 0, 0, nColumns, 1);
+        
         for (int i = 1; i < nRows; i++) {
             for (int j = 0; j < nColumns; j++) {
                 circle = new Circle(10.0);
@@ -177,7 +179,7 @@ public class CodeMakerViewController implements Initializable {
             if (!first) {
                 Object source = event.getTarget();
                 if (source instanceof Circle) {
-                    if (GridPane.getRowIndex((Node) source) == selectedRow && !selectedColor.isEmpty()) {
+                    if (GridPane.getRowIndex((Node) source) == selectedRow+1 && !selectedColor.isEmpty()) {
                         ((Circle) source).setId(selectedColor);
                     }
                 }
@@ -210,7 +212,9 @@ public class CodeMakerViewController implements Initializable {
         int blackPegs = 0;
         int whitePegs = 0;
         for (int i = 0; i < nColumns; i++) {
-            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow) * nColumns + i);
+            Circle selectedCircle = (Circle) checkGridPane.getChildren().get((selectedRow) * nColumns + i + 1);
+            System.out.println(selectedRow);
+            System.out.println((selectedRow) * nColumns + i + 1);
             if (selectedCircle.getId().equals("blackCheckPeg")) blackPegs++;
             else if (selectedCircle.getId().equals("whiteCheckPeg")) whitePegs++;
         }
